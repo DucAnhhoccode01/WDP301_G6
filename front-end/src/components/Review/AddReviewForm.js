@@ -42,7 +42,7 @@ const AddReviewForm = ({ productId, onReviewAdded }) => {
                 margin="normal"
             />
             <Button type="submit" variant="contained" color="primary">
-                Add Review
+                Thêm đánh giá
             </Button>
         </Box>
     );

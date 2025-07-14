@@ -11,12 +11,12 @@ import "./image.css";
 const tabs = [
   {
     id: "Nutrition Facts",
-    key: "Nutrition Facts",
+    key: "Thông tin dinh dưỡng",
     icon: <FaLeaf className="inline-block mr-2" />,
   },
   {
     id: "Ingredients",
-    key: "Ingredients",
+    key: "Thành phần",
     icon: <FaListUl className="inline-block mr-2" />,
   },
 ];

@@ -20,10 +20,10 @@ const Sale = () => {
         </div>
         <div className="p-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">
-            Dish Sale
+            Khuyến Mãi Lớn !
           </h2>
           <p className="text-lg lg:text-xl text-gray-600 mb-6">
-            Up to <span className="text-3xl lg:text-4xl font-bold text-red-600">30%</span> off all printers
+            Giảm <span className="text-3xl lg:text-4xl font-bold text-red-600">30%</span> cho đơn hàng đầu tiên
           </p>
           <ShopNow
             className="bg-gray-800 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-gray-900 transition-colors"

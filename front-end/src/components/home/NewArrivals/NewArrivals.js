@@ -60,14 +60,14 @@ const NewArrivals = () => {
   if (!newArrivals || newArrivals.length === 0) {
     return (
       <div className="w-full pb-16">
-        <Heading heading="New Arrivals" />
-        <p className="text-center text-gray-500">No new arrivals available at the moment.</p>
+        <Heading heading="Sản Phẩm Mới !" />
+        <p className="text-center text-gray-500">Hiện tại không có sản phẩm mới nào cả</p>
       </div>
     );
   }
   return (
     <div className="w-full pb-16">
-      <Heading heading="New Arrivals" />
+      <Heading heading="Sản Phẩm Mới !" />
       <Slider {...settings}>
         {newArrivals?.map(product => (
           <div key={product._id} className="px-2">

@@ -66,10 +66,11 @@ const Review = () => {
 
     return (
         <Box>
-            <Typography variant="h4">Food Reviews</Typography>
+            <Typography variant="h4">Đánh giá sản phẩm</Typography>
+            <br></br>
             <ReviewSummary productId={productId} />
             {isLoggedIn && <AddReviewForm productId={productId} onReviewAdded={setReviews} />}
-            <Typography variant="h5" sx={{ fontWeight: 'bold', marginTop: 5 }}>List Reviews</Typography>
+            <Typography variant="h5" sx={{ fontWeight: 'bold', marginTop: 5 }}>Chi tiết các đánh giá</Typography>
             <List>
                 {reviews.map((review) => (
                     <ListItem key={review._id}>

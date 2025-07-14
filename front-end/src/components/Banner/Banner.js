@@ -134,24 +134,24 @@ const Banner = () => {
   const slides = [
   {
     imgSrc: bannerImgOne,
-    text: "Delicious Meals Delivered",
-    Subtext: "Enjoy fresh and tasty food delivered straight to your door. Fast, hot, and always delicious!",
+    text: "Món ngon được giao tận nơi",
+    Subtext: "Thưởng thức món ngon từ các vùng miền tại nhà. Nhanh chóng và thơm ngon!",
     buttonLink: "/menu",
-    buttonText: "Order Now",
+    buttonText: "Mua ngay",
   },
   {
     imgSrc: bannerImgOne,
-    text: "Healthy & Fresh Ingredients",
-    Subtext: "We use only the freshest ingredients to prepare your favorite dishes every day.",
+    text: "Các sản phẩm luôn được đảm bảo chất lượng",
+    Subtext: "Chúng tôi luôn cam kết về chất lượng sản phẩm.",
     buttonLink: "/about",
-    buttonText: "Learn More",
+    buttonText: "Xem thêm",
   },
   {
     imgSrc: bannerImgOne,
-    text: "Special Offers Every Week",
-    Subtext: "Check out our weekly deals and save big on your next meal. Don’t miss out!",
+    text: "Ưu đãi đặc biệt hàng tuần",
+    Subtext: "Xem thêm các ưu đãi tại đây",
     buttonLink: "/offers",
-    buttonText: "See Offers",
+    buttonText: "Xem thêm",
   },
 ];
   return (

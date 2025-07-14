@@ -65,25 +65,25 @@ const Contact = () => {
 
   return (
     <div className="max-w-container mx-auto px-4">
-      <Breadcrumbs title="Contact" prevLocation={prevLocation} />
+      <Breadcrumbs title="Liên lạc" prevLocation={prevLocation} />
       {successMsg ? (
         <p className="pb-20 w-96 font-medium text-green-500">{successMsg}</p>
       ) : (
         <form className="pb-20">
           <h1 className="font-titleFont font-semibold text-3xl">
-            Fill up a Form
+            Xin hãy điền vào bảng sau
           </h1>
           <div className="w-[500px] h-auto py-6 flex flex-col gap-6">
             <div>
               <p className="text-base font-titleFont font-semibold px-2">
-                Name
+                Họ tên
               </p>
               <input
                 onChange={handleName}
                 value={clientName}
                 className="w-full py-1 border-b-2 px-2 text-base font-medium placeholder:font-normal placeholder:text-sm outline-none focus-within:border-primeColor"
                 type="text"
-                placeholder="Enter your name here"
+                placeholder="Điền tên vào đây"
               />
               {errClientName && (
                 <p className="text-red-500 text-sm font-titleFont font-semibold mt-1 px-2 flex items-center gap-1">
@@ -94,14 +94,14 @@ const Contact = () => {
             </div>
             <div>
               <p className="text-base font-titleFont font-semibold px-2">
-                Email
+                Địa chỉ Email
               </p>
               <input
                 onChange={handleEmail}
                 value={email}
                 className="w-full py-1 border-b-2 px-2 text-base font-medium placeholder:font-normal placeholder:text-sm outline-none focus-within:border-primeColor"
                 type="email"
-                placeholder="Enter your name here"
+                placeholder="Điền email vào đây"
               />
               {errEmail && (
                 <p className="text-red-500 text-sm font-titleFont font-semibold mt-1 px-2 flex items-center gap-1">
@@ -112,7 +112,7 @@ const Contact = () => {
             </div>
             <div>
               <p className="text-base font-titleFont font-semibold px-2">
-                Messages
+                Lời nhắn
               </p>
               <textarea
                 onChange={handleMessages}
@@ -121,7 +121,7 @@ const Contact = () => {
                 rows="3"
                 className="w-full py-1 border-b-2 px-2 text-base font-medium placeholder:font-normal placeholder:text-sm outline-none focus-within:border-primeColor resize-none"
                 type="text"
-                placeholder="Enter your name here"
+                placeholder="Bạn muốn nói với chúng tôi về điều gì"
               ></textarea>
               {errMessages && (
                 <p className="text-red-500 text-sm font-titleFont font-semibold mt-1 px-2 flex items-center gap-1">
@@ -134,7 +134,7 @@ const Contact = () => {
               onClick={handlePost}
               className="w-44 bg-primeColor text-gray-200 h-10 font-titleFont text-base tracking-wide font-semibold hover:bg-black hover:text-white duration-200"
             >
-              Post
+              Gửi
             </button>
           </div>
         </form>

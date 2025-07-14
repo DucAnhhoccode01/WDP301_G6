@@ -55,16 +55,16 @@ console.log("girdViewActive",sortOrderFromBanner)
         ======================================================== */}
        <div className="flex items-center gap-2 md:gap-6 mt-4 md:mt-0">
         <div className="flex items-center gap-2 text-base text-[#767676] relative">
-          <label className="block">Sort by:</label>
+          <label className="block">Xếp theo:</label>
           <select
             onChange={(e) => sortOrderFromBanner(e.target.value)}
             id="sortOrder"
             className="w-32 md:w-52 border-[1px] border-gray-200 py-1 px-4 cursor-pointer text-primeColor text-base block dark:placeholder-gray-400 appearance-none focus-within:outline-none focus-visible:border-primeColor"
           >
               {/* <option value="Best Sellers">Best Sellers</option> */}
-              <option value="New Arrival">New Arrival</option>
-            <option value="Decrease">Decrease price</option>
-            <option value="Ascending">Ascending price</option>
+              <option value="New Arrival">Hàng mới</option>
+            <option value="Decrease">Giá giảm dần</option>
+            <option value="Ascending">Giá tăng dần</option>
           
           </select>
           <span className="absolute text-sm right-2 md:right-4 top-2.5">

@@ -135,7 +135,7 @@ return (
             {navBarList.map(({ _id, title, link }) => (
               <NavLink
                 key={_id}
-                className="flex font-normal hover:font-bold w-20 h-6 justify-center items-center px-6 text-base text-white hover:underline underline-offset-[4px] decoration-[1px] hover:text-green-200 md:border-r-[2px] border-r-green-800 hoverEffect last:border-r-0"
+                className="flex font-normal hover:font-bold w-30 h-6 justify-center items-center px-6 text-base text-white hover:underline underline-offset-[4px] decoration-[1px] hover:text-green-200 md:border-r-[2px] border-r-green-800 hoverEffect last:border-r-0"
                 to={link}
                 state={{ data: location.pathname.split('/')[1] }}
               >
@@ -200,12 +200,12 @@ return (
                 <>
                   <Link to="/signin">
                     <li className="text-white px-4 py-1 border-b border-b-green-700 hover:border-b-white hover:text-green-200 duration-300 cursor-pointer">
-                      Login
+                      Đăng nhập
                     </li>
                   </Link>
                   <Link onClick={() => setShowUser(false)} to="/signup">
                     <li className="text-white px-4 py-1 border-b border-b-green-700 hover:border-b-white hover:text-green-200 duration-300 cursor-pointer">
-                      Sign Up
+                      Đăng kí
                     </li>
                   </Link>
                 </>
@@ -216,19 +216,19 @@ return (
                   </li>
                   <Link to={`/order-history`}>
                     <li className="text-white px-4 py-1 border-b border-b-green-700 hover:border-b-white hover:text-green-200 duration-300 cursor-pointer">
-                      History Order
+                      Lịch sử mua hàng
                     </li>
                   </Link>
                   <Link to={`/profile`}>
                     <li className="text-white px-4 py-1 border-b border-b-green-700 hover:border-b-white hover:text-green-200 duration-300 cursor-pointer">
-                      Profile
+                      Trang cá nhân
                     </li>
                   </Link>
                   <li
                     onClick={handleLogout}
                     className="text-white px-4 py-1 border-b border-b-green-700 hover:border-b-white hover:text-green-200 duration-300 cursor-pointer"
                   >
-                    Logout
+                    Đăng xuất
                   </li>
                 </>
               )}

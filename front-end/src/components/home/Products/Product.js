@@ -73,16 +73,16 @@ const Product = (props) => {
                 ? ProductService.getImage(props.images[0].filename)
                 : ImgDefault
             }
-            alt={props.name || "Product Image"}
+            alt={props.name || "Ảnh sản phẩm"}
           />
         </div>
         <div className="absolute top-3 left-3">
-          {!props.isDeleted && <Badge text={isOutOfStock ? "Out of Stock" : "New"} color={isOutOfStock ? "bg-red-500" : undefined} />}
+          {!props.isDeleted && <Badge text={isOutOfStock ? "Hết hàng" : "Mới"} color={isOutOfStock ? "bg-red-500" : undefined} />}
         </div>
         <button
           onClick={handleWishList}
           className="absolute top-3 right-3 bg-white rounded-full p-2 shadow hover:bg-pink-100 transition"
-          title="Add to Wishlist"
+          title="Thêm vào danh sách ước"
         >
           <FaRegHeart className="text-pink-500 text-lg" />
         </button>
@@ -94,7 +94,7 @@ const Product = (props) => {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-gray-600 text-sm">{props.category?.name || props.category}</span>
-          <span className="text-[#d0121a] font-semibold text-lg">${defaultPrice}</span>
+          <span className="text-[#d0121a] font-semibold text-lg">{defaultPrice} VND</span>
         </div>
         <div className="flex flex-wrap gap-2 mt-1">
           {props.inStock?.map((item) => (
@@ -109,13 +109,13 @@ const Product = (props) => {
             disabled={isOutOfStock}
             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded ${isOutOfStock ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-primeColor text-white hover:bg-black"} transition`}
           >
-            <FaCartPlus /> {isOutOfStock ? "Out of Stock" : "Add to Cart"}
+            <FaCartPlus /> {isOutOfStock ? "Hết hàng" : "Thêm vào giỏ"}
           </button>
           <button
             onClick={handleProductDetails}
             className="flex items-center gap-1 px-3 py-2 rounded bg-blue-100 text-blue-700 hover:bg-blue-200 transition"
           >
-            <FaInfoCircle /> Details
+            <FaInfoCircle /> Chi tiết
           </button>
         </div>
       </div>

@@ -53,7 +53,7 @@ return (
       onClick={() => setShowBrands(!showBrands)}
       className="flex items-center justify-between cursor-pointer select-none"
     >
-      <NavTitle title="Shop by Brand" icons={true} />
+      <NavTitle title="Xếp theo Nhãn hàng" icons={true} />
       <span
         className={`transition-transform duration-300 ${
           showBrands ? "rotate-90" : ""

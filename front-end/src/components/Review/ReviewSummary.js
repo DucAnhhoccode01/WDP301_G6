@@ -24,17 +24,17 @@ const ReviewSummary = ({ productId }) => {
 
     return (
         <Box sx={{ padding: 2, backgroundColor: '#f9f9f9', borderRadius: 2, boxShadow: 1 }}>
-            <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: 2 }}>Customer Reviews</Typography>
+            <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: 2 }}>Đánh giá tổng thể</Typography>
             <Box display="flex" alignItems="center" sx={{ marginBottom: 2 }}>
                 <Typography variant="h4" sx={{ fontWeight: 'bold', marginRight: 1 }}>{summary?.averageRating?.toFixed(1)}</Typography>
                 <Rating value={summary?.averageRating} precision={0.1} readOnly />
-                <Typography variant="body1" sx={{ marginLeft: 1 }}>out of 5</Typography>
+                <Typography variant="body1" sx={{ marginLeft: 1 }}>trên 5</Typography>
             </Box>
-            <Typography variant="body2" sx={{ marginBottom: 2 }}>{summary?.totalReviews} customer ratings</Typography>
+            <Typography variant="body2" sx={{ marginBottom: 2 }}>{summary?.totalReviews} tài khoản đã đánh giá</Typography>
             <List>
                 {summary?.ratingPercentages.map((rating, index) => (
                     <ListItem key={index} sx={{ padding: 0 }}>
-                        <ListItemText primary={`${5 - index} star`} />
+                        <ListItemText primary={`${5 - index} sao`} />
                         <Box width="100%" mr={1}>
                             <LinearProgress
                                 variant="determinate"

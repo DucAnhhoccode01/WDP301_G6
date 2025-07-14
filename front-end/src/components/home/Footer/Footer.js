@@ -9,10 +9,10 @@ const Footer = () => {
     <div className="w-full bg-gradient-to-b from-green-100 via-lime-50 to-white py-20">
       <div className="max-w-container mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 px-4 gap-10">
         <div className="col-span-2">
-          <FooterListTitle title="About FoodieHub" />
+          <FooterListTitle title="Về Quà Quê Việt" />
           <div className="flex flex-col gap-6">
             <p className="text-base w-full xl:w-[80%] text-green-900">
-              FoodieHub brings you the freshest and most delicious food in town. Enjoy a variety of dishes, fast delivery, and friendly service every day!
+              Quà Quê Việt là một website bán ẩm thực vùng miền quanh Việt Nam! 
             </p>
             <ul className="flex items-center gap-3 mt-2">
               <a href="https://facebook.com" target="_blank" rel="noreferrer">
@@ -47,47 +47,47 @@ const Footer = () => {
           <FooterListTitle title="Menu" />
           <ul className="flex flex-col gap-2">
             <li className="font-titleFont text-base text-green-700 hover:text-green-900 hover:underline cursor-pointer duration-300">
-              Pizza
+              Đặc sản đất bắc
             </li>
             <li className="font-titleFont text-base text-green-700 hover:text-green-900 hover:underline cursor-pointer duration-300">
-              Burgers
+              Hương vị phương nam
             </li>
             <li className="font-titleFont text-base text-green-700 hover:text-green-900 hover:underline cursor-pointer duration-300">
-              Sushi
+              Cu đơ hà tĩnh
             </li>
             <li className="font-titleFont text-base text-green-700 hover:text-green-900 hover:underline cursor-pointer duration-300">
-              Drinks
+              Quà tặng quê hương
             </li>
             <li className="font-titleFont text-base text-green-700 hover:text-green-900 hover:underline cursor-pointer duration-300">
-              Desserts
+              Bánh pía sầu riêng
             </li>
           </ul>
         </div>
         <div>
-          <FooterListTitle title="Customer Service" />
+          <FooterListTitle title="Dịch vụ CSKH" />
           <ul className="flex flex-col gap-2">
             <li className="font-titleFont text-base text-green-700 hover:text-green-900 hover:underline cursor-pointer duration-300">
-              My Account
+              Tài khoản của tôi
             </li>
             <li className="font-titleFont text-base text-green-700 hover:text-green-900 hover:underline cursor-pointer duration-300">
-              Order Tracking
+              Theo dõi đơn hàng
             </li>
             <li className="font-titleFont text-base text-green-700 hover:text-green-900 hover:underline cursor-pointer duration-300">
-              Support
+              Hỗ trợ
             </li>
             <li className="font-titleFont text-base text-green-700 hover:text-green-900 hover:underline cursor-pointer duration-300">
-              FAQs
+              Câu hỏi thường gặp
             </li>
             <li className="font-titleFont text-base text-green-700 hover:text-green-900 hover:underline cursor-pointer duration-300">
-              Payment Methods
+              Phương thức thanh toán
             </li>
           </ul>
         </div>
         <div className="col-span-2 flex flex-col items-center w-full px-4">
-          <FooterListTitle title="Our Restaurant Location" />
+          <FooterListTitle title="Trụ sở chính" />
           <div className="w-full flex flex-col items-center">
             <p className="text-center mb-4 text-green-800">
-              Visit us or order online! See our location below:
+              Bạn có thể đến thăm hoặc đặt hàng trực tiếp
             </p>
             {/* 21.01256641914894, 105.52530004039076 */}
             <div className="w-full rounded-lg overflow-hidden shadow" style={{ minHeight: 250 }}>
@@ -107,7 +107,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="mt-2 text-green-700 underline"
             >
-              View larger map
+              Phóng to bản đồ
             </a>
             <Image
               className="w-[80%] lg:w-[60%] mx-auto mt-6"
@@ -117,7 +117,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center text-green-900 mt-10 text-sm">
-        &copy; {new Date().getFullYear()} FoodieHub. All rights reserved.
+        &copy; {new Date().getFullYear()} Quà Quê Việt. Mọi quyền được bảo lưu.
       </div>
     </div>
   );

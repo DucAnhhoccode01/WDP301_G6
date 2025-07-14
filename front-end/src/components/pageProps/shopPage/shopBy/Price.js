@@ -24,7 +24,7 @@ const Price = () => {
 
   return (
     <div className="cursor-pointer">
-      <NavTitle title="Shop by Price" icons={false} />
+      <NavTitle title="Xếp theo giá" icons={false} />
       <div className="font-titleFont">
         <ul className="flex flex-col gap-4 text-base text-[#444]">
           {priceList.map((item) => (
@@ -46,7 +46,7 @@ const Price = () => {
                 className="accent-green-600 w-5 h-5"
               />
               <label htmlFor={item._id} className="text-lg select-none w-full cursor-pointer">
-                ${item.priceOne.toFixed(2)} - ${item.priceTwo.toFixed(2)}
+                {item.priceOne.toFixed(2)} VND - {item.priceTwo.toFixed(2)} VND
               </label>
             </li>
           ))}

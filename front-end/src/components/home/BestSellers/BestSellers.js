@@ -22,15 +22,15 @@ const BestSellers = () => {
   if (!bestSellers || bestSellers.length === 0) {
     return (
       <div className="w-full pb-20">
-        <Heading heading="Our Bestsellers" />
-        <p className="text-center text-gray-500">No bestsellers available at the moment.</p>
+        <Heading heading="Mặt hàng được mua nhiều nhất" />
+        <p className="text-center text-gray-500">Hiện tại chưa có cập nhật!</p>
       </div>
     );
   }
 
   return (
     <div className="w-full pb-20">
-      <Heading heading="Our Bestsellers" />
+      <Heading heading="Mặt hàng được mua nhiều nhất" />
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lgl:grid-cols-3 xl:grid-cols-4 gap-10">
         {bestSellers?.map(item => (
           <div key={item.productId} className="px-2">

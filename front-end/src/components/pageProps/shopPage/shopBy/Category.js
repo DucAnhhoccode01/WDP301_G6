@@ -32,7 +32,7 @@ const Category = () => {
       onClick={() => setShowSubCatOne(!showSubCatOne)}
       className="flex items-center justify-between cursor-pointer select-none"
     >
-      <NavTitle title="Shop by Category" icons={true} />
+      <NavTitle title="Xếp theo Loại" icons={true} />
       <span
         className={`transition-transform duration-300 ${
           showSubCatOne ? "rotate-90" : ""

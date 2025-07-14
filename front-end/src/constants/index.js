@@ -47,7 +47,7 @@ import "./style.css";
 export const navBarList = [
   {
     _id: 1001,
-    title: "Home",
+    title: "Trang chủ",
     link: "/",
   },
   {
@@ -57,17 +57,17 @@ export const navBarList = [
   },
   {
     _id: 1003,
-    title: "About",
+    title: "Về chúng tôi",
     link: "/about",
   },
   {
     _id: 1004,
-    title: "Contact",
+    title: "Liên lạc",
     link: "contact",
   },
   {
     _id: 1005,
-    title: "Offers",
+    title: "Khuyến mãi",
     link: "/offers",
   },
 ];
