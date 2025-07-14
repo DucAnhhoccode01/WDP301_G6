@@ -38,7 +38,7 @@ const Profile = () => {
   return (
     <Box maxWidth="sm" mx="auto" mt={4}>
       <Typography variant="h4" gutterBottom>
-        My Profile
+        Hồ sơ cá nhân
       </Typography>
       {userData && <UpdateProfile userData={userData} />}
       <Button onClick={switchToPasswordChange} variant="outlined" color="secondary" fullWidth sx={{ mt: 2 }}>
