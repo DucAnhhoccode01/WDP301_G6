@@ -50,20 +50,20 @@ const Cart = () => {
         <div className="pb-20">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold">
-              You have {totalItems} item{totalItems !== 1 && "s"} in your cart
+              Bạn có {totalItems} mặt hàng{totalItems !== 1} trong giỏ hàng 
             </h2>
             <button
               onClick={() => dispatch(resetCart())}
               className="py-2 px-6 bg-red-500 text-white font-semibold rounded hover:bg-red-700 duration-300"
             >
-              Clear Cart
+              Xóa giỏ hàng
             </button>
           </div>
           <div className="hidden lgl:grid grid-cols-5 bg-gray-100 text-primeColor px-6 py-4 font-semibold rounded">
-            <h2 className="col-span-2">Product</h2>
-            <h2>Price</h2>
-            <h2>Quantity</h2>
-            <h2>Subtotal</h2>
+            <h2 className="col-span-2">Sản phẩm</h2>
+            <h2>Giá</h2>
+            <h2>Số lượng</h2>
+            <h2>Giá tiền</h2>
           </div>
           <div className="mt-5">
             {products.map((item) => (
@@ -85,7 +85,7 @@ const Cart = () => {
                 onClick={handleApplyCoupon}
                 className="bg-primeColor text-white px-4 py-1 rounded hover:bg-black duration-300"
               >
-                Apply
+                Đồng ý
               </button>
               {couponMsg && (
                 <span className={`ml-2 text-sm ${discount > 0 ? "text-green-600" : "text-red-500"}`}>
@@ -93,32 +93,32 @@ const Cart = () => {
                 </span>
               )}
             </div>
-            <p className="text-lg font-semibold">Update your cart if needed</p>
+            <p className="text-lg font-semibold">Cập nhật giỏ hàng của bạn nếu cần</p>
           </div>
           <div className="max-w-7xl gap-4 flex justify-end mt-4">
             <div className="w-96 flex flex-col gap-4">
-              <h1 className="text-2xl font-semibold text-right">Order Summary</h1>
+              <h1 className="text-2xl font-semibold text-right">Thanh toán đơn hàng</h1>
               <div>
                 <p className="flex items-center justify-between border-b py-1.5 text-lg px-4 font-medium">
-                  Subtotal
+                  Giá tiền
                   <span className="font-semibold tracking-wide font-titleFont">
                     ${totalAmt}
                   </span>
                 </p>
                 <p className="flex items-center justify-between border-b py-1.5 text-lg px-4 font-medium">
-                  Shipping
+                  Vận chuyển
                   <span className="font-semibold tracking-wide font-titleFont">
                     {shippingCharge === 0 ? "Free" : `$${shippingCharge}`}
                   </span>
                 </p>
                 {discount > 0 && (
                   <p className="flex items-center justify-between border-b py-1.5 text-lg px-4 font-medium text-green-600">
-                    Discount
+                    Khuyến mãi
                     <span>- ${discount}</span>
                   </p>
                 )}
                 <p className="flex items-center justify-between py-1.5 text-lg px-4 font-bold">
-                  Total
+                  Tổng tiền
                   <span className="tracking-wide text-lg font-titleFont">
                     ${totalAmt + shippingCharge - discount}
                   </span>
@@ -127,7 +127,7 @@ const Cart = () => {
               <div className="flex justify-end">
                 <Link to="/checkout">
                   <button className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300 rounded">
-                    Proceed to Checkout
+                    Thanh toán
                   </button>
                 </Link>
               </div>
@@ -150,14 +150,14 @@ const Cart = () => {
           </div>
           <div className="max-w-[500px] p-4 py-8 bg-white flex gap-4 flex-col items-center rounded-md shadow-lg">
             <h1 className="font-titleFont text-xl font-bold uppercase">
-              Your cart is empty!
+              Giỏ hàng của bạn đang trống!
             </h1>
             <p className="text-sm text-center px-10 -mt-2">
-              Looks like you haven’t added anything yet. Start shopping and fill your cart with amazing products!
+              Có vẻ như bạn chưa thêm gì cả. Hãy bắt đầu mua sắm và lấp đầy giỏ hàng của bạn với những sản phẩm tuyệt vời!
             </p>
             <Link to="/shop">
               <button className="bg-primeColor rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
-                Continue Shopping
+                Tiếp tục mua sắm
               </button>
             </Link>
           </div>

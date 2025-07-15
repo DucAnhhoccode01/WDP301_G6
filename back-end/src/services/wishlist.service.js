@@ -45,14 +45,14 @@ class WishlistService {
       wishlist = await wishlist.save();
       return wishlist;
     } else {
-      throw new Error('wishlist not found');
+      throw new Error('không tìm thấy danh sách yêu thích');
     }
   };
 
   getWishlist = async (userId) => {
     const wishlist = await Wishlist.findOne({ userId }).populate('items.productId');
     if (!wishlist) {
-      throw new Error('Cart not found');
+      throw new Error('Không tìm thấy giỏ hàng');
     }
     return wishlist;
   };

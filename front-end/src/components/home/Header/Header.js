@@ -150,7 +150,7 @@ return (
             type="text"
             onChange={handleSearch}
             value={searchQuery}
-            placeholder="Search your products here"
+            placeholder="Tìm kiếm sản phẩm ở đây"
           />
           <FaSearch className="w-5 h-5 text-green-700" />
           {searchQuery && (

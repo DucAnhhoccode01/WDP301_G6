@@ -5,7 +5,7 @@ class wishlistController {
     try {
       const { userId, productId, color } = req.body; // Destructure dữ liệu từ req.body
       if (!userId || !productId || !color) {
-        return res.status(400).json({ message: 'Invalid input data' });
+        return res.status(400).json({ message: 'Dữ liệu đầu vào không hợp lệ' });
       }
       const wishlist = await WishlistService.addToWishlist(userId, productId, color);
       res.status(200).json(wishlist);
@@ -18,7 +18,7 @@ class wishlistController {
     try {
       const { userId, productId, color } = req.body;
       if (!userId || !productId || !color) {
-        return res.status(400).json({ message: 'Invalid input data' });
+        return res.status(400).json({ message: 'Dữ liệu đầu vào không hợp lệ  ' });
       }
       const wishlist = await WishlistService.removeFromwishlist(userId, productId, color);
       res.status(200).json(wishlist);
