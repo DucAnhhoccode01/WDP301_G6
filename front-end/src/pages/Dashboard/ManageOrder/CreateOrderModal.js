@@ -48,7 +48,7 @@ const CreateOrderModal = ({ open, onClose }) => {
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-      <DialogTitle>Create Order</DialogTitle>
+      <DialogTitle>Tạo đơn hàng</DialogTitle>
       <DialogContent>
         <ToastContainer />
         <Box sx={{ mt: 2 }}>
@@ -95,12 +95,12 @@ const CreateOrderModal = ({ open, onClose }) => {
             </Grid>
             <Grid item xs={12}>
               <FormControl fullWidth>
-                <InputLabel>Payment Method</InputLabel>
+                <InputLabel>Phương thức thanh toán</InputLabel>
                 <Select
                   value={paymentMethod}
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 >
-                  <MenuItem value="Cash On Delivery">Cash On Delivery</MenuItem>
+                  <MenuItem value="Cash On Delivery">Thanh toán khi nhận hàng</MenuItem>
                   <MenuItem value="VnPay">VnPay</MenuItem>
                 </Select>
               </FormControl>
@@ -112,8 +112,8 @@ const CreateOrderModal = ({ open, onClose }) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="secondary">Cancel</Button>
-        <Button onClick={handleCreateOrder} color="primary">Create Order</Button>
+        <Button onClick={onClose} color="secondary">Hủy bỏ</Button>
+        <Button onClick={handleCreateOrder} color="primary">Tạo đơn hàng</Button>
       </DialogActions>
     </Dialog>
   );

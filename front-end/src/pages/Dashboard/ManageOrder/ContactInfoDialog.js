@@ -62,10 +62,10 @@ export default function ContactInfoDialog({ contactInfo }) {
                             <Table aria-label="customized table">
                                 <TableHead>
                                     <TableRow>
-                                        <StyledTableCell>Name</StyledTableCell>
+                                        <StyledTableCell>Tên</StyledTableCell>
                                         <StyledTableCell>Email</StyledTableCell>
-                                        <StyledTableCell>Phone</StyledTableCell>
-                                        <StyledTableCell>Address</StyledTableCell>
+                                        <StyledTableCell>Số điện thoại</StyledTableCell>
+                                        <StyledTableCell>Địa chỉ</StyledTableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>

@@ -42,7 +42,7 @@ const Profile = () => {
       </Typography>
       {userData && <UpdateProfile userData={userData} />}
       <Button onClick={switchToPasswordChange} variant="outlined" color="secondary" fullWidth sx={{ mt: 2 }}>
-        Change Password
+        Thay đổi mật khẩu
       </Button>
 
       <Dialog open={isModalOpen} onClose={toggleModal}>
@@ -63,15 +63,15 @@ const Profile = () => {
           ) : (
             <>
               <Button onClick={switchToPasswordChange} color="primary">
-                Change Password
+                Thay đổi mật khẩu
               </Button>
               <Button color="primary" form="updateProfileForm" type="submit">
-                Update Profile
+                Cập nhật hồ sơ
               </Button>
             </>
           )}
           <Button onClick={toggleModal} color="secondary">
-            Cancel
+            Hủy bỏ
           </Button>
         </DialogActions>
       </Dialog>

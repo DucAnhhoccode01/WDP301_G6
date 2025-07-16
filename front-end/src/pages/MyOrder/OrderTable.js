@@ -8,12 +8,12 @@ const OrderTable = ({ orders, handleOpen }) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Product</TableCell>
-            <TableCell>Contact Info</TableCell>
-            <TableCell>Total Price</TableCell>
-            <TableCell>Order Status</TableCell>
-            <TableCell>Payment Status</TableCell>
-            <TableCell>View Details</TableCell>
+            <TableCell>Sản phẩm</TableCell>
+            <TableCell>Thông tin liên lạc</TableCell>
+            <TableCell>Tổng giá</TableCell>
+            <TableCell>Trạng thái đơn hàng</TableCell>
+            <TableCell>Trạng thái thanh toán</TableCell>
+            <TableCell>Xem chi tiết</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -23,7 +23,7 @@ const OrderTable = ({ orders, handleOpen }) => {
                 <Box display="flex" flexDirection="column">
                   <Typography>{order.items[0].productId.name}</Typography>
                   {order.items.length > 1 && (
-                    <Button size="small" onClick={() => handleOpen(order)}>View More Products</Button>
+                    <Button size="small" onClick={() => handleOpen(order)}>Xem thêm sản phẩm</Button>
                   )}
                 </Box>
               </TableCell>

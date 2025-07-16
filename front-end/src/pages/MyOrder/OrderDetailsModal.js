@@ -36,7 +36,7 @@ const OrderDetailsModal = ({ open, handleClose, selectedItem }) => {
                 {selectedItem && (
                     <>
                         <Typography variant="h5" component="h2" gutterBottom>
-                            Order Details
+                            Chi tiết đơn hàng
                         </Typography>
                         <Divider />
                         {selectedItem.items.map((item, index) => (
@@ -54,19 +54,19 @@ const OrderDetailsModal = ({ open, handleClose, selectedItem }) => {
                                     />
                                     <Box>
                                         <Typography variant="subtitle1">
-                                            <strong>Name:</strong> {item?.productId?.name}
+                                            <strong>Tên:</strong> {item?.productId?.name}
                                         </Typography>
                                         <Typography variant="subtitle2">
-                                            <strong>Sale Price:</strong> {item.salePrice}đ
+                                            <strong>Giá bán:</strong> {item.salePrice}đ
                                         </Typography>
                                         <Typography variant="subtitle2">
-                                            <strong>Quantity:</strong> {item.quantity}
+                                            <strong>Số lượng:</strong> {item.quantity}
                                         </Typography>
                                         <Typography variant="subtitle2">
-                                            <strong>Size:</strong> {item.color}
+                                            <strong>Kích cỡ:</strong> {item.color}
                                         </Typography>
                                         <Typography variant="subtitle2">
-                                            <strong>Specifications:</strong> {item?.productId?.specs.map(spec => `${spec.key}: ${spec.value}`).join(', ')}
+                                            <strong>Thông số kỹ thuật:</strong> {item?.productId?.specs.map(spec => `${spec.key}: ${spec.value}`).join(', ')}
                                         </Typography>
                                     </Box>
                                 </Box>

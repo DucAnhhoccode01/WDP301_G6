@@ -146,8 +146,8 @@ export default function Orders() {
             value={sortField}
             onChange={(e) => setSortField(e.target.value)}
           >
-            <MenuItem value="totalPrice">Total Price</MenuItem>
-            <MenuItem value="createdAt">Created At</MenuItem>
+            <MenuItem value="totalPrice">Tổng giá</MenuItem>
+            <MenuItem value="createdAt">Được tạo ra tại</MenuItem>
             {/* Add more fields as needed */}
           </TextField>
         </Grid>
@@ -160,8 +160,8 @@ export default function Orders() {
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
           >
-            <MenuItem value="asc">Ascending</MenuItem>
-            <MenuItem value="desc">Descending</MenuItem>
+            <MenuItem value="asc">Đang tăng dần</MenuItem>
+            <MenuItem value="desc">Giảm dần</MenuItem>
           </TextField>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
@@ -173,12 +173,12 @@ export default function Orders() {
             value={orderStatus}
             onChange={(e) => setOrderStatus(e.target.value)}
           >
-            <MenuItem value="">All</MenuItem>
-            <MenuItem value="Pending">Pending</MenuItem>
-            <MenuItem value="Processing">Processing</MenuItem>
-            <MenuItem value="Shipped">Shipped</MenuItem>
-            <MenuItem value="Delivered">Delivered</MenuItem>
-            <MenuItem value="Cancelled">Cancelled</MenuItem>
+            <MenuItem value="">Tất cả</MenuItem>
+            <MenuItem value="Pending">Chưa giải quyết</MenuItem>
+            <MenuItem value="Processing">Xử lý</MenuItem>
+            <MenuItem value="Shipped">Đã vận chuyển</MenuItem>
+            <MenuItem value="Delivered">Đã giao hàng</MenuItem>
+            <MenuItem value="Cancelled">Đã hủy</MenuItem>
           </TextField>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
@@ -190,11 +190,11 @@ export default function Orders() {
             value={paymentStatus}
             onChange={(e) => setPaymentStatus(e.target.value)}
           >
-            <MenuItem value="">All</MenuItem>
-            <MenuItem value="Pending">Pending</MenuItem>
-            <MenuItem value="Completed">Completed</MenuItem>
-            <MenuItem value="Failed">Failed</MenuItem>
-            <MenuItem value="Refunded">Refunded</MenuItem>
+            <MenuItem value="">Tất cả</MenuItem>
+            <MenuItem value="Pending">Chưa giải quyết</MenuItem>
+            <MenuItem value="Completed">Hoàn thành</MenuItem>
+            <MenuItem value="Failed">Thất bại</MenuItem>
+            <MenuItem value="Refunded">Đã hoàn tiền</MenuItem>
           </TextField>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
@@ -206,18 +206,18 @@ export default function Orders() {
             value={paymentMethod}
             onChange={(e) => setPaymentMethod(e.target.value)}
           >
-            <MenuItem value="">All</MenuItem>
-            <MenuItem value="Credit Card">Credit Card</MenuItem>
+            <MenuItem value="">Tất cả</MenuItem>
+            <MenuItem value="Credit Card">Thẻ tín dụng</MenuItem>
             <MenuItem value="PayPal">PayPal</MenuItem>
             <MenuItem value="VnPay">VnPay</MenuItem>
-            <MenuItem value="Cash On Delivery">Cash On Delivery</MenuItem>
+            <MenuItem value="Cash On Delivery">Thanh toán khi nhận hàng</MenuItem>
           </TextField>
         </Grid>
       </Grid>
       <Grid container spacing={25} sx={{ mb: 2 }} justifyContent="flex-end">
         <Grid item xs={12} sm={6} md={4}>
           <Button variant="contained" color="primary" onClick={openCreateModal}>
-            Create New Order
+            Tạo đơn hàng mới
           </Button>
         </Grid>
       </Grid>
@@ -268,10 +268,10 @@ export default function Orders() {
       >
         <Box sx={{ width: 400, bgcolor: 'background.paper', p: 4, mx: 'auto', my: '30vh', borderRadius: 1 }}>
           <Typography id="delete-confirmation-modal-title" variant="h6" component="h2">
-            Confirm Deletion
+            Xác nhận xóa
           </Typography>
           <Typography id="delete-confirmation-modal-description" sx={{ mt: 2 }}>
-            Are you sure you want to delete this order?
+            Bạn có chắc chắn muốn xóa đơn hàng này không?
           </Typography>
           <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-end' }}>
             <Button onClick={handleClose} sx={{ mr: 2 }}>Cancel</Button>

@@ -50,11 +50,11 @@ const ForgotPassword = () => {
         <div className="px-6 py-4 w-full lgl:w-[450px] h-[90%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
           <form onSubmit={handleForgotPassword} className="flex flex-col gap-3">
             <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-3xl mdl:text-4xl mb-4">
-              Forgot Password
+              Quên mật khẩu
             </h1>
             <div className="flex flex-col gap-1">
               <p className="font-titleFont text-base font-semibold text-gray-600">
-                Work Email
+                Email công việc
               </p>
               <input
                 onChange={handleEmail}
@@ -83,10 +83,10 @@ const ForgotPassword = () => {
               </p>
             )}
             <p className="text-sm text-center font-titleFont font-medium">
-              Remembered your password?{" "}
+              Bạn đã nhớ mật khẩu chưa?{" "}
               <Link to="/signin">
                 <span className="hover:text-blue-600 duration-300">
-                  Sign in
+                  Đăng nhập
                 </span>
               </Link>
             </p>

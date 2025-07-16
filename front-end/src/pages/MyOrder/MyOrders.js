@@ -65,7 +65,7 @@ const MyOrders = () => {
   return (
     <Box maxWidth="lg" mx="auto" px={4}>
       <Typography variant="h4" gutterBottom>
-        Order History
+        Lịch sử đơn hàng
       </Typography>
       <OrderFilter
         startDate={startDate}
@@ -93,10 +93,10 @@ const MyOrders = () => {
         </Box>
       ) : (
         <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" py={5}>
-          <Typography variant="h5" gutterBottom>No Orders Found.</Typography>
-          <Typography variant="body1" textAlign="center">It looks like you haven't placed any orders yet.</Typography>
+          <Typography variant="h5" gutterBottom>Không tìm thấy đơn hàng nào.</Typography>
+          <Typography variant="body1" textAlign="center">Có vẻ như bạn chưa đặt hàng nào.</Typography>
           <Button variant="contained" color="primary" href="/shop" sx={{ mt: 2 }}>
-            Continue Ordering
+            Tiếp tục đặt hàng
           </Button>
         </Box>
       )}

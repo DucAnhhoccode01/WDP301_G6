@@ -68,7 +68,7 @@ const ChangePassword = () => {
           margin="normal"
         />
         <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
-          Change Password
+          Thay đổi mật khẩu
         </Button>
       </form>
     </Box>

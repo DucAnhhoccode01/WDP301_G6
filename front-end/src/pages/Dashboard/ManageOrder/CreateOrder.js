@@ -111,12 +111,12 @@ const CreateOrder = ({ open, onClose }) => {
             </Grid>
             <Grid item xs={12}>
               <FormControl fullWidth>
-                <InputLabel>Payment Method</InputLabel>
+                <InputLabel>Phương thức thanh toán</InputLabel>
                 <Select
                   value={paymentMethod}
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 >
-                  <MenuItem value="Cash On Delivery">Cash On Delivery</MenuItem>
+                  <MenuItem value="Cash On Delivery">Thanh toán khi nhận hàng</MenuItem>
                   <MenuItem value="VnPay">VnPay</MenuItem>
                 </Select>
               </FormControl>
@@ -131,7 +131,7 @@ const CreateOrder = ({ open, onClose }) => {
                 color="primary"
                 onClick={handleCreateOrder}
               >
-                Create Order
+                Tạo đơn hàng
               </Button>
             </Grid>
           </Grid>

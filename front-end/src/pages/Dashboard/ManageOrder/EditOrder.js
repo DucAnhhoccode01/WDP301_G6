@@ -109,7 +109,7 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Paper elevation={3} sx={{ p: 4, maxWidth: 600, width: '100%' }}>
             <Typography sx={{ mb: 4 }} variant="h4" gutterBottom>
-              Update Order
+              Cập nhật đơn hàng
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -129,10 +129,10 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
                   }}
                 >
                   <MenuItem value="Pending">Pending</MenuItem>
-                  <MenuItem value="Processing">Processing</MenuItem>
-                  <MenuItem value="Shipped">Shipped</MenuItem>
-                  <MenuItem value="Delivered">Delivered</MenuItem>
-                  <MenuItem value="Cancelled">Cancelled</MenuItem>
+                  <MenuItem value="Processing">Xử lý</MenuItem>
+                  <MenuItem value="Shipped">Đã vận chuyển</MenuItem>
+                  <MenuItem value="Delivered">Đã giao hàng</MenuItem>
+                  <MenuItem value="Cancelled">Đã hủy</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12}>
@@ -151,10 +151,10 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
                     ),
                   }}
                 >
-                  <MenuItem value="Pending">Pending</MenuItem>
-                  <MenuItem value="Completed">Completed</MenuItem>
-                  <MenuItem value="Failed">Failed</MenuItem>
-                  <MenuItem value="Refunded">Refunded</MenuItem>
+                  <MenuItem value="Pending">Chưa giải quyết</MenuItem>
+                  <MenuItem value="Completed">Hoàn thành</MenuItem>
+                  <MenuItem value="Failed">Thất bại</MenuItem>
+                  <MenuItem value="Refunded">Đã hoàn tiền</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12}>
@@ -198,13 +198,13 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
                 />
               </Grid>
               <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Button onClick={onClose} color="secondary">Cancel</Button>
+                <Button onClick={onClose} color="secondary">Hủy bỏ</Button>
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={handleUpdateOrder}
                 >
-                  Update Order
+                  Cập nhật đơn hàng
                 </Button>
               </Grid>
             </Grid>

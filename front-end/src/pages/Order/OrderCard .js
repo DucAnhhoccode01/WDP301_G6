@@ -21,7 +21,7 @@ const OrderCard = ({ order }) => {
         </div>
         <div className="w-1/3 flex items-center">
           <Link to={`/order/${order.orderId}`} className="text-primeColor hover:underline">
-            View Details
+            Xem chi tiết
           </Link>
         </div>
       </div>

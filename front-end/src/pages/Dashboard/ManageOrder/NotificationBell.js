@@ -45,7 +45,7 @@ export default function NotificationBell() {
                 onClose={handleClose}
             >
                 {notifications.length === 0 ? (
-                    <MenuItem onClick={handleClose}>No new notifications</MenuItem>
+                    <MenuItem onClick={handleClose}>Không có thông báo mới</MenuItem>
                 ) : (
                     notifications.map((notification, index) => (
                         <MenuItem key={index} onClick={handleClose}>

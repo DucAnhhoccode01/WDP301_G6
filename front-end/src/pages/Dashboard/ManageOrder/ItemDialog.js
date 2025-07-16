@@ -62,10 +62,10 @@ export default function ItemDialog({ items }) {
                         <Table aria-label="customized table">
                             <TableHead>
                                 <TableRow>
-                                    <StyledTableCell>Product</StyledTableCell>
-                                    <StyledTableCell>Quantity</StyledTableCell>
-                                    <StyledTableCell>Sale Price</StyledTableCell>
-                                    <StyledTableCell>Color</StyledTableCell>
+                                    <StyledTableCell>Sản phẩm</StyledTableCell>
+                                    <StyledTableCell>Số lượng</StyledTableCell>
+                                    <StyledTableCell>Giá bán</StyledTableCell>
+                                    <StyledTableCell>Màu</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>

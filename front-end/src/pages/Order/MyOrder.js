@@ -14,10 +14,10 @@ const MyOrder = () => {
       {orders.length > 0 ? (
         <div className="pb-20">
           <div className="w-full h-20 bg-[#F5F7F7] text-primeColor hidden lgl:grid grid-cols-5 place-content-center px-6 text-lg font-titleFont font-semibold">
-            <h2 className="col-span-2">Product</h2>
-            <h2>Price</h2>
-            <h2>Status</h2>
-            <h2>Actions</h2>
+            <h2 className="col-span-2">Sản phẩm</h2>
+            <h2>Giá</h2>
+            <h2>Trạng thái</h2>
+            <h2>Hành động</h2>
           </div>
           <div className="mt-5">
             {orders.map((order) => (
@@ -36,14 +36,14 @@ const MyOrder = () => {
         >
           <div className="max-w-[500px] p-4 py-8 bg-white flex gap-4 flex-col items-center rounded-md shadow-lg">
             <h1 className="font-titleFont text-xl font-bold uppercase">
-              No Orders Yet
+              Chưa có đơn hàng nào
             </h1>
             <p className="text-sm text-center px-10 -mt-2">
-              You haven't placed any orders yet. Start Ordering to place an order.
+              Bạn chưa đặt hàng. Hãy bắt đầu đặt hàng để đặt hàng.
             </p>
             <Link to="/shop">
               <button className="bg-primeColor rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
-                Continue Ordering
+                Tiếp tục đặt hàng
               </button>
             </Link>
           </div>
