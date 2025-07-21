@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaRegHeart, FaCartPlus, FaInfoCircle } from "react-icons/fa";
+import React, { useState } from 'react';
+import { FaRegHeart, FaHeart, FaCartPlus, FaInfoCircle } from "react-icons/fa";
 import Image from "../../designLayouts/Image";
 import Badge from "./Badge";
 import { useNavigate } from "react-router-dom";
@@ -11,12 +11,12 @@ import ImgDefault from '../../../assets/images/default.jpg';
 const Product = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isWished, setIsWished] = useState(false);
 
   const _id = props._id;
   const rootId = String(_id).toLowerCase().replace(/\s/g, "");
   const productItem = props;
 
-  // Lấy giá và màu mặc định từ inStock đầu tiên
   const defaultColor = props.inStock?.[0]?.color || "";
   const defaultPrice = props.inStock?.[0]?.price || props.price;
   const isOutOfStock = props.inStock?.reduce((sum, item) => sum + (item.quantity || 0), 0) === 0;
@@ -39,6 +39,7 @@ const Product = (props) => {
   };
 
   const handleWishList = () => {
+    setIsWished((prev) => !prev); // Toggle UI icon
     dispatch(
       addToWishlist({
         _id: props._id,
@@ -62,10 +63,7 @@ const Product = (props) => {
   return (
     <div className="w-full relative group border rounded-lg shadow hover:shadow-lg transition-shadow duration-300 bg-white">
       <div className="relative overflow-hidden rounded-t-lg">
-        <div
-          className="cursor-pointer"
-          onClick={handleProductDetails}
-        >
+        <div className="cursor-pointer" onClick={handleProductDetails}>
           <Image
             className="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300"
             imgSrc={
@@ -77,14 +75,23 @@ const Product = (props) => {
           />
         </div>
         <div className="absolute top-3 left-3">
-          {!props.isDeleted && <Badge text={isOutOfStock ? "Hết hàng" : "Mới"} color={isOutOfStock ? "bg-red-500" : undefined} />}
+          {!props.isDeleted && (
+            <Badge
+              text={isOutOfStock ? "Hết hàng" : "Mới"}
+              color={isOutOfStock ? "bg-red-500" : undefined}
+            />
+          )}
         </div>
         <button
           onClick={handleWishList}
           className="absolute top-3 right-3 bg-white rounded-full p-2 shadow hover:bg-pink-100 transition"
           title="Thêm vào danh sách ước"
         >
-          <FaRegHeart className="text-pink-500 text-lg" />
+          {isWished ? (
+            <FaHeart className="text-pink-500 text-lg" />
+          ) : (
+            <FaRegHeart className="text-pink-500 text-lg" />
+          )}
         </button>
       </div>
       <div className="p-4 flex flex-col gap-2">

@@ -34,7 +34,7 @@ const Cart = () => {
   const handleApplyCoupon = () => {
     if (coupon.trim().toUpperCase() === "SAVE10" && totalAmt > 100) {
       setDiscount(10);
-      setCouponMsg("Coupon applied! You saved $10.");
+      setCouponMsg("Coupon applied! You saved 10k VND.");
     } else {
       setDiscount(0);
       setCouponMsg("Invalid coupon code.");
@@ -88,7 +88,7 @@ const Cart = () => {
                 Đồng ý
               </button>
               {couponMsg && (
-                <span className={`ml-2 text-sm ${discount > 0 ? "text-green-600" : "text-red-500"}`}>
+                <span className={`ml-2 text-sm {discount > 0 ? "text-green-600" : "text-red-500"} VND`}>
                   {couponMsg}
                 </span>
               )}
@@ -102,25 +102,25 @@ const Cart = () => {
                 <p className="flex items-center justify-between border-b py-1.5 text-lg px-4 font-medium">
                   Giá tiền
                   <span className="font-semibold tracking-wide font-titleFont">
-                    ${totalAmt}
+                    {totalAmt} VND
                   </span>
                 </p>
                 <p className="flex items-center justify-between border-b py-1.5 text-lg px-4 font-medium">
                   Vận chuyển
                   <span className="font-semibold tracking-wide font-titleFont">
-                    {shippingCharge === 0 ? "Free" : `$${shippingCharge}`}
+                    {shippingCharge === 0 ? "Free" : `{shippingCharge} VND`}
                   </span>
                 </p>
                 {discount > 0 && (
                   <p className="flex items-center justify-between border-b py-1.5 text-lg px-4 font-medium text-green-600">
                     Khuyến mãi
-                    <span>- ${discount}</span>
+                    <span>- {discount} VND</span>
                   </p>
                 )}
                 <p className="flex items-center justify-between py-1.5 text-lg px-4 font-bold">
                   Tổng tiền
                   <span className="tracking-wide text-lg font-titleFont">
-                    ${totalAmt + shippingCharge - discount}
+                    {totalAmt + shippingCharge - discount} VND
                   </span>
                 </p>
               </div>

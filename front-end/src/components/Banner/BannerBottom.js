@@ -50,7 +50,7 @@ const BannerBottom = () => {
             </svg>
           </span>
           <p className="text-xl text-lightText text-base">
-            Free shipping <br />{" "}
+            Miễn phí vận chuyển<br />{" "}
             <span className="text-xs text-lightText text-base">
               Free Shipping World Wide
             </span>

@@ -106,10 +106,10 @@ export default function Orders() {
           <TableHead>
             <TableRow>
               <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("order-id")} >Order ID</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("name")} >Name</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("phone")} >Phone</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("totalPrice")} >Total Price</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("orderStatus")} >Order Status</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("name")} >Tên</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("phone")} >Số điện thoại</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("totalPrice")} >Tổng giá</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("orderStatus")} >Trạng thái đơn hàng</Typography></TableCell>
               <TableCell ><Typography color="primary">Tool</Typography></TableCell>
             </TableRow>
           </TableHead>

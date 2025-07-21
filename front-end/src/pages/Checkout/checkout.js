@@ -96,10 +96,10 @@ const Checkout = () => {
       {products.length > 0 ? (
         <div className="checkout-content flex flex-col md:flex-row gap-8">
           <div className="checkout-left flex-1 bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-bold mb-4 text-green-700">Shipping Information</h2>
+            <h2 className="text-2xl font-bold mb-4 text-green-700">Thông tin vận chuyển</h2>
             {!isLoggedIn && (
               <p className="mb-2 text-sm text-blue-600">
-                Already have an account? <Link to="/signin" className="underline">Sign in</Link>
+                Bạn đã có tài khoản? <Link to="/signin" className="underline">Đăng nhập</Link>
               </p>
             )}
             <form className="billing-form flex flex-col gap-3">
@@ -137,7 +137,7 @@ const Checkout = () => {
               />
             </form>
             <div className="payment-method mt-6">
-              <h2 className="text-xl font-semibold mb-2 text-green-700">Payment Method</h2>
+              <h2 className="text-xl font-semibold mb-2 text-green-700">Phương thức thanh toán</h2>
               <div className="flex flex-col gap-2">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -147,7 +147,7 @@ const Checkout = () => {
                     checked={paymentMethod === 'Cash On Delivery'}
                     onChange={() => setPaymentMethod('Cash On Delivery')}
                   />
-                  <FaMoneyBillWave className="text-green-500" /> Cash On Delivery
+                  <FaMoneyBillWave className="text-green-500" /> Thanh toán khi nhận hàng
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -173,7 +173,7 @@ const Checkout = () => {
             </div>
           </div>
           <div className="checkout-right w-full md:w-96 bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-bold mb-4 text-green-700">Order Summary</h2>
+            <h2 className="text-2xl font-bold mb-4 text-green-700">Tóm tắt đơn hàng</h2>
             <div className="order-items max-h-60 overflow-y-auto mb-4">
               {products.map((item) => (
                 <ItemCard key={item._id} item={item} />
@@ -181,27 +181,27 @@ const Checkout = () => {
             </div>
             <div className="order-total border-t pt-4 space-y-2">
               <div className="flex justify-between">
-                <span>Subtotal:</span>
-                <span className="font-semibold text-green-700">${totalAmt}</span>
+                <span>Tổng phụ:</span>
+                <span className="font-semibold text-green-700">{totalAmt} VND</span>
               </div>
               <div className="flex justify-between">
-                <span>Shipping Fee:</span>
-                <span className="font-semibold text-green-700">${shippingCharge}</span>
+                <span>Phí vận chuyển:</span>
+                <span className="font-semibold text-green-700">{shippingCharge} VND</span>
               </div>
               <div className="flex justify-between text-lg font-bold">
-                <span>Total:</span>
-                <span className="text-green-800">${totalAmt + shippingCharge}</span>
+                <span>Tổng cộng:</span>
+                <span className="text-green-800">{totalAmt + shippingCharge} VND</span>
               </div>
             </div>
             <div className="discount-code mt-4 flex gap-2">
               <input type="text" placeholder="Discount code" className="border rounded px-3 py-2 flex-1" />
-              <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition">Apply</button>
+              <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition">Áp dụng</button>
             </div>
             <button
               onClick={handlePlaceOrder}
               className="w-full mt-6 py-3 bg-gradient-to-r from-green-500 to-green-700 text-white font-bold rounded shadow hover:from-green-600 hover:to-green-800 transition"
             >
-              Place Order
+              Đặt hàng
             </button>
           </div>
         </div>
@@ -213,11 +213,11 @@ const Checkout = () => {
           className="empty-cart flex flex-col items-center justify-center min-h-[400px]"
         >
           <div className="empty-cart-content text-center">
-            <h1 className="text-2xl font-bold mb-2 text-green-700">Your Cart is empty.</h1>
-            <p className="mb-4 text-gray-600">It looks like you haven't added anything to your cart yet. Continue shopping to find delicious food!</p>
+            <h1 className="text-2xl font-bold mb-2 text-green-700">Giỏ hàng của bạn đang trống.</h1>
+            <p className="mb-4 text-gray-600">Có vẻ như bạn chưa thêm bất kỳ sản phẩm nào vào giỏ hàng. Hãy tiếp tục mua sắm để tìm những món ăn ngon!</p>
             <Link to="/shop">
               <button className="bg-green-500 rounded-md px-8 py-2 text-white font-semibold hover:bg-green-700 transition">
-                Continue Shopping
+                Tiếp tục mua sắm
               </button>
             </Link>
           </div>

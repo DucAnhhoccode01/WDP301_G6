@@ -55,7 +55,7 @@ export default function ContactInfoDialog({ contactInfo }) {
                 open={open}
                 onClose={handleClose}
             >
-                <DialogTitle>Information</DialogTitle>
+                <DialogTitle>Thông tin</DialogTitle>
                 <DialogContent>
                     <React.Fragment>
                         <TableContainer component={Paper}>

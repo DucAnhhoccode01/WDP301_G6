@@ -56,7 +56,7 @@ export default function ItemDialog({ items }) {
                 open={open}
                 onClose={handleClose}
             >
-                <DialogTitle>Item Details</DialogTitle>
+                <DialogTitle>Chi tiết mặt hàng</DialogTitle>
                 <DialogContent>
                     <TableContainer component={Paper}>
                         <Table aria-label="customized table">

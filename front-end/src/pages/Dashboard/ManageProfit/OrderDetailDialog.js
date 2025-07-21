@@ -35,7 +35,7 @@ export default function OrderDetailDialog({ order }) {
                 onClose={handleClose}
                 maxWidth="md"
             >
-                <DialogTitle>Order Detail</DialogTitle>
+                <DialogTitle>Chi tiết đơn hàng</DialogTitle>
                 <DialogContent>
                     {
                         order && order?.items && order?.items.length > 0 && (
@@ -44,15 +44,15 @@ export default function OrderDetailDialog({ order }) {
                                     <TableHead>
                                         <TableRow>
                                             <TableCell align="center" colSpan={3}>
-                                                Details
+                                                Chi tiết
                                             </TableCell>
-                                            <TableCell align="right">Price</TableCell>
+                                            <TableCell align="right">Giá</TableCell>
                                         </TableRow>
                                         <TableRow>
-                                            <TableCell>Food Name</TableCell>
+                                            <TableCell>Tên</TableCell>
                                             <TableCell >Color</TableCell>
-                                            <TableCell align="right">Quantity</TableCell>
-                                            <TableCell align="right">Price</TableCell>
+                                            <TableCell align="right">Số lượng</TableCell>
+                                            <TableCell align="right">Giá</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -65,12 +65,12 @@ export default function OrderDetailDialog({ order }) {
                                             </TableRow>
                                         ))}
                                         <TableRow>
-                                            <TableCell>Shipping fee</TableCell>
+                                            <TableCell>Phí vận chuyển</TableCell>
                                             <TableCell align="right"></TableCell>
                                             <TableCell align="right">{order?.shippingFee || 0}</TableCell>
                                         </TableRow>
                                         <TableRow>
-                                            <TableCell colSpan={2}>Total</TableCell>
+                                            <TableCell colSpan={2}>Tổng</TableCell>
                                             <TableCell align="right">{order?.totalPrice}</TableCell>
                                         </TableRow>
                                     </TableBody>
@@ -80,7 +80,7 @@ export default function OrderDetailDialog({ order }) {
                     }
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleClose}>Hủy bỏ</Button>
                 </DialogActions>
             </Dialog>
         </React.Fragment>

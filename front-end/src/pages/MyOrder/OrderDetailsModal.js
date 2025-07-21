@@ -75,22 +75,22 @@ const OrderDetailsModal = ({ open, handleClose, selectedItem }) => {
                         <Divider />
                         <Box my={2}>
                             <Typography variant="h6" component="h3" gutterBottom>
-                                Payment Information
+                               Thông tin thanh toán
                             </Typography>
                             <Typography variant="body1">
-                                <strong>Total:</strong> {selectedItem.totalPrice}đ
+                                <strong>Tổng cộng:</strong> {selectedItem.totalPrice}đ
                             </Typography>
                             <Typography variant="body1">
-                                <strong>Payment Status:</strong> {selectedItem.paymentStatus}
+                                <strong>Trạng thái thanh toán:</strong> {selectedItem.paymentStatus}
                             </Typography>
                             <Typography variant="body1">
-                                <strong>Payment Method:</strong> {selectedItem.paymentMethod}
+                                <strong>Phương thức thanh toán:</strong> {selectedItem.paymentMethod}
                             </Typography>
                         </Box>
                         <Divider />
                         <Box my={2}>
                             <Typography variant="h6" component="h3" gutterBottom>
-                                Contact Information
+                                Thông tin liên lạc
                             </Typography>
                             <Typography variant="body1">
                                 {selectedItem?.contactInfo

@@ -68,7 +68,7 @@ const OrderDialog = ({ open, onClose, order, onChange, onSubmit }) => (
     </DialogContent>
     <DialogActions>
       <Button onClick={onClose} color="primary">
-        Cancel
+        Hủy bỏ
       </Button>
       <Button onClick={onSubmit} color="primary">
         {order?.id ? 'Update' : 'Create'}

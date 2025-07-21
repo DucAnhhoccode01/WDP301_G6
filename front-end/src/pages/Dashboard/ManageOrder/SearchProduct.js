@@ -112,7 +112,7 @@ const SearchProduct = ({ items, setItems }) => {
             <Grid item xs={12} md={6}>
                 <Paper elevation={3} sx={{ p: 2 }}>
                     <Typography variant="h6" gutterBottom>
-                        Selected Items
+                        Các mục đã chọn
                     </Typography>
                     <Divider sx={{ mb: 2 }} />
                     <List>

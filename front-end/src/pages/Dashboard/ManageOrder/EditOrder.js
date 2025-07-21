@@ -128,7 +128,7 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
                     ),
                   }}
                 >
-                  <MenuItem value="Pending">Pending</MenuItem>
+                  <MenuItem value="Pending">Chưa giải quyết</MenuItem>
                   <MenuItem value="Processing">Xử lý</MenuItem>
                   <MenuItem value="Shipped">Đã vận chuyển</MenuItem>
                   <MenuItem value="Delivered">Đã giao hàng</MenuItem>

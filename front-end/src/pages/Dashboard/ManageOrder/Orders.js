@@ -233,7 +233,7 @@ export default function Orders() {
             <TableCell>Payment Status</TableCell>
             <TableCell>Payment Details</TableCell>
             <TableCell>Payment Method</TableCell>
-            <TableCell sx={{ textAlign: 'center' }}>Actions</TableCell>
+            <TableCell sx={{ textAlign: 'center' }}>Hành động</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
