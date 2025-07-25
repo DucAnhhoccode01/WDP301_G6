@@ -46,7 +46,7 @@ const Profile = () => {
       </Button>
 
       <Dialog open={isModalOpen} onClose={toggleModal}>
-        <DialogTitle>{isChangePassword ? 'Change Password' : 'Update Profile'}</DialogTitle>
+        <DialogTitle>{isChangePassword ? ' Đổi mật khẩu' : 'Update Profile'}</DialogTitle>
         <DialogContent>
           {isChangePassword ? <ChangePassword /> : <UpdateProfile userData={userData} />}
         </DialogContent>

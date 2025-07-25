@@ -39,9 +39,9 @@ const UpdateProfile = ({ userData }) => {
     const profileData = { fullName, email, phoneNumber, address };
     try {
       await AuthenService.updateProfile(profileData);
-      toast.success('Profile updated successfully');
+      toast.success('Hồ sơ đã được cập nhật thành công');
     } catch (error) {
-      toast.error('Error updating profile');
+      toast.error('Lỗi khi cập nhật hồ sơ');
     }
   };
 
@@ -49,7 +49,7 @@ const UpdateProfile = ({ userData }) => {
     <Box>
       <form onSubmit={handleSubmit}>
         <TextField
-          label="Full Name"
+          label="Họ Tên"
           name="fullName"
           value={fullName}
           onChange={handleFullNameChange}
@@ -65,7 +65,7 @@ const UpdateProfile = ({ userData }) => {
           margin="normal"
         />
         <TextField
-          label="Phone Number"
+          label="Số điện thoại"
           name="phoneNumber"
           value={phoneNumber}
           onChange={handlePhoneNumberChange}
@@ -73,7 +73,7 @@ const UpdateProfile = ({ userData }) => {
           margin="normal"
         />
         <TextField
-          label="Address"
+          label="Địa chỉ"
           name="address"
           value={address}
           onChange={handleAddressChange}

@@ -31,9 +31,9 @@ const ChangePassword = () => {
         newPassword: newPassword
       };
       await AuthenService.changePassword(passwordData);
-      toast.success('Password changed successfully');
+      toast.success('Mật khẩu đã được thay đổi thành công!');
     } catch (error) {
-      toast.error('Error changing password');
+      toast.error('Có lỗi khi thay đổi mật khẩu!');
     }
   };
 
@@ -41,7 +41,7 @@ const ChangePassword = () => {
     <Box>
       <form onSubmit={handlePasswordSubmit}>
         <TextField
-          label="Current Password"
+          label=" Mật khẩu hiện tại"
           name="currentPassword"
           type="password"
           value={currentPassword}
@@ -50,7 +50,7 @@ const ChangePassword = () => {
           margin="normal"
         />
         <TextField
-          label="New Password"
+          label="Mật khẩu mới"
           name="newPassword"
           type="password"
           value={newPassword}
@@ -59,7 +59,7 @@ const ChangePassword = () => {
           margin="normal"
         />
         <TextField
-          label="Confirm New Password"
+          label="Xác nhận mật khẩu mới"
           name="confirmPassword"
           type="password"
           value={confirmPassword}
