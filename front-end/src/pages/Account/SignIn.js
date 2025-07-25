@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { logoLight } from "../../assets/images";
 import AuthenService from "../../services/api/AuthenService";
 import { jwtDecode } from "jwt-decode";
+import { resetUserInfo } from "../../redux/orebiSlice";
 const SignIn = () => {
   // ============= Initial State Start here =============
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   // ============= Initial State End here ===============
   // ============= Error Msg Start here =================
   const [errEmail, setErrEmail] = useState("");
@@ -53,6 +56,15 @@ const SignIn = () => {
         } else if (response.message === "Login successful") {
           const decodedToken = jwtDecode(response.accessToken);
           const role = decodedToken.role;
+          const deleted = decodedToken.isDeleted;
+
+          if (deleted) { 
+              setErrorMsg("Your Account has been disabled by the admin. Please contact customer support for more info! Redirect to Home in 10 seconds !");
+              await AuthenService.logout();
+              dispatch(resetUserInfo());
+              await new Promise(r => setTimeout(r, 10000));
+              return navigate("/");
+          }
 
           if (role === "admin") {
             setSuccessMsg("Hello Admin, Welcome back! You have successfully signed in.");
