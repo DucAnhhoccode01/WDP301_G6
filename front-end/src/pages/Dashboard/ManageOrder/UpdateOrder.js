@@ -108,7 +108,7 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
     }
   };
 
-  if (!order) return <Typography>Loading...</Typography>;
+  if (!order) return <Typography>Đang tải...</Typography>;
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>

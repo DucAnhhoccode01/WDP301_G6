@@ -107,11 +107,11 @@ export default function Products() {
     <React.Fragment>
       <Grid container spacing={2} mb={3}>
         <Grid item xs={6}>
-          <TextField required value={keywords} onChange={(e) => setKeywords(e.target.value)} size="small" fullWidth id="outlined-basic" label="Search name" variant="outlined" />
+          <TextField required value={keywords} onChange={(e) => setKeywords(e.target.value)} size="small" fullWidth id="outlined-basic" label="Tìm kiếm" variant="outlined" />
         </Grid>
         <Grid item xs={2}>
           <Button onClick={handleSearchByKeywords} variant="contained" endIcon={<SearchIcon />}>
-            Search
+            Tìm kiếm
           </Button>
         </Grid>
       </Grid>
@@ -119,25 +119,25 @@ export default function Products() {
         productData?.products && (
           <Grid item>
             <Typography color="error" variant="caption" display="block" gutterBottom>
-              Found {productData?.totalProducts} products
+              Cửa Hàng có {productData?.totalProducts} sản phẩm
             </Typography>
           </Grid>
         )
       }
       <Grid item xs={12}>
-        <Title>Products</Title>
+        <Title>Sản Phẩm</Title>
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortProduct("name")}>Name</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortProduct("brand")}>Restaurant</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortProduct("category")}>Category</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortProduct("avaiable")}>Available</Typography></TableCell>
-              <TableCell ><Typography color="primary" >Desc</Typography></TableCell>
-              <TableCell ><Typography color="primary" >Specs</Typography></TableCell>
-              <TableCell ><Typography color="primary" >Images</Typography></TableCell>
-              <TableCell ><Typography color="primary" >In stock</Typography></TableCell>
-             <TableCell ><Typography color="primary" >Tool</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortProduct("name")}>Tên Sản phẩm</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortProduct("brand")}>Vùng miền</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortProduct("category")}>Danh mục</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortProduct("avaiable")}>CÒn hàng</Typography></TableCell>
+              <TableCell ><Typography color="primary" >Mô tả</Typography></TableCell>
+              <TableCell ><Typography color="primary" >Thông số</Typography></TableCell>
+              <TableCell ><Typography color="primary" >Ảnh</Typography></TableCell>
+              <TableCell ><Typography color="primary" >Giá</Typography></TableCell>
+             <TableCell ><Typography color="primary" >Hành động</Typography></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -187,13 +187,13 @@ export default function Products() {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Deleting records is essentially just soft deletion. You can review deleted records in the trash but cannot restore them.
+              Xóa bản ghi về cơ bản chỉ là xóa nhẹ. Bạn có thể xem lại các bản ghi đã xóa trong thùng rác nhưng không thể khôi phục chúng.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setOpenAskToDelete(false)}>Cancel</Button>
+            <Button onClick={() => setOpenAskToDelete(false)}>Hủy</Button>
             <Button color='error' onClick={handleSoftDeleteProduct} autoFocus>
-              Delete
+              Xóa
             </Button>
           </DialogActions>
         </Dialog>

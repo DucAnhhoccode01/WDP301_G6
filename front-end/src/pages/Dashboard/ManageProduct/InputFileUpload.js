@@ -24,7 +24,7 @@ export default function InputFileUpload() {
             tabIndex={-1}
             startIcon={<CloudUploadIcon />}
         >
-            Upload file
+            Tải lên tập tin
             <VisuallyHiddenInput type="file" />
         </Button>
     );

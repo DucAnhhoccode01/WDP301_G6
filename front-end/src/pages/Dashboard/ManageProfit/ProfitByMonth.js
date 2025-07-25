@@ -43,30 +43,30 @@ export default function ProfitByMonth() {
           <Table >
             <TableBody>
               <TableRow>
-                <TableCell colSpan={2}>Total Revenue</TableCell>
+                <TableCell colSpan={2}>Tổng doanh thu</TableCell>
                 {profitData?.totalRevenue > 0 && <TableCell align="right">{profitData?.totalRevenue} VND</TableCell>}
               </TableRow>
               <TableRow>
-                <TableCell colSpan={2}>Total Cost</TableCell>
+                <TableCell colSpan={2}>Tổng chi phí</TableCell>
                 {profitData?.totalCost > 0 && <TableCell align="right">{profitData?.totalCost} VND</TableCell>}
               </TableRow>
               <TableRow>
-                <TableCell colSpan={2}>Total Profit</TableCell>
+                <TableCell colSpan={2}>Tổng lợi nhuận</TableCell>
                 {profitData?.totalProfit > 0 && <TableCell align="right">{profitData?.totalProfit} VND</TableCell>}
               </TableRow>
               <TableRow>
-                <TableCell colSpan={2}>Total Orders</TableCell>
+                <TableCell colSpan={2}>Tổng đơn hàng</TableCell>
                 {profitData.totalOrders > 0 && <TableCell align="right">{profitData?.totalOrders} orders</TableCell>}
               </TableRow>
               <TableRow>
-                <TableCell colSpan={2}>Best seller item</TableCell>
+                <TableCell colSpan={2}>Sản phẩm bán chạy nhất</TableCell>
                 {profitData?.bestSellerItem?.name && <TableCell align="right"> {`${profitData?.bestSellerItem?.name} (${profitData?.bestSellerItem?.quantity} products sold)`}</TableCell>}
               </TableRow>
               <TableRow>
                 <TableCell colSpan={2}></TableCell>
                 <TableCell align="right">
                   <Button onClick={handleDownloadFile} variant="contained" endIcon={<SimCardDownloadIcon />}>
-                    Exports XLSX
+                    Xuất XLSX
                   </Button>
                 </TableCell>
               </TableRow>

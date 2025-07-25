@@ -12,7 +12,7 @@ const OrderDialog = ({ open, onClose, order, onChange, onSubmit }) => (
         autoFocus
         margin="dense"
         name="userId"
-        label="User ID"
+        label="ID người dùng"
         fullWidth
         value={order?.userId || ''}
         onChange={onChange}
@@ -20,7 +20,7 @@ const OrderDialog = ({ open, onClose, order, onChange, onSubmit }) => (
       <TextField
         margin="dense"
         name="items"
-        label="Items"
+        label="Mặt hàng"
         fullWidth
         value={order?.items || ''}
         onChange={onChange}
@@ -28,7 +28,7 @@ const OrderDialog = ({ open, onClose, order, onChange, onSubmit }) => (
       <TextField
         margin="dense"
         name="totalPrice"
-        label="Total Price"
+        label="Tổng giá"
         fullWidth
         value={order?.totalPrice || ''}
         onChange={onChange}
@@ -36,7 +36,7 @@ const OrderDialog = ({ open, onClose, order, onChange, onSubmit }) => (
       <TextField
         margin="dense"
         name="orderStatus"
-        label="Order Status"
+        label="Trạng thái đơn hàng"
         fullWidth
         value={order?.orderStatus || ''}
         onChange={onChange}
@@ -44,7 +44,7 @@ const OrderDialog = ({ open, onClose, order, onChange, onSubmit }) => (
       <TextField
         margin="dense"
         name="paymentStatus"
-        label="Payment Status"
+        label="Trạng thái thanh toán"
         fullWidth
         value={order?.paymentStatus || ''}
         onChange={onChange}
@@ -52,7 +52,7 @@ const OrderDialog = ({ open, onClose, order, onChange, onSubmit }) => (
       <TextField
         margin="dense"
         name="paymentDetails"
-        label="Payment Details"
+        label="Chi tiết thanh toán"
         fullWidth
         value={order?.paymentDetails || ''}
         onChange={onChange}
@@ -60,7 +60,7 @@ const OrderDialog = ({ open, onClose, order, onChange, onSubmit }) => (
       <TextField
         margin="dense"
         name="contactInfo"
-        label="Contact Info"
+        label="Thông tin liên lạc"
         fullWidth
         value={order?.contactInfo || ''}
         onChange={onChange}

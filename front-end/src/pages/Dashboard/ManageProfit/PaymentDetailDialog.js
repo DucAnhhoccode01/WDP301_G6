@@ -34,17 +34,17 @@ export default function PaymentDetailDialog({ order }) {
                 onClose={handleClose}
                 maxWidth="md"
             >
-                <DialogTitle>Payment detail</DialogTitle>
+                <DialogTitle>Chi tiết thanh toán</DialogTitle>
                 <DialogContent>
                     {
                         order && <TableContainer component={Paper}>
                             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>Status</TableCell>
-                                        <TableCell align="right">Method</TableCell>
-                                        <TableCell align="right">Transaction ID</TableCell>
-                                        <TableCell align="right">Payment Time</TableCell>
+                                        <TableCell>Trạng thái</TableCell>
+                                        <TableCell align="right">Phương pháp</TableCell>
+                                        <TableCell align="right"> ID Giao dịch</TableCell>
+                                        <TableCell align="right">Thời gian thanh toán</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -65,7 +65,7 @@ export default function PaymentDetailDialog({ order }) {
                     }
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleClose}>Hủy bỏ</Button>
                 </DialogActions>
             </Dialog>
         </React.Fragment>

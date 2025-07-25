@@ -84,7 +84,7 @@ const SearchProduct = ({ items, setItems }) => {
                 <Paper elevation={3} sx={{ p: 2 }}>
                     <form onSubmit={handleSubmit} style={{ display: 'flex', alignItems: 'center' }}>
                         <TextField
-                            label="Search by name or description to add products"
+                            label="Tìm kiếm theo tên hoặc mô tả để thêm sản phẩm"
                             variant="outlined"
                             fullWidth
                             value={searchQuery}
@@ -135,7 +135,7 @@ const SearchProduct = ({ items, setItems }) => {
                                     </FormControl>
                                     <TextField
                                         type="number"
-                                        label="Quantity"
+                                        label="Số lượng"
                                         value={item.quantity}
                                         onChange={(e) => handleItemChange(index, 'quantity', e.target.value)}
                                         sx={{ width: '80px', mr: 2 }}

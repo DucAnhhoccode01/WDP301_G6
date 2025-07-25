@@ -10,14 +10,14 @@ const OrderTable = ({ orders, onEdit, onDelete }) => (
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell>User ID</TableCell>
-          <TableCell>Items</TableCell>
-          <TableCell>Total Price</TableCell>
-          <TableCell>Order Status</TableCell>
-          <TableCell>Payment Status</TableCell>
-          <TableCell>Payment Details</TableCell>
-          <TableCell>Contact Info</TableCell>
-          <TableCell>Actions</TableCell>
+          <TableCell>ID Người dùng</TableCell>
+          <TableCell>Mặt hàng</TableCell>
+          <TableCell>Tổng giá</TableCell>
+          <TableCell>Trạng thái đơn hàng</TableCell>
+          <TableCell>Trạng thái thanh toán</TableCell>
+          <TableCell>Chi tiết thanh toán</TableCell>
+          <TableCell>Thông tin liên lạc</TableCell>
+          <TableCell>Hành động</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>

@@ -83,11 +83,11 @@ export default function Orders() {
     <React.Fragment>
       <Grid container spacing={2} mb={3}>
         <Grid item xs={6}>
-          <TextField required value={keywords} onChange={(e) => setKeywords(e.target.value)} size="small" fullWidth id="outlined-basic" label="Search phone number" variant="outlined" />
+          <TextField required value={keywords} onChange={(e) => setKeywords(e.target.value)} size="small" fullWidth id="outlined-basic" label="Tìm kiếm số điện thoại" variant="outlined" />
         </Grid>
         <Grid item xs={2}>
           <Button onClick={handleSearchByKeywords} variant="contained" endIcon={<SearchIcon />}>
-            Search
+            Tìm kiếm
           </Button>
         </Grid>
       </Grid>
@@ -95,22 +95,22 @@ export default function Orders() {
         orderData?.orders && (
           <Grid item>
             <Typography color="error" variant="caption" display="block" gutterBottom>
-              Found {orderData?.totalOrders} orders
+              Thành lập {orderData?.totalOrders} Các hơn hàng
             </Typography>
           </Grid>
         )
       }
       <Grid item xs={12}>
-        <Title>View Orders</Title>
+        <Title>Xem đơn hàng</Title>
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("order-id")} >Order ID</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("order-id")} >ID Đơn hàng</Typography></TableCell>
               <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("name")} >Tên</Typography></TableCell>
               <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("phone")} >Số điện thoại</Typography></TableCell>
               <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("totalPrice")} >Tổng giá</Typography></TableCell>
               <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortOrder("orderStatus")} >Trạng thái đơn hàng</Typography></TableCell>
-              <TableCell ><Typography color="primary">Tool</Typography></TableCell>
+              <TableCell ><Typography color="primary">Hành động</Typography></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

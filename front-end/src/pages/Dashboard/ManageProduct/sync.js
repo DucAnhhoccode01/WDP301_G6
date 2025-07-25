@@ -28,19 +28,19 @@ export default function Products() {
 
   return (
     <React.Fragment>
-      <Title>Products</Title>
+      <Title>Sản phẩm</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Brand</TableCell>
-            <TableCell>Category</TableCell>
-            <TableCell>Available</TableCell>
-            <TableCell>Desc</TableCell>
-            <TableCell>In stock</TableCell>
-            <TableCell>Specs</TableCell>
-            <TableCell>Cost</TableCell>
-            <TableCell align="right">Price</TableCell>
+            <TableCell>Tên</TableCell>
+            <TableCell>Vùng</TableCell>
+            <TableCell>Danh mục</TableCell>
+            <TableCell>Có sẵn</TableCell>
+            <TableCell>Mô tả</TableCell>
+            <TableCell>Còn hàng</TableCell>
+            <TableCell>Thông số</TableCell>
+            <TableCell>Giá nhập</TableCell>
+            <TableCell align="right">Giá bán</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -98,7 +98,7 @@ export default function Products() {
         </TableBody>
       </Table>
       <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more Products
+        Xem thêm sản phẩm
       </Link>
     </React.Fragment>
   );

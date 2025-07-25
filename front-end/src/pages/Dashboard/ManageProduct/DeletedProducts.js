@@ -13,18 +13,18 @@ import ImageDialog from './ImageDialog'
 export default function DeletedProducts({ productData }) {
   return (
     <React.Fragment>
-      <Title>Foods</Title>
+      <Title>Sản phẩm</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Restaurant</TableCell>
-            <TableCell>Category</TableCell>
-            <TableCell>Available</TableCell>
-            <TableCell>Ingredients</TableCell>
-            <TableCell>Nutrition</TableCell>
-            <TableCell>Images</TableCell>
-            <TableCell>In stock</TableCell>
+            <TableCell>Tên </TableCell>
+            <TableCell>Vùng</TableCell>
+            <TableCell>Danh mục</TableCell>
+            <TableCell>CÒn hàng</TableCell>
+            <TableCell>Thành phần</TableCell>
+            <TableCell>Thông số</TableCell>
+            <TableCell>Ảnh</TableCell>
+            <TableCell>Giá bán</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

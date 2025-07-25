@@ -55,7 +55,7 @@ export default function SpecsDialog({ specs }) {
                 open={open}
                 onClose={handleClose}
             >
-                <DialogTitle>Nutritions</DialogTitle>
+                <DialogTitle>Thông số</DialogTitle>
                 <DialogContent>
                     <React.Fragment>
                         <TableContainer component={Paper}>

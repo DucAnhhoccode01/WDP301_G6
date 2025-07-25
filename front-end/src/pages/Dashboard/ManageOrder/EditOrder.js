@@ -114,7 +114,7 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  label="Order Status"
+                  label="Trạng thái đơn hàng"
                   variant="outlined"
                   fullWidth
                   select
@@ -137,7 +137,7 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  label="Payment Status"
+                  label="Trạng thái thanh toán"
                   variant="outlined"
                   fullWidth
                   select
@@ -159,7 +159,7 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  label="Name"
+                  label="Tên"
                   variant="outlined"
                   fullWidth
                   name="name"
@@ -179,7 +179,7 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  label="Phone"
+                  label="Số điện thoại"
                   variant="outlined"
                   fullWidth
                   name="phone"
@@ -189,7 +189,7 @@ const UpdateOrder = ({ orderId, open, onClose }) => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  label="Address"
+                  label="Địa chỉ"
                   variant="outlined"
                   fullWidth
                   name="address"

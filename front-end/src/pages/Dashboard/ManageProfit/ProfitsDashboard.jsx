@@ -57,12 +57,12 @@ export default function ProfitsDashboard() {
   return (
 <Box sx={{ width: '100%', p: 3, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 2 }}>
   <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold', textAlign: 'center', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}>
-    <BsGraphUp style={{ marginRight: 8 }} /> Company Profit Statistics
+    <BsGraphUp style={{ marginRight: 8 }} /> Thống kê lợi nhuận của công ty
   </Typography>
 
   {/* Year selection */}
   <FormControl fullWidth sx={{ mb: 2 }}>
-    <InputLabel>Year</InputLabel>
+    <InputLabel>Năm</InputLabel>
     <Select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
       {[...Array(5)].map((_, index) => (
         <MenuItem key={currentYear - index} value={currentYear - index}>
@@ -76,10 +76,10 @@ export default function ProfitsDashboard() {
   {yearlySummary && (
     <Grid container spacing={2} sx={{ mb: 3 }}>
       {[
-        { label: 'Total Revenue', value: yearlySummary.totalRevenue, icon: <FiDollarSign size={24} color="#4caf50" /> },
-        { label: 'Total Cost', value: yearlySummary.totalCost, icon: <FiTrendingDown size={24} color="#f44336" /> },
-        { label: 'Total Profit', value: yearlySummary.totalProfit, icon: <FiTrendingUp size={24} color="#2196f3" /> },
-        { label: 'Total Orders', value: yearlySummary.totalOrders, icon: <FiShoppingCart size={24} color="#ff9800" /> }
+        { label: 'Tổng doanh thu', value: yearlySummary.totalRevenue, icon: <FiDollarSign size={24} color="#4caf50" /> },
+        { label: 'Tổng chi phí', value: yearlySummary.totalCost, icon: <FiTrendingDown size={24} color="#f44336" /> },
+        { label: 'Tổng lợi nhuận', value: yearlySummary.totalProfit, icon: <FiTrendingUp size={24} color="#2196f3" /> },
+        { label: 'Tổng đơn hàng', value: yearlySummary.totalOrders, icon: <FiShoppingCart size={24} color="#ff9800" /> }
       ].map((stat, index) => (
         <Grid item xs={12} sm={6} md={3} key={index}>
           <Card sx={{ textAlign: 'center', p: 2, bgcolor: '#f5f5f5', boxShadow: 3 }}>
@@ -125,17 +125,17 @@ export default function ProfitsDashboard() {
         <Card sx={{ p: 2, boxShadow: 3 }}>
           <CardContent>
             <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
-              Monthly Statistics
+              Thống kê hàng tháng
             </Typography>
             {[
-              { label: 'Revenue', value: monthlyData.totalRevenue, icon: <FiDollarSign size={20} color="#4caf50" /> },
-              { label: 'Cost', value: monthlyData.totalCost, icon: <FiTrendingDown size={20} color="#f44336" /> },
-              { label: 'Profit', value: monthlyData.totalProfit, icon: <FiTrendingUp size={20} color="#2196f3" /> },
-              { label: 'Orders', value: monthlyData.totalOrders, icon: <FiShoppingCart size={20} color="#ff9800" /> },
+              { label: 'Doanh thu', value: monthlyData.totalRevenue, icon: <FiDollarSign size={20} color="#4caf50" /> },
+              { label: 'Chi phí', value: monthlyData.totalCost, icon: <FiTrendingDown size={20} color="#f44336" /> },
+              { label: 'Lợi nhuận', value: monthlyData.totalProfit, icon: <FiTrendingUp size={20} color="#2196f3" /> },
+              { label: 'Đơn hàng', value: monthlyData.totalOrders, icon: <FiShoppingCart size={20} color="#ff9800" /> },
               {
-                label: 'Best Seller',
+                label: 'Sản phẩm bán chạy',
                 value: monthlyData.bestSellerItem
-                  ? `${monthlyData.bestSellerItem.name} (${monthlyData.bestSellerItem.quantity} sold)`
+                  ? `${monthlyData.bestSellerItem.name} (${monthlyData.bestSellerItem.quantity} đã bán)`
                   : 'N/A',
                 icon: <BsGraphUp size={20} color="#673ab7" />
               }
@@ -146,7 +146,7 @@ export default function ProfitsDashboard() {
               </Typography>
             ))}
             <Button onClick={handleDownloadFile} variant="contained" sx={{ mt: 2 }} endIcon={<SimCardDownloadIcon />}>
-              Download Report
+              Tải xuống báo cáo
             </Button>
           </CardContent>
         </Card>

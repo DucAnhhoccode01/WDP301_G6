@@ -225,14 +225,14 @@ export default function Orders() {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Users Role</TableCell>
-            <TableCell>Items</TableCell>
-            <TableCell>Contact Info</TableCell>
-            <TableCell>Total Price</TableCell>
-            <TableCell>Order Status</TableCell>
-            <TableCell>Payment Status</TableCell>
-            <TableCell>Payment Details</TableCell>
-            <TableCell>Payment Method</TableCell>
+            <TableCell> Vai trò người dùng </TableCell>
+            <TableCell>Mặt hàng</TableCell>
+            <TableCell>Thông tin liên lạc</TableCell>
+            <TableCell>Tổng giá</TableCell>
+            <TableCell>Trạng thái đơn hàng</TableCell>
+            <TableCell> Trạng thái thanh toán</TableCell>
+            <TableCell>Chi tiết thanh toán</TableCell>
+            <TableCell>Phương thức thanh toán</TableCell>
             <TableCell sx={{ textAlign: 'center' }}>Hành động</TableCell>
           </TableRow>
         </TableHead>

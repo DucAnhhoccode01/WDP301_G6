@@ -55,7 +55,7 @@ export default function InStockDialog({ inStock }) {
                 open={open}
                 onClose={handleClose}
             >
-                <DialogTitle>In Stock</DialogTitle>
+                <DialogTitle>Giá bán</DialogTitle>
                 <DialogContent>
                     <React.Fragment>
                         <TableContainer component={Paper}>
@@ -63,7 +63,7 @@ export default function InStockDialog({ inStock }) {
                                 <TableHead>
                                     <TableRow>
                                         <StyledTableCell>Size</StyledTableCell>
-                                        <StyledTableCell align="right">Price</StyledTableCell>
+                                        <StyledTableCell align="right">Giá</StyledTableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>

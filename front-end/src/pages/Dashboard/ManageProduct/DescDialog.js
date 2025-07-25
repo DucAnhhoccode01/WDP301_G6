@@ -42,7 +42,7 @@ export default function DescDialog({ description }) {
                 fullWidth
             >
                 <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-                    Description
+                   Mô tả
                 </DialogTitle>
                 <IconButton
                     aria-label="close"

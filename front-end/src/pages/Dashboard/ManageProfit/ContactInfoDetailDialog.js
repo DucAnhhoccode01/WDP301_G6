@@ -41,10 +41,10 @@ export default function ContactInfoDetailDialog({ user, contactInfo }) {
                             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>Name</TableCell>
+                                        <TableCell>Tên</TableCell>
                                         <TableCell >Email</TableCell>
-                                        <TableCell >Phone Number </TableCell>
-                                        <TableCell align='right'>Address </TableCell>
+                                        <TableCell >Số điện thoại</TableCell>
+                                        <TableCell align='right'>Địa chỉ </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -69,9 +69,9 @@ export default function ContactInfoDetailDialog({ user, contactInfo }) {
                                     <TableRow>
                                         <TableCell>ID</TableCell>
                                         <TableCell >Email</TableCell>
-                                        <TableCell >FullName</TableCell>
-                                        <TableCell >Address </TableCell>
-                                        <TableCell align='right'>Phone Number </TableCell>
+                                        <TableCell >Họ tên</TableCell>
+                                        <TableCell >Địa chỉ </TableCell>
+                                        <TableCell align='right'>Số điện thoại </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -93,7 +93,7 @@ export default function ContactInfoDetailDialog({ user, contactInfo }) {
                     }
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleClose}>Hủy bỏ</Button>
                 </DialogActions>
             </Dialog>
         </React.Fragment>

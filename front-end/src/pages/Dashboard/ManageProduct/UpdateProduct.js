@@ -111,7 +111,7 @@ export default function UpdateProduct({ targetProduct }) {
         const result = await ProductService.updateProduct(targetProduct._id, name, description, brand, category, price, cost, isAvailable, specs, instock, images);
         if (result.data?.success === true) {
             setShowNotification(true);
-            setContentNotification("Update product successfully!");
+            setContentNotification("Đã cập nhật sản phẩm thành công!");
             setSeriverity("success");
             setTimeout(() => {
                 window.location.reload();
@@ -124,7 +124,7 @@ export default function UpdateProduct({ targetProduct }) {
         }
         catch (error) {
             setShowNotification(true);
-            setContentNotification("Update product failed!");
+            setContentNotification("Cập nhật sản phẩm không thành công!");
             setSeriverity("error");
         }
     };
@@ -240,11 +240,11 @@ export default function UpdateProduct({ targetProduct }) {
                     onClose={handleClose}
                     maxWidth="md"
                 >
-                    <DialogTitle>Update Food</DialogTitle>
+                    <DialogTitle>Cập nhật sản phẩm</DialogTitle>
                     <DialogContent>
                         <Notification handleShowNotification={handleShowNotification} showNotification={showNotification} contentNotification={contentNotification} severity={severity} ></Notification>
                         <DialogContentText>
-                            To update Food to the restaurant, please fill out the information below and submit a request.
+                            Để cập nhật Món ăn cho nhà hàng, vui lòng điền thông tin bên dưới và gửi yêu cầu.
                         </DialogContentText>
                         <Grid sx={{ mt: 3 }} container spacing={2}>
                             <Grid item xs={3}>
@@ -255,7 +255,7 @@ export default function UpdateProduct({ targetProduct }) {
                                     tabIndex={-1}
                                     startIcon={<CloudUploadIcon />}
                                 >
-                                    Upload Image
+                                    Tải ảnh lên
                                     <VisuallyHiddenInput type="file" accept="image/png, image/jpeg" multiple onChange={handleImageChange} />
                                 </Button>
                             </Grid>
@@ -264,7 +264,7 @@ export default function UpdateProduct({ targetProduct }) {
                             </Grid>
                             <Grid item xs={8}>
                                 <Typography variant="caption" gutterBottom>
-                                    {images.length} file uploaded
+                                    {images.length} ảnh đã tải lên
                                 </Typography>
                             </Grid>
                             <Grid item xs={6}>
@@ -274,8 +274,8 @@ export default function UpdateProduct({ targetProduct }) {
                                 <TextField
                                     id="standard-select-currency"
                                     select
-                                    label="Restaurant"
-                                    helperText="Select your Restaurant"
+                                    label="Vùng miền"
+                                    helperText="Chọn Vùng miền của bạn"
                                     variant="standard"
                                     fullWidth
                                     value={brand}
@@ -295,16 +295,16 @@ export default function UpdateProduct({ targetProduct }) {
                                     open={openAddBrandDialog}
                                     onClose={handleCloseAddBrandDialog}
                                 >
-                                    <DialogTitle>Add new category</DialogTitle>
+                                    <DialogTitle>Thêm danh mục mới</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText>
-                                            Please enter all of the following information to add a new brand. Note that when a new brand is added, it cannot be deleted.
+                                            Vui lòng nhập tất cả thông tin sau để thêm thương hiệu mới. Lưu ý rằng khi đã thêm thương hiệu mới, bạn không thể xóa nó.
                                         </DialogContentText>
                                         <TextField
                                             autoFocus
 
                                             margin="dense"
-                                            label="Category name"
+                                            label="Tên danh mục"
                                             type="text"
                                             fullWidth
                                             variant="standard"
@@ -317,7 +317,7 @@ export default function UpdateProduct({ targetProduct }) {
 
                                             sx={{ mt: 3 }}
                                             id="outlined-multiline-static"
-                                            label="Descriptions"
+                                            label="Mô tả"
                                             multiline
                                             rows={4}
                                             fullWidth
@@ -328,8 +328,8 @@ export default function UpdateProduct({ targetProduct }) {
                                         />
                                     </DialogContent>
                                     <DialogActions>
-                                        <Button onClick={handleCloseAddBrandDialog}>Cancel</Button>
-                                        <Button onClick={handleCreateBrand}>Add brand</Button>
+                                        <Button onClick={handleCloseAddBrandDialog}>Hủy bỏ</Button>
+                                        <Button onClick={handleCreateBrand}>Thêm Vùng</Button>
                                     </DialogActions>
                                 </Dialog>
                             </Grid>
@@ -337,8 +337,8 @@ export default function UpdateProduct({ targetProduct }) {
                                 <TextField
                                     id="standard-select-currency"
                                     select
-                                    label="Category"
-                                    helperText="Select your category"
+                                    label="Danh mục"
+                                    helperText="Chọn danh mục của bạn"
                                     variant="standard"
                                     fullWidth
                                     value={category}
@@ -358,16 +358,16 @@ export default function UpdateProduct({ targetProduct }) {
                                     open={openAddCategoryDialog}
                                     onClose={handleCloseAddCategoryDialog}
                                 >
-                                    <DialogTitle>Add new category</DialogTitle>
+                                    <DialogTitle>Thêm danh mục mới</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText>
-                                            Please enter all of the following information to add a new category. Note that when a category is newly added, it cannot be deleted.
+                                            Vui lòng nhập tất cả thông tin sau để thêm danh mục mới. Lưu ý rằng khi danh mục mới được thêm vào, bạn không thể xóa nó.
                                         </DialogContentText>
                                         <TextField
                                             autoFocus
 
                                             margin="dense"
-                                            label="Category name"
+                                            label="Tên Danh mục"
                                             type="text"
                                             fullWidth
                                             variant="standard"
@@ -381,7 +381,7 @@ export default function UpdateProduct({ targetProduct }) {
 
                                             sx={{ mt: 3 }}
                                             id="outlined-multiline-static"
-                                            label="Descriptions"
+                                            label="Mô Tả"
                                             multiline
                                             rows={4}
                                             fullWidth
@@ -403,7 +403,7 @@ export default function UpdateProduct({ targetProduct }) {
                                 <TextField
                                     id="filled-textarea"
                                     variant="filled"
-                                    label="Description"
+                                    label="Mô tả"
                                     multiline
                                     rows={3}
                                     fullWidth
@@ -417,7 +417,7 @@ export default function UpdateProduct({ targetProduct }) {
                                         <TableHead>
                                             <TableRow>
                                                 <TableCell align="center" colSpan={2}>
-                                                    Nutritions
+                                                    Dinh dưỡng
                                                 </TableCell>
                                             </TableRow>
                                         </TableHead>
@@ -465,7 +465,7 @@ export default function UpdateProduct({ targetProduct }) {
                                         <TableHead>
                                             <TableRow>
                                                 <TableCell align="center" colSpan={2}>
-                                                    In Stock
+                                                    Còn hàng
                                                 </TableCell>
                                             </TableRow>
                                         </TableHead>
@@ -499,10 +499,10 @@ export default function UpdateProduct({ targetProduct }) {
                                                     <TextField id="standard-basic" label="Size" variant="standard" value={colorInstock} onChange={event => setColorInstock(event.target.value)} />
                                                 </TableCell>
                                                 <TableCell >
-                                                    <TextField id="standard-basic" type="number" label="Quantity" variant="standard" value={quantityInstock} onChange={event => setQuantityInstock(event.target.value)} />
+                                                    <TextField id="standard-basic" type="number" label="Số lượng" variant="standard" value={quantityInstock} onChange={event => setQuantityInstock(event.target.value)} />
                                                 </TableCell>
                                                   <TableCell >
-                                                    <TextField id="standard-basic" type="number" label="Price" variant="standard" value={price} onChange={event => setPrice(event.target.value)} />
+                                                    <TextField id="standard-basic" type="number" label="Giá bán" variant="standard" value={price} onChange={event => setPrice(event.target.value)} />
                                                 </TableCell>
                                                 <TableCell align="right">
                                                     <AddBoxIcon style={{ cursor: 'pointer' }} fontSize="medium" color="primary" onClick={handleAddInstock}></AddBoxIcon>
@@ -515,7 +515,7 @@ export default function UpdateProduct({ targetProduct }) {
                             </Grid>
                             <Grid item xs={4}>
                                 <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-                                    <InputLabel htmlFor="standard-adornment-amount">Price</InputLabel>
+                                    <InputLabel htmlFor="standard-adornment-amount">Giá bán</InputLabel>
                                     <Input
                                         id="standard-adornment-amount"
                                         startAdornment={<InputAdornment position="start">$</InputAdornment>}
@@ -526,7 +526,7 @@ export default function UpdateProduct({ targetProduct }) {
                             </Grid>
                             <Grid item xs={4}>
                                 <FormControl fullWidth sx={{ m: 1 }} variant="standard" >
-                                    <InputLabel htmlFor="standard-adornment-amount">Cost</InputLabel>
+                                    <InputLabel htmlFor="standard-adornment-amount">Giá nhập</InputLabel>
                                     <Input
                                         id="standard-adornment-amount"
                                         startAdornment={<InputAdornment position="start">$</InputAdornment>}
@@ -540,17 +540,17 @@ export default function UpdateProduct({ targetProduct }) {
                                 <TextField
                                     id="standard-select-currency"
                                     select
-                                    label="Is this product still available for sale?"
+                                    label="Sản phẩm này hiện còn được bán không?"
                                     variant="standard"
                                     fullWidth
                                     value={isAvailable}
                                     onChange={e => setIsAvaiable(e.target.value)}
                                 >
                                     <MenuItem value="true">
-                                        Yes
+                                        có
                                     </MenuItem>
                                     <MenuItem value="false">
-                                        No
+                                        không
                                     </MenuItem>
                                 </TextField>
                             </Grid>
