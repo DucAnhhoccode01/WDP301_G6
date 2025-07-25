@@ -126,11 +126,11 @@ export default function Orders() {
   return (
     <React.Fragment>
       <ToastContainer />
-      <Title>Orders</Title>
+      <Title>Đơn hàng</Title>
       <Grid container spacing={2} sx={{ mb: 2 }}>
         <Grid item xs={12} sm={6} md={4}>
           <TextField
-            label="Search"
+            label="TÌm kiếm"
             variant="outlined"
             fullWidth
             value={search}
@@ -139,7 +139,7 @@ export default function Orders() {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <TextField
-            label="Sort Field"
+            label="Sắp xếp trường"
             variant="outlined"
             fullWidth
             select
@@ -153,7 +153,7 @@ export default function Orders() {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <TextField
-            label="Sort Order"
+            label="Thứ tự sắp xếp"
             variant="outlined"
             fullWidth
             select
@@ -166,7 +166,7 @@ export default function Orders() {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <TextField
-            label="Order Status"
+            label="Trạng thái đơn hàng"
             variant="outlined"
             fullWidth
             select
@@ -183,7 +183,7 @@ export default function Orders() {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <TextField
-            label="Payment Status"
+            label="Trạng thái thanh toán"
             variant="outlined"
             fullWidth
             select
@@ -199,7 +199,7 @@ export default function Orders() {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <TextField
-            label="Payment Method"
+            label="Phương thức thanh toán"
             variant="outlined"
             fullWidth
             select

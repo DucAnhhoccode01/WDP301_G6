@@ -9,7 +9,7 @@ import { useOutletContext } from 'react-router-dom';
 
 export default function ManageProduct() {
   const { handleSetDashboardTitle } = useOutletContext();
-  handleSetDashboardTitle("Manage Account");
+  handleSetDashboardTitle("Quản lí tài khoản");
   return (
     <>
       <Grid item xs={12}>

@@ -55,7 +55,7 @@ const CreateOrderModal = ({ open, onClose }) => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Name"
+                label="Tên"
                 variant="outlined"
                 fullWidth
                 name="name"
@@ -75,7 +75,7 @@ const CreateOrderModal = ({ open, onClose }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Phone"
+                label="Số điện thoại"
                 variant="outlined"
                 fullWidth
                 name="phone"
@@ -85,7 +85,7 @@ const CreateOrderModal = ({ open, onClose }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Address"
+                label="Địa chỉ"
                 variant="outlined"
                 fullWidth
                 name="address"

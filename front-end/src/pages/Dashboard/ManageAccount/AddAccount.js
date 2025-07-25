@@ -94,33 +94,33 @@ export default function AddAccount() {
                                 onClose={handleCloseAddUserDialog}
                                 maxWidth="md"
                             >
-                                <DialogTitle>Add New Account</DialogTitle>
+                                <DialogTitle>Thêm tài khoản mới</DialogTitle>
                                 <DialogContent>
                                     <Notification handleShowNotification={handleShowNotification} showNotification={showNotification} contentNotification={contentNotification} severity={severity} ></Notification>
                                     <DialogContentText>
-                                        To add new account to the store, please fill out the information below and submit a request.
+                                        Để thêm tài khoản mới vào cửa hàng, vui lòng điền thông tin bên dưới và gửi yêu cầu.
                                     </DialogContentText>
                                     <Grid sx={{ mt: 3 }} container spacing={2}>
                                         <Grid item xs={6}>
                                             <TextField fullWidth id="standard-basic" label="Email" variant="standard" value={email} onChange={(e) => setEmail(e.target.value)} />
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <TextField fullWidth type="password" id="standard-basic" label="Password" variant="standard" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                            <TextField fullWidth type="password" id="standard-basic" label="Mật khẩu" variant="standard" value={password} onChange={(e) => setPassword(e.target.value)} />
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <TextField fullWidth id="standard-basic" label="Full Name" variant="standard" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+                                            <TextField fullWidth id="standard-basic" label="Họ tên" variant="standard" value={fullName} onChange={(e) => setFullName(e.target.value)} />
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <TextField fullWidth id="standard-basic" label="Address" variant="standard" value={address} onChange={(e) => setAddress(e.target.value)} />
+                                            <TextField fullWidth id="standard-basic" label="Địa chỉ" variant="standard" value={address} onChange={(e) => setAddress(e.target.value)} />
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <TextField fullWidth type="number" id="standard-basic" label="Phone Number" variant="standard" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                                            <TextField fullWidth type="number" id="standard-basic" label="Số điện thoại" variant="standard" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
                                         </Grid>
                                     </Grid>
                                 </DialogContent>
                                 <DialogActions>
-                                    <Button onClick={handleCloseAddUserDialog}>Cancel</Button>
-                                    <Button type="submit" onClick={handleAddUser}>Submit</Button>
+                                    <Button onClick={handleCloseAddUserDialog}>Hủy bỏ</Button>
+                                    <Button type="submit" onClick={handleAddUser}>Đồng ý</Button>
                                 </DialogActions>
                             </Dialog>
                         </React.Fragment>

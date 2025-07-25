@@ -18,19 +18,19 @@ export default function DeletedAccounts({ userData, handleSetUserData }) {
 
   return (
     <React.Fragment>
-      <Title>USERS</Title>
+      <Title>Người dùng</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Email</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Address</TableCell>
-            <TableCell>PhoneNumber</TableCell>
-            <TableCell>Role</TableCell>
+            <TableCell>Tên</TableCell>
+            <TableCell>Địa chỉ</TableCell>
+            <TableCell>Số điện thoải</TableCell>
+            <TableCell>Vai trò</TableCell>
             <TableCell>OTP</TableCell>
-            <TableCell>OTP Expires Date</TableCell>
-            <TableCell align="right">Verified</TableCell>
-            <TableCell>Tool</TableCell>
+            <TableCell>OTP Ngày hết hạn</TableCell>
+            <TableCell align="right">Đã xác minh</TableCell>
+            <TableCell>Hành động</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

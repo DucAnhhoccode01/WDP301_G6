@@ -9,7 +9,7 @@ import NotificationBell from './NotificationBell';
 export default function ManageOrder() {
   const { handleSetDashboardTitle } = useOutletContext();
   React.useEffect(() => {
-    handleSetDashboardTitle("Manage Order");
+    handleSetDashboardTitle("Quản lý đơn hàng");
   }, [handleSetDashboardTitle])
 
   return (

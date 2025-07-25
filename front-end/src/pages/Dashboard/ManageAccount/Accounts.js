@@ -101,11 +101,11 @@ export default function Accounts() {
     <React.Fragment>
       <Grid container spacing={2} mb={3}>
         <Grid item xs={6}>
-          <TextField required value={keywords} onChange={(e) => setKeywords(e.target.value)} size="small" fullWidth id="outlined-basic" label="Search email" variant="outlined" />
+          <TextField required value={keywords} onChange={(e) => setKeywords(e.target.value)} size="small" fullWidth id="outlined-basic" label="Tìm kiếm email" variant="outlined" />
         </Grid>
         <Grid item xs={2}>
           <Button onClick={handleSearchByKeywords} variant="contained" endIcon={<SearchIcon />}>
-            Search
+            Tìm kiếm
           </Button>
         </Grid>
       </Grid>
@@ -113,25 +113,25 @@ export default function Accounts() {
         accountData?.accounts && (
           <Grid item>
             <Typography color="error" variant="caption" display="block" gutterBottom>
-              Found {accountData?.totalaccounts} accounts
+              Found {accountData?.totalaccounts} tài khoản
             </Typography>
           </Grid>
         )
       }
       <Grid item xs={12}>
-        <Title>Manage Accounts</Title>
+        <Title>Quản lí tài khoản</Title>
         <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("email")}>Email</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("fullName")}>Name</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("address")}>Address</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("phoneNumber")}>PhoneNumber</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("role")}>Role</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("fullName")}>Tên</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("address")}>Địa chỉ</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("phoneNumber")}>Số điện thoại</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("role")}>Vai trò</Typography></TableCell>
               <TableCell ><Typography color="primary"  >OTP</Typography></TableCell>
-              <TableCell ><Typography color="primary"  >OTP Expires</Typography></TableCell>
-              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("isVerified")}>Verified</Typography></TableCell>
-              <TableCell ><Typography color="primary"  >Tool</Typography></TableCell>
+              <TableCell ><Typography color="primary"  >OTP Hết hạn</Typography></TableCell>
+              <TableCell ><Typography color="primary" style={{ cursor: 'pointer' }} onClick={() => handleSortAccount("isVerified")}>Đã xác minh</Typography></TableCell>
+              <TableCell ><Typography color="primary"  >Hành động</Typography></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -177,17 +177,16 @@ export default function Accounts() {
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">
-            {"Do you want to disable this account?"}
+            {"Bạn có muốn vô hiệu hóa tài khoản này không?"}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Disable this records is essentially just soft deletion. You can review deleted records in the trash but cannot restore them.
-            </DialogContentText>
+                Tắt bản ghi này về cơ bản chỉ là xóa tạm thời. Bạn có thể xem lại các bản ghi đã xóa trong thùng rác nhưng không thể khôi phục chúng.            </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setOpenAskToDelete(false)}>Cancel</Button>
+            <Button onClick={() => setOpenAskToDelete(false)}>Hủy bỏ</Button>
             <Button color='error' onClick={handleSoftDeleteAccount} autoFocus>
-              Delete
+              Xóa
             </Button>
           </DialogActions>
         </Dialog>

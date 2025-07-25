@@ -57,7 +57,7 @@ const CreateOrder = ({ open, onClose }) => {
       <Dialog open={open} onClose={onClose} maxWidth="lg" fullWidth>
         <Box sx={{ p: 3, bgcolor: 'background.paper', borderRadius: 1 }}>
           <Typography sx={{ mb: 4 }} variant="h4" gutterBottom>
-            Create Order
+            Tạo đơn hàng mới
           </Typography>
           <Grid container spacing={2}>
             {/* <Grid item xs={12} sm={6}>
@@ -71,7 +71,7 @@ const CreateOrder = ({ open, onClose }) => {
         </Grid> */}
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Name"
+                label="Tên"
                 variant="outlined"
                 fullWidth
                 name="name"
@@ -91,7 +91,7 @@ const CreateOrder = ({ open, onClose }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Phone"
+                label="Số điện thoại"
                 variant="outlined"
                 fullWidth
                 name="phone"
@@ -101,7 +101,7 @@ const CreateOrder = ({ open, onClose }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Address"
+                label="Địa chỉ"
                 variant="outlined"
                 fullWidth
                 name="address"
@@ -125,7 +125,7 @@ const CreateOrder = ({ open, onClose }) => {
               <SearchProduct items={items} setItems={setItems} />
             </Grid>
             <Grid item xs={12}>
-              <Button onClick={onClose} color="secondary">Cancel</Button>
+              <Button onClick={onClose} color="secondary">Hủy bỏ</Button>
               <Button
                 variant="contained"
                 color="primary"

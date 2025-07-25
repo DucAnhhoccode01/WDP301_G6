@@ -63,30 +63,30 @@ export default function UpdateAccount({ user }) {
                 onClose={handleClose}
                 maxWidth="md"
             >
-                <DialogTitle>Update Account</DialogTitle>
+                <DialogTitle>Cập nhật tài khoản</DialogTitle>
                 <DialogContent>
                     <Notification handleShowNotification={handleShowNotification} showNotification={showNotification} contentNotification={contentNotification} severity={severity} ></Notification>
                     <DialogContentText>
-                        To Update user in the store, please fill out the information below and submit a request.
+                       Để cập nhật người dùng trong cửa hàng, vui lòng điền thông tin bên dưới và gửi yêu cầu.
                     </DialogContentText>
                     <Grid sx={{ mt: 3 }} container spacing={2}>
                         <Grid item xs={6}>
                             <TextField fullWidth id="standard-basic" label="Email" variant="standard" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </Grid>
                         <Grid item xs={6}>
-                            <TextField fullWidth id="standard-basic" label="Full Name" variant="standard" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+                            <TextField fullWidth id="standard-basic" label="Họ tên" variant="standard" value={fullName} onChange={(e) => setFullName(e.target.value)} />
                         </Grid>
                         <Grid item xs={6}>
-                            <TextField fullWidth id="standard-basic" label="Address" variant="standard" value={address} onChange={(e) => setAddress(e.target.value)} />
+                            <TextField fullWidth id="standard-basic" label="Địa chỉ" variant="standard" value={address} onChange={(e) => setAddress(e.target.value)} />
                         </Grid>
                         <Grid item xs={6}>
-                            <TextField fullWidth id="standard-basic" label="Phone Number" variant="standard" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                            <TextField fullWidth id="standard-basic" label="Số điện thoại" variant="standard" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
                         </Grid>
                         <Grid item xs={6}>
                             <TextField
                                 id="standard-select-currency"
                                 select
-                                label="Role"
+                                label="Vai trò"
                                 helperText="Select your role"
                                 variant="standard"
                                 fullWidth
@@ -110,7 +110,7 @@ export default function UpdateAccount({ user }) {
                             <TextField
                                 id="standard-select-currency"
                                 select
-                                label="Is Verified"
+                                label="Đã được xác minh"
                                 helperText="Select true or false"
                                 variant="standard"
                                 fullWidth
@@ -119,10 +119,10 @@ export default function UpdateAccount({ user }) {
                             >
 
                                 <MenuItem value={"true"}>
-                                    True
+                                    Rồi
                                 </MenuItem>
                                 <MenuItem value={"false"}>
-                                    False
+                                    Chưa
                                 </MenuItem>
                             </TextField>
                         </Grid>
@@ -130,8 +130,8 @@ export default function UpdateAccount({ user }) {
 
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button type="submit" onClick={handleUpdateUser}>Submit</Button>
+                    <Button onClick={handleClose}>Hủy bỏ</Button>
+                    <Button type="submit" onClick={handleUpdateUser}>Đồng ý</Button>
                 </DialogActions>
             </Dialog>
         </React.Fragment>

@@ -129,7 +129,7 @@ const SignUp = () => {
                 className="w-full h-10 bg-green-700 rounded-md text-gray-200 text-base font-titleFont font-semibold 
             tracking-wide hover:bg-black hover:text-white duration-300"
               >
-                Sign in
+                Đăng nhập
               </button>
             </Link>
           </div>
@@ -137,13 +137,13 @@ const SignUp = () => {
           <form className="w-full lgl:w-[500px] h-screen flex items-center justify-center">
             <div className="px-6 py-4 w-full h-[96%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
               <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl mdl:text-3xl mb-4">
-                Create your account
+                Tạo tài khoản của bạn
               </h1>
               <div className="flex flex-col gap-3">
                 {/* client name */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Full Name
+                    Tên
                   </p>
                   <input
                     onChange={handleName}
@@ -162,7 +162,7 @@ const SignUp = () => {
                 {/* Email */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Work Email
+                    Email
                   </p>
                   <input
                     onChange={handleEmail}
@@ -181,7 +181,7 @@ const SignUp = () => {
                 {/* Phone */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Phone Number
+                    Số điện thoại
                   </p>
                   <input
                     onChange={handlePhone}
@@ -200,7 +200,7 @@ const SignUp = () => {
                 {/* Password */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Password
+                    Mật khẩu
                   </p>
                   <input
                     onChange={handlePassword}
@@ -219,7 +219,7 @@ const SignUp = () => {
                 {/* Address */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Address
+                    Địa chỉ
                   </p>
                   <input
                     onChange={handleAddress}
@@ -244,9 +244,9 @@ const SignUp = () => {
                     type="checkbox"
                   />
                   <p className="text-sm text-primeColor">
-                    I agree to the OREBI{" "}
-                    <span className="text-blue-500">Terms of Service </span>and{" "}
-                    <span className="text-blue-500">Privacy Policy</span>.
+                    Tôi đồng ý với {" "}
+                    <span className="text-blue-500">Điều khoản dịch vụ </span>và{" "}
+                    <span className="text-blue-500">Chính sách bảo mật</span>.
                   </p>
                 </div>
                 {errorMsg && (
@@ -262,13 +262,13 @@ const SignUp = () => {
                     : "bg-gray-400 hover:bg-gray-400 text-gray-200 cursor-not-allowed"
                     } w-full text-gray-200 text-base font-medium h-10 rounded-md`}
                 >
-                  Create Account
+                  Tạo tài khoản
                 </button>
                 <p className="text-sm text-center font-titleFont font-medium">
-                  Don't have an Account?{" "}
+                  Bạn chưa có tài khoản?{" "}
                   <Link to="/signin">
                     <span className="hover:text-blue-600 duration-300">
-                      Sign in
+                      Đăng nhập
                     </span>
                   </Link>
                 </p>

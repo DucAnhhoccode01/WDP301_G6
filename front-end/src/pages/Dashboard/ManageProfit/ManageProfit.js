@@ -9,7 +9,7 @@ import Profits from './Profits';
 
 export default function ManageProfit() {
   const { handleSetDashboardTitle } = useOutletContext();
-  handleSetDashboardTitle("Manage Profit");
+  handleSetDashboardTitle("Quản lý lợi nhuận");
   return (
     <>
       <Grid item xs={12}>

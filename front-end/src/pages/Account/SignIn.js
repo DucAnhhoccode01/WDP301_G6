@@ -117,13 +117,13 @@ const SignIn = () => {
           <form className="w-full lgl:w-[450px] h-screen flex items-center justify-center">
             <div className="px-6 py-4 w-full h-[90%] flex flex-col justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
               <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-3xl mdl:text-4xl mb-4">
-                Sign in
+                Đăng nhập
               </h1>
               <div className="flex flex-col gap-3">
                 {/* Email */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Work Email
+                    Email
                   </p>
                   <input
                     onChange={handleEmail}
@@ -143,7 +143,7 @@ const SignIn = () => {
                 {/* Password */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Password
+                    Mật khẩu
                   </p>
                   <input
                     onChange={handlePassword}
@@ -171,21 +171,21 @@ const SignIn = () => {
                   onClick={handleSignIn}
                   className="bg-green-700 hover:bg-black text-gray-200 hover:text-white cursor-pointer w-full text-base font-medium h-10 rounded-md  duration-300"
                 >
-                  Sign In
+                  Đăng nhập
                 </button>
                 <p className="text-sm text-center font-titleFont font-medium">
-                  Don't have an Account?{" "}
+                  Bạn chưa có tài khoản?{" "}
                   <Link to="/signup">
                     <span className="hover:text-blue-600 duration-300">
-                      Sign up
+                      Đăng kí
                     </span>
                   </Link>
                 </p>
                 <p className="text-sm text-center font-titleFont font-medium">
-                  Don't remember password?{" "}
+                  Không nhớ mật khẩu?{" "}
                   <Link to="/forgot-password">
                     <span className="hover:text-blue-600 duration-300">
-                      Forgot Password
+                    Quên mật khẩu
                     </span>
                   </Link>
                 </p>

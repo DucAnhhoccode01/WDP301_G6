@@ -96,7 +96,7 @@ export default function DeletedAccountsLaydout() {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose}>Close</Button>
+              <Button onClick={handleClose}>Hủy bỏ</Button>
             </DialogActions>
           </Dialog>
         </Fab>

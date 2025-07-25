@@ -101,7 +101,7 @@ export default function ProfitsDashboard() {
     <BarChart
       dataset={yearlyData}
       xAxis={[{ scaleType: 'band', dataKey: 'month' }]}
-      series={[{ dataKey: 'totalProfit', label: 'Profit', valueFormatter: (v) => `${v} VND` }]}
+      series={[{ dataKey: 'totalProfit', label: 'Lợi nhuận', valueFormatter: (v) => `${v} VND` }]}
       height={300}
     />
   </Box>
