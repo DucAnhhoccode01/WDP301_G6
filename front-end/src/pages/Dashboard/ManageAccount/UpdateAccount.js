@@ -87,7 +87,7 @@ export default function UpdateAccount({ user }) {
                                 id="standard-select-currency"
                                 select
                                 label="Vai trò"
-                                helperText="Select your role"
+                                helperText="Chọn vai trò của bạn"
                                 variant="standard"
                                 fullWidth
                                 value={role}
@@ -111,7 +111,7 @@ export default function UpdateAccount({ user }) {
                                 id="standard-select-currency"
                                 select
                                 label="Đã được xác minh"
-                                helperText="Select true or false"
+                                helperText="Chọn đúng hoặc sai"
                                 variant="standard"
                                 fullWidth
                                 value={isVerified}
@@ -119,10 +119,10 @@ export default function UpdateAccount({ user }) {
                             >
 
                                 <MenuItem value={"true"}>
-                                    Rồi
+                                    đúng
                                 </MenuItem>
                                 <MenuItem value={"false"}>
-                                    Chưa
+                                    sai
                                 </MenuItem>
                             </TextField>
                         </Grid>
