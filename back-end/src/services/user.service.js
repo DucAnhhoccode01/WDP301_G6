@@ -203,7 +203,7 @@ class UserService {
     getPaginatedUsers = async (page, pageSize, keywords, sortBy) => {
         const skip = (page - 1) * pageSize;
         let filter = {
-            isDeleted: false
+            isDeleted: { $ne: true }
         };
         if (keywords) {
             const regex = new RegExp(keywords, 'i');
