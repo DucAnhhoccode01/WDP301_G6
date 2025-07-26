@@ -171,20 +171,20 @@ export default function AdminDashboardLaydout() {
                 <ListItemIcon>
                   <AccountBoxIcon />
                 </ListItemIcon>
-                <ListItemText primary="Accounts" />
+                <ListItemText primary="Tài khoản" />
               </ListItemButton>
               <ListItemButton onClick={handleOnclickProfits}>
                 <ListItemIcon>
                   <BarChartIcon />
                 </ListItemIcon>
-                <ListItemText primary="Profits" />
+                <ListItemText primary="Bảng thống kê" />
               </ListItemButton>
 
               <ListItemButton onClick={handleOnclickSignout}>
                 <ListItemIcon>
                   <MeetingRoomIcon />
                 </ListItemIcon>
-                <ListItemText primary="Signout" />
+                <ListItemText primary="Đăng xuất" />
               </ListItemButton>
             </React.Fragment>
           </List>

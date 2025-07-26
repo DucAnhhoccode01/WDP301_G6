@@ -181,19 +181,19 @@ export default function ManagerDashboardLaydout() {
                 <ListItemIcon>
                   <DashboardIcon />
                 </ListItemIcon>
-                <ListItemText primary="Dashboard" />
+                <ListItemText primary="Bảng thống kê" />
               </ListItemButton>
               <ListItemButton onClick={handleOnclickProducts}>
                 <ListItemIcon>
                   <InventoryIcon />
                 </ListItemIcon>
-                <ListItemText primary="Products" />
+                <ListItemText primary="Sản Phẩm" />
               </ListItemButton>
               <ListItemButton onClick={handleOnclickOrders}>
                 <ListItemIcon>
                   <ShoppingCartIcon />
                 </ListItemIcon>
-                <ListItemText primary="Orders" />
+                <ListItemText primary="Đơn Hàng" />
               </ListItemButton>
             </React.Fragment>
             <Divider sx={{ my: 1 }} />
@@ -204,13 +204,13 @@ export default function ManagerDashboardLaydout() {
                 <ListItemIcon>
                   <AccountBoxIcon />
                 </ListItemIcon>
-                <ListItemText primary="My profile" />
+                <ListItemText primary="Hồ sơ của tôi" />
               </ListItemButton>
               <ListItemButton onClick={handleOnclickSignout}>
                 <ListItemIcon>
                   <MeetingRoomIcon />
                 </ListItemIcon>
-                <ListItemText primary="Signout" />
+                <ListItemText primary="Đăng xuất" />
               </ListItemButton>
             </React.Fragment>
           </List>
