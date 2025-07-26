@@ -46,7 +46,7 @@ class UserService {
         }
 
         const accessToken = jwt.sign(
-            { email: email, role: user.role, id: user._id },
+            { email: email, role: user.role, id: user._id, isDeleted: user.isDeleted },
             config.accessTokenSecret,
             { expiresIn: config.accessTokenExpiry}
         );
