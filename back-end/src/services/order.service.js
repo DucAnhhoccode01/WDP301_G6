@@ -86,13 +86,13 @@ class OrderService {
                 throw new Error(`Product with ID ${item.productId} not found`);
             }
 
-            const colorStock = product.inStock.find(stock => stock.color === item.color);
+            const colorStock = product.inStock.find(stock => stock.variant === item.variant);
             if (!colorStock) {
-                throw new Error(`Color ${item.color} not available for product ID ${item.productId}`);
+                throw new Error(`Color ${item.variant} not available for product ID ${item.productId}`);
             }
 
             if (colorStock.quantity < item.quantity) {
-                throw new Error(`Insufficient stock for product ID ${item.productId} and color ${item.color}`);
+                throw new Error(`Insufficient stock for product ID ${item.productId} and color ${item.variant}`);
             }
             if (item.salePrice !== product.price) {
                 throw new Error(`Sale price ${item.salePrice} does not match product price ${product.price} for product ID ${item.productId}`);
@@ -165,7 +165,7 @@ class OrderService {
     async updateProductStock(items) {
         for (const item of items) {
             const product = await Product.findById(item.productId);
-            const colorStock = product.inStock.find(stock => stock.color === item.color);
+            const colorStock = product.inStock.find(stock => stock.variant === item.variant);
 
             if (colorStock) {
                 colorStock.quantity -= item.quantity;

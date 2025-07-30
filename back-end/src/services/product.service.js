@@ -261,6 +261,45 @@ class ProductService {
         throw new Error('Error fetching products: ' + error.message);
     }
 }
+async updateRandomExpiryAndImportDateForProducts() {
+    const products = await Product.find({
+        $or: [
+            { expiryDate: { $exists: false } },
+            { expiryDate: null },
+            { importDate: { $exists: false } },
+            { importDate: null }
+        ]
+    });
+
+    for (const product of products) {
+        let updated = false;
+
+        // Nếu inStock rỗng hoặc không hợp lệ, thêm phần tử mẫu để tránh lỗi validate
+        if (!Array.isArray(product.inStock) || product.inStock.length === 0 || !product.inStock[0].variant || !product.inStock[0].price) {
+            product.inStock = [{
+                variant: 'default',
+                quantity: 0,
+                price: 1000
+            }];
+            updated = true;
+        }
+
+        if (!product.expiryDate) {
+            const daysToAdd = Math.floor(Math.random() * 30) + 1;
+            product.expiryDate = new Date(Date.now() + daysToAdd * 24 * 60 * 60 * 1000);
+            updated = true;
+        }
+        if (!product.importDate) {
+            const daysAgo = Math.floor(Math.random() * 51) + 10;
+            product.importDate = new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000);
+            updated = true;
+        }
+        if (updated) {
+            await product.save();
+        }
+    }
+    return { updatedCount: products.length };
+}
 }
 
 module.exports = new ProductService;

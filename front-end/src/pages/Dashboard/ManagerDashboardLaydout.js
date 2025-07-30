@@ -127,6 +127,9 @@ export default function ManagerDashboardLaydout() {
  const handleOnclickDashboard = () => {
     navigate("/manager-dashboard");
   }
+  const handleOnClickCoupons = () => {
+    navigate("/dashboard/coupons");
+  }
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -194,6 +197,12 @@ export default function ManagerDashboardLaydout() {
                   <ShoppingCartIcon />
                 </ListItemIcon>
                 <ListItemText primary="Đơn Hàng" />
+               </ListItemButton>
+              <ListItemButton onClick={handleOnClickCoupons}>
+                <ListItemIcon>
+                  <ShoppingCartIcon />
+                </ListItemIcon>
+                <ListItemText primary="Mã Giảm Giá" />
               </ListItemButton>
             </React.Fragment>
             <Divider sx={{ my: 1 }} />

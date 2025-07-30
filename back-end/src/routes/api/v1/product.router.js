@@ -10,11 +10,11 @@ router.get('/get-deleted-products', AuthMiddleware.verifyToken, AuthMiddleware.v
 router.post('/', AuthMiddleware.verifyToken, AuthMiddleware.verifyRole(['sales manager']), uploadFileMiddleware.array('images', 10), ProductController.addProduct);
 router.get('/get-image/:filename', ProductController.getImage);
 router.get('/get-paginated-products', AuthMiddleware.verifyToken, AuthMiddleware.verifyRole(['sales manager']), ProductController.getPaginatedProducts);
+router.get('/discount-suggestions', ProductController.getAlldDiscountSuggestions);
 router.get('/:productId', ProductController.getProductById);
 router.get('/products/search', ProductController.searchProducts);
 router.get('/price/desc', ProductController.getProductsSortedByPriceDescending);
 router.get('/price/asc', ProductController.getProductsSortedByPriceAscending);
 router.get('/products/new-arrivals', ProductController.getNewArrivals);
 router.get('/', ProductController.getAllProducts);
-router.get('/discount-suggestions', ProductController.getAlldDiscountSuggestions);
 module.exports = router;
