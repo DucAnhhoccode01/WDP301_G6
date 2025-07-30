@@ -47,7 +47,7 @@ const productSchema = new Schema({
     },
     inStock: [
         {
-            "color": {
+            "variant": {
                 type: String,
                 required: true
             },
@@ -63,7 +63,15 @@ const productSchema = new Schema({
                 required: true
             }
         }
-    ]
+    ],
+    expiryDate: {
+        type: Date,
+        required: false
+    },
+    importDate: {
+        type: Date,
+        required: false
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Product', productSchema);

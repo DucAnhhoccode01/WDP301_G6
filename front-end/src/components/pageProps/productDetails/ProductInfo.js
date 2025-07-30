@@ -26,9 +26,9 @@ const ProductInfo = ({ productInfo }) => {
 
   const dispatch = useDispatch();
 
-  // Lấy giá và màu mặc định từ inStock đầu tiên
-  const [selectedColor, setSelectedColor] = useState(
-    productInfo.inStock?.[0]?.color || ""
+  // Lấy giá và biến thể mặc định từ inStock đầu tiên
+  const [selectedVariant, setSelectedVariant] = useState(
+    productInfo.inStock?.[0]?.variant || ""
   );
   const [selectedPrice, setSelectedPrice] = useState(
     productInfo.inStock?.[0]?.price || productInfo.price
@@ -37,15 +37,15 @@ const ProductInfo = ({ productInfo }) => {
 
   useEffect(() => {
     if (productInfo.inStock?.length > 0) {
-      const initialColor = productInfo.inStock[0];
-      setSelectedColor(initialColor.color);
-      setSelectedPrice(initialColor.price || productInfo.price);
-      setIsOutOfStock(initialColor.quantity === 0);
+      const initialVariant = productInfo.inStock[0];
+      setSelectedVariant(initialVariant.variant);
+      setSelectedPrice(initialVariant.price || productInfo.price);
+      setIsOutOfStock(initialVariant.quantity === 0);
     }
   }, [productInfo.inStock, productInfo.price]);
 
-  const handleColorSelect = (color, quantity, price) => {
-    setSelectedColor(color);
+  const handleVariantSelect = (variant, quantity, price) => {
+    setSelectedVariant(variant);
     setSelectedPrice(price || productInfo.price);
     setIsOutOfStock(quantity === 0);
   };
@@ -88,20 +88,20 @@ const ProductInfo = ({ productInfo }) => {
           <p className="text-base text-green-600 font-medium">Còn hàng</p>
         )
       }
-      {isOutOfStock && <p className="text-red-500">Màu được chọn đã hết hàng</p>}
+      {isOutOfStock && <p className="text-red-500">Biến thể được chọn đã hết hàng</p>}
 
       <p className="font-medium text-lg">
-        <span className="font-normal">Màu:</span>{" "}
+        <span className="font-normal">Biến thể:</span>{" "}
         {productInfo.inStock?.map((item) => (
           <button
             key={item._id}
-            onClick={() => handleColorSelect(item.color, item.quantity, item.price)}
-            className={`text-sm rounded-full px-3 py-1 mr-2 ${selectedColor === item.color
+            onClick={() => handleVariantSelect(item.variant, item.quantity, item.price)}
+            className={`text-sm rounded-full px-3 py-1 mr-2 ${selectedVariant === item.variant
               ? "bg-blue-500 text-white"
               : "bg-gray-200 text-gray-800"
               }`}
           >
-            {item.color}
+            {item.variant}
           </button>
         ))}
       </p>
@@ -116,7 +116,7 @@ const ProductInfo = ({ productInfo }) => {
               isDeleted: productInfo.isDeleted,
               price: selectedPrice,
               inStock: productInfo.inStock,
-              color: selectedColor,
+              variant: selectedVariant,
               cost: productInfo.cost,
             })
           )

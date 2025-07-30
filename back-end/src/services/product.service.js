@@ -34,21 +34,44 @@ class ProductService {
 
     async getAllProducts() {
         try {
-            const products = await Product.find().populate('brand').populate('category');
+            // Tự động ẩn sản phẩm hết hạn
+            await Product.updateMany(
+                { expiryDate: { $lte: new Date() }, isAvailable: true },
+                { $set: { isAvailable: false } }
+            );
+            // Lấy sản phẩm chưa hết hạn hoặc không có hạn sử dụng
+            const products = await Product.find({
+                $or: [
+                    { expiryDate: { $gt: new Date() } },
+                    { expiryDate: { $exists: false } },
+                    { expiryDate: null }
+                ]
+            }).populate('brand').populate('category');
             return products;
         } catch (error) {
             throw new Error('Error fetching products: ' + error.message);
         }
     }
-
-    getPaginatedProducts = async (page, pageSize, keywords, sortBy) => {
+    
+    getPaginatedProducts = async (page, pageSize, keywords, sortBy, importDateFrom, importDateTo) => {
         const skip = (page - 1) * pageSize;
         let filter = {
-            isDeleted: false
+            isDeleted: false,
+            $or: [
+                { expiryDate: { $gt: new Date() } },
+                { expiryDate: { $exists: false } },
+                { expiryDate: null }
+            ]
         };
         if (keywords) {
             const regex = new RegExp(keywords, 'i');
             filter.name = { $regex: regex };
+        }
+        // Lọc theo ngày nhập hàng nếu có
+        if (importDateFrom || importDateTo) {
+            filter.importDate = {};
+            if (importDateFrom) filter.importDate.$gte = new Date(importDateFrom);
+            if (importDateTo) filter.importDate.$lte = new Date(importDateTo);
         }
         let sort = {};
         switch (sortBy) {
@@ -85,6 +108,11 @@ class ProductService {
                 break;
             }
         }
+        // Tự động ẩn sản phẩm hết hạn
+        await Product.updateMany(
+            { expiryDate: { $lte: new Date() }, isAvailable: true },
+            { $set: { isAvailable: false } }
+        );
         const products = await Product.find(filter)
             .sort(sort)
             .skip(skip)
@@ -116,7 +144,7 @@ class ProductService {
         };
     };
 
-    addProduct = async (name, description, brand, category, specs, inStock, isAvailable, imageFiles) => {
+    addProduct = async (name, description, brand, category, specs, inStock, isAvailable, imageFiles, expiryDate, importDate) => {
         const images = [];
         if (imageFiles && imageFiles.length > 0) {
             imageFiles.forEach(file => {
@@ -142,12 +170,14 @@ class ProductService {
             specs,
             inStock,
             isAvailable,
-            images
+            images,
+            expiryDate,
+            importDate
         });
         return await newProduct.save();
     }
 
-    updateProduct = async (productId, name, description, brand, category, specs, inStock, isAvailable, imageFiles) => {
+    updateProduct = async (productId, name, description, brand, category, specs, inStock, isAvailable, imageFiles, expiryDate, importDate) => {
     const currentProduct = await Product.findById(productId);
     let images = currentProduct.images || [];
 
@@ -177,7 +207,7 @@ class ProductService {
 
     const updatedProduct = await Product.findByIdAndUpdate(
         productId,
-        { name, description, brand, category, specs, inStock, isAvailable, images },
+        { name, description, brand, category, specs, inStock, isAvailable, images, expiryDate, importDate },
         { new: true }
     );
     return updatedProduct;
@@ -188,12 +218,49 @@ class ProductService {
     }
 
     async getNewArrivals() {
-        return await Product.find({ isDeleted: false })
+        // Tự động ẩn sản phẩm hết hạn
+        await Product.updateMany(
+            { expiryDate: { $lte: new Date() }, isAvailable: true },
+            { $set: { isAvailable: false } }
+        );
+        return await Product.find({
+            isDeleted: false,
+            $or: [
+                { expiryDate: { $gt: new Date() } },
+                { expiryDate: { $exists: false } },
+                { expiryDate: null }
+            ]
+        })
             .sort({ createdAt: -1 })
             .limit(5)
             .populate('brand', 'name')
             .populate('category', 'name')
     }
+    async getAllDiscountSuggestions() {
+    try {
+        const now = new Date();
+        const soonExpireDate = new Date();
+        soonExpireDate.setDate(now.getDate() + 7);
+
+        const products = await Product.find({
+            expiryDate: { $gt: now, $lte: soonExpireDate }
+        }).populate('brand').populate('category');
+
+        const discountSuggestions = products.map(p => ({
+            _id: p._id,
+            name: p.name,
+            expiryDate: p.expiryDate,
+            brand: p.brand,
+            category: p.category,
+            reason: 'Sản phẩm sắp hết hạn',
+            suggestedDiscountPercent: 20 // Gợi ý giảm 20%
+        }));
+
+        return discountSuggestions;
+    } catch (error) {
+        throw new Error('Error fetching products: ' + error.message);
+    }
+}
 }
 
 module.exports = new ProductService;

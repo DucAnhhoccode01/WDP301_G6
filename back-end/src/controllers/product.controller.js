@@ -14,7 +14,14 @@ class ProductController {
             next(error);
         }
     }
-
+    getAlldDiscountSuggestions = async (req, res, next) => {
+        try {
+            const products = await ProductService.getAllDiscountSuggestions();
+            res.status(200).json(products);
+        } catch (error) {
+            next(error);
+        }
+    }
     /**
      * Method: Get
      * router(/:productId)
@@ -66,8 +73,8 @@ class ProductController {
                     }
                 }
             }
-            const { name, description, brand, category, specs, inStock, isAvailable } = req.body;
-            const newProduct = await ProductService.addProduct(name, description, brand, category, specs, inStock, isAvailable, imageFiles);
+            const { name, description, brand, category, specs, inStock, isAvailable, expiryDate, importDate } = req.body;
+            const newProduct = await ProductService.addProduct(name, description, brand, category, specs, inStock, isAvailable, imageFiles, expiryDate, importDate);
             res.json({
                 success: true,
                 message: 'Add product successfully!',
@@ -96,8 +103,8 @@ class ProductController {
                     }
                 }
             }
-            const { name, description, brand, category, specs, inStock, isAvailable } = req.body;
-            const newProductData = await ProductService.updateProduct(productId, name, description, brand, category, specs, inStock, isAvailable, imageFiles);
+            const { name, description, brand, category, specs, inStock, isAvailable, expiryDate, importDate } = req.body;
+            const newProductData = await ProductService.updateProduct(productId, name, description, brand, category, specs, inStock, isAvailable, imageFiles, expiryDate, importDate);
             res.json({
                 success: true,
                 message: 'Update product successfully!',

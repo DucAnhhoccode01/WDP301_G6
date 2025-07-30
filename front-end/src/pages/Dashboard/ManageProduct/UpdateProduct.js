@@ -476,7 +476,7 @@ export default function UpdateProduct({ targetProduct }) {
                                                         <React.Fragment key={index}>
                                                             <TableRow>
                                                                 <TableCell component="th" scope="row">
-                                                                    {item.color}
+                                                                    {item.variant }
                                                                 </TableCell>
                                                                 <TableCell align="right">
                                                                     {item.quantity}

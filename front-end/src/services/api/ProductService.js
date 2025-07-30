@@ -6,7 +6,10 @@ class ProductService {
         const result = await api.get('/product');
         return result.data;
     }
-
+    async getAlldDiscountSuggestions () {
+        const result = await api.get('/product/discount-suggestions');
+        return result.data;
+    }
     async getPaginatedProducts(page, pageSize, keywords, sortBy) {
         const response = await api.get('/product/get-paginated-products', {
             params: {

@@ -68,9 +68,9 @@ export default function InStockDialog({ inStock }) {
                                 </TableHead>
                                 <TableBody>
                                     {inStock.map((item) => (
-                                        <StyledTableRow key={item.color}>
+                                        <StyledTableRow key={item.variant }>
                                             <StyledTableCell component="th" scope="row">
-                                                {item.color}
+                                                {item.variant }
                                             </StyledTableCell>
                                             <StyledTableCell align="right">{item.quantity}</StyledTableCell>
                                         </StyledTableRow>

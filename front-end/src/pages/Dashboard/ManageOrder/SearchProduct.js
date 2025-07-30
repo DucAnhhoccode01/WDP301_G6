@@ -21,8 +21,8 @@ const SearchProduct = ({ items, setItems }) => {
             quantity: 1,
             salePrice: defaultStock.price || product.price,
             saleCost: product.cost,
-            color: defaultStock.color || '',
-            availableColors: product.inStock.map(stock => stock.color),
+            color: defaultStock.variant  || '',
+            availableColors: product.inStock.map(stock => stock.variant ),
             availableStocks: product.inStock,
             maxQuantity: defaultStock.quantity || 0,
         };
@@ -33,7 +33,7 @@ const SearchProduct = ({ items, setItems }) => {
         const updatedItems = items.map((item, idx) => {
             if (index === idx) {
                 if (key === 'color') {
-                    const stock = item.availableStocks.find(s => s.color === value) || {};
+                    const stock = item.availableStocks.find(s => s.variant  === value) || {};
                     return {
                         ...item,
                         color: value,
@@ -125,7 +125,7 @@ const SearchProduct = ({ items, setItems }) => {
                                     <FormControl sx={{ mr: 2 }}>
                                         <InputLabel>Size</InputLabel>
                                         <Select
-                                            value={item.color}
+                                            value={item.variant }
                                             onChange={(e) => handleItemChange(index, 'color', e.target.value)}
                                         >
                                             {item.availableColors.map((color, idx) => (

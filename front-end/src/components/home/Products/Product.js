@@ -17,7 +17,7 @@ const Product = (props) => {
   const rootId = String(_id).toLowerCase().replace(/\s/g, "");
   const productItem = props;
 
-  const defaultColor = props.inStock?.[0]?.color || "";
+  const defaultColor = props.inStock?.[0]?.variant  || "";
   const defaultPrice = props.inStock?.[0]?.price || props.price;
   const isOutOfStock = props.inStock?.reduce((sum, item) => sum + (item.quantity || 0), 0) === 0;
 
@@ -106,7 +106,7 @@ const Product = (props) => {
         <div className="flex flex-wrap gap-2 mt-1">
           {props.inStock?.map((item) => (
             <span key={item._id} className="bg-gray-100 px-2 py-1 rounded text-xs">
-              {item.color}: {item.quantity}
+              {item.variant }: {item.quantity}
             </span>
           ))}
         </div>

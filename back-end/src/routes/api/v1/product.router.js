@@ -16,4 +16,5 @@ router.get('/price/desc', ProductController.getProductsSortedByPriceDescending);
 router.get('/price/asc', ProductController.getProductsSortedByPriceAscending);
 router.get('/products/new-arrivals', ProductController.getNewArrivals);
 router.get('/', ProductController.getAllProducts);
+router.get('/discount-suggestions', ProductController.getAlldDiscountSuggestions);
 module.exports = router;
