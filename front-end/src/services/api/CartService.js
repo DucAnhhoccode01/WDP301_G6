@@ -10,13 +10,13 @@ class CartService {
     }
   }
 
-  async updateCartItem(userId, productId, quantity, color) {
+  async updateCartItem(userId, productId, quantity, variant) {
     try {
       const { data } = await api.put('/cart/update', {
         userId,
         productId,
         quantity,
-        color
+        variant
       });
       return data;
     } catch (error) {
@@ -24,13 +24,13 @@ class CartService {
     }
   }
 
-  async addToCartItem(userId, productId, quantity, color) {
+  async addToCartItem(userId, productId, quantity, variant) {
     try {
       const { data } = await api.post('/cart/add-to-cart', {
         userId,
         productId,
         quantity,
-        color
+        variant
       });
       return data;
     } catch (error) {
@@ -38,13 +38,13 @@ class CartService {
     }
   }
 
-  async deleteCartItem(userId, productId, color) {
+  async deleteCartItem(userId, productId, variant) {
     try {
       const { data } = await api.delete('/cart/remove', {
         data: {
           userId,
           productId,
-          color
+          variant
         }
       });
       return data;

@@ -61,7 +61,7 @@ const Checkout = () => {
         salePrice: product.price,
         saleCost: product.price * 0.8,
         quantity: product.quantity,
-        color: product.color || 'Unknown',
+        color: product.variant  || 'Unknown',
       })),
       shippingFee: shippingCharge,
       paymentMethod: paymentMethod,

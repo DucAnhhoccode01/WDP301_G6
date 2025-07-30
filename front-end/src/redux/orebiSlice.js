@@ -20,10 +20,10 @@ export const orebiSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const item = state.products.find(
-        (item) => item._id === action.payload._id && item.color === action.payload.color
+        (item) => item._id === action.payload._id && item.variant  === action.payload.variant 
       );
       if (item) {
-        const productInStock = action.payload.inStock.find(stock => stock.color === item.color);
+        const productInStock = action.payload.inStock.find(stock => stock.variant  === item.variant );
         if (item.quantity < productInStock.quantity) {
           item.quantity += action.payload.quantity;
         } else {
@@ -36,7 +36,7 @@ export const orebiSlice = createSlice({
     },
     increaseQuantity: (state, action) => {
       const item = state.products.find(
-        (item) => item._id === action.payload._id && item.color === action.payload.color
+        (item) => item._id === action.payload._id && item.variant  === action.payload.variant 
       );
       if (item) {
         item.quantity++;
@@ -44,7 +44,7 @@ export const orebiSlice = createSlice({
     },
     drecreaseQuantity: (state, action) => {
       const item = state.products.find(
-        (item) => item._id === action.payload._id && item.color === action.payload.color
+        (item) => item._id === action.payload._id && item.variant  === action.payload.variant 
       );
       if (item.quantity === 1) {
         item.quantity = 1;
@@ -54,13 +54,13 @@ export const orebiSlice = createSlice({
     },
     deleteItem: (state, action) => {
       state.products = state.products.filter(
-        (item) => item._id !== action.payload._id || item.color !== action.payload.color
+        (item) => item._id !== action.payload._id || item.variant  !== action.payload.variant 
       );
       toast.success("Food removed from cart");
     },
     deleteItemWL: (state, action) => {
       state.wishlish = state.wishlish.filter(
-        (item) => item._id !== action.payload._id || item.color !== action.payload.color
+        (item) => item._id !== action.payload._id || item.variant  !== action.payload.variant 
       );
       toast.success("Food removed from Wishlist");
     },
@@ -69,7 +69,7 @@ export const orebiSlice = createSlice({
     },
     addToWishlist: (state, action) => {
       const item = state.wishlish.find(
-        (item) => item._id === action.payload._id && item.color === action.payload.color
+        (item) => item._id === action.payload._id && item.variant  === action.payload.variant 
       );
       if (item) {
         toast.warning("Food already in wishlist");

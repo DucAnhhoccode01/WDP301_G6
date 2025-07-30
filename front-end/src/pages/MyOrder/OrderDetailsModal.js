@@ -63,7 +63,7 @@ const OrderDetailsModal = ({ open, handleClose, selectedItem }) => {
                                             <strong>Số lượng:</strong> {item.quantity}
                                         </Typography>
                                         <Typography variant="subtitle2">
-                                            <strong>Kích cỡ:</strong> {item.color}
+                                            <strong>Kích cỡ:</strong> {item.variant }
                                         </Typography>
                                         <Typography variant="subtitle2">
                                             <strong>Thông số kỹ thuật:</strong> {item?.productId?.specs.map(spec => `${spec.key}: ${spec.value}`).join(', ')}

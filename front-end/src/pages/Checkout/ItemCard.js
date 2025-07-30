@@ -18,7 +18,7 @@ const ItemCard = ({ item }) => {
       borderBottom="1px solid #ddd"
     >
       <Box display="flex" alignItems="center" gap="10px">
-        <span className="text-sm text-gray-500">{item.color}</span>
+        <span className="text-sm text-gray-500">{item.variant }</span>
         <img src={item.images && item.images.length > 0 ? 
           ProductService.getImage(item.images[0].filename) : 
           ImgDefault

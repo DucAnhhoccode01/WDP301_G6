@@ -49,6 +49,8 @@ import MyProfile from "./pages/Dashboard/MyProfile/MyProfile";
 import ManageProfit from "./pages/Dashboard/ManageProfit/ManageProfit";
 import PayOSReturnHandler from "./pages/Thank/PayOSReturnHandler";
 import CancelReturnHandler from "./pages/Thank/CancelReturnHandler";
+import { DiscountProvider } from './context/DiscountContext';
+import CouponManager from "./pages/Dashboard/ManageCoupon/CouponManager";
 const Layout = () => {
   return (
     <div>
@@ -105,6 +107,7 @@ const router = createBrowserRouter(
         <Route path="/create-order" element={<CreateOrder />}></Route>
         <Route path="/my-profile" element={<MyProfile />}></Route>
         <Route path="/update-order/:orderId" element={<EditOrder />}></Route>
+        <Route path="/dashboard/coupons" element={<CouponManager />} />
        
       </Route>
       <Route path="/" element={<AdminDashboardLaydout />}>
@@ -130,9 +133,11 @@ function App() {
   }, [dispatch]);
 
   return (
+    <DiscountProvider>
     <div className="font-bodyFont">
       <RouterProvider router={router} />
     </div>
+    </DiscountProvider>
   );
 }
 

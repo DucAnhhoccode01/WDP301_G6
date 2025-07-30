@@ -28,7 +28,7 @@ const cartSlice = createSlice({
       if (itemIndex < 0) {
         state.cartData.push({
           productId: newProduct,
-          color: newProduct.inStock[0].color,
+          color: newProduct.inStock[0].variant ,
           quantity: 1,
         });
         state.totalCount += 1;
@@ -40,7 +40,7 @@ const cartSlice = createSlice({
     updateCart: (state, action) => {
       const { productId, color, quantity } = action.payload;
       const findProductInCart = state.cartData.findIndex(
-        item => item?.productId?._id === productId && item?.color === color
+        item => item?.productId?._id === productId && item?.variant  === color
       );
       if (findProductInCart !== -1) {
         state.cartData[findProductInCart].quantity = quantity;
@@ -48,7 +48,7 @@ const cartSlice = createSlice({
     },
     deleteCart: (state, action) => {
       const { productId, color } = action.payload;
-      state.cartData = state.cartData.filter(item => !(item?.productId?._id === productId && item?.color === color));
+      state.cartData = state.cartData.filter(item => !(item?.productId?._id === productId && item?.variant  === color));
     },
     calculateTotalCount: (state, action) => {
       state.totalCount = state.cartData?.reduce((total, item) => total + item.quantity, 0);

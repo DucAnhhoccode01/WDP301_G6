@@ -29,7 +29,7 @@ const wistlistSlice = createSlice({
       if (itemIndex < 0) {
         state.wishlistData.push({
           productId: newProduct,
-          color: newProduct.inStock[0].color,
+          variant: newProduct.inStock[0].variant,
         });
         state.totalCount += 1;
         toast.success("Add new Food to wishlist successful..");
@@ -38,8 +38,8 @@ const wistlistSlice = createSlice({
       }
     },
     deleteWishlist: (state, action) => {
-      const { productId, color } = action.payload;
-      state.wishlistData = state.wishlistData.filter(item => !(item?.productId?._id === productId && item?.color === color));
+      const { productId, variant } = action.payload;
+      state.wishlistData = state.wishlistData.filter(item => !(item?.productId?._id === productId && item?.variant === variant));
       toast.success("Remove Food from wishlist successful!")
     },
     calculateTotalCountWL: (state, action) => {

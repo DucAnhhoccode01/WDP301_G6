@@ -11,25 +11,25 @@ class WishlistService {
     }
   };
 
-  addToWishlist = async (userId, productId, color) => {
+  addToWishlist = async (userId, productId, variant) => {
     try {
       const { data } = await api.post('/wishlist/add-to-wishlist', {
         userId,
         productId,
-        color
+        variant
       });
       return data;
     } catch (error) {
       throw new Error(error.response ? error.response.data.message : error.message);
     }
   }
-  deleteWishlistItem = async (userId, productId, color) => {
+  deleteWishlistItem = async (userId, productId, variant) => {
     try {
       const response = await api.delete(`/wishlist/remove`, {
         data: {
           userId,
           productId,
-          color
+          variant
         }
       })
       return response.data;

@@ -65,7 +65,7 @@ export default function ItemDialog({ items }) {
                                     <StyledTableCell>Sản phẩm</StyledTableCell>
                                     <StyledTableCell>Số lượng</StyledTableCell>
                                     <StyledTableCell>Giá bán</StyledTableCell>
-                                    <StyledTableCell>Màu</StyledTableCell>
+                                    <StyledTableCell>Biến thể</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -76,7 +76,7 @@ export default function ItemDialog({ items }) {
                                         </StyledTableCell>
                                         <StyledTableCell>{item.quantity}</StyledTableCell>
                                         <StyledTableCell>{item.salePrice}</StyledTableCell>
-                                        <StyledTableCell>{item.color}</StyledTableCell>
+                                        <StyledTableCell>{item.variant }</StyledTableCell>
                                     </StyledTableRow>
                                 ))}
                             </TableBody>

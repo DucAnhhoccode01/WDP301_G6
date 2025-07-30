@@ -59,7 +59,7 @@ export default function OrderDetailDialog({ order }) {
                                         {order?.items.map((item) => (
                                             <TableRow key={item?._id}>
                                                 <TableCell>{item?.productId?.name}</TableCell>
-                                                <TableCell >{item?.color}</TableCell>
+                                                <TableCell >{item?.variant }</TableCell>
                                                 <TableCell align="right">{item?.quantity}</TableCell>
                                                 <TableCell align="right">{item?.salePrice}</TableCell>
                                             </TableRow>

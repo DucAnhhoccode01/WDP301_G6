@@ -14,7 +14,7 @@ function Items({ currentItems }) {
             images={item.images}
             name={item.name}
             price={item.price}
-            color={item.color}
+            color={item.variant }
             isDeleted={item.isDeleted}
             description={item.description}
             pdf={item.pdf}
@@ -56,7 +56,7 @@ const Pagination = ({ itemsPerPage, sortOrder }) => {
       } else if (sortOrder === "Decrease") {
         fetchedProducts.sort((a, b) => b.price - a.price)
       }
-      setProducts(fetchedProducts)
+      setProducts(fetchedProducts);
     }
 
     fetchProducts();
@@ -75,7 +75,7 @@ const Pagination = ({ itemsPerPage, sortOrder }) => {
     const isInSelectedColor =
       checkedColors.length === 0 ||
       checkedColors.some((color) =>
-        item.inStock.some((stock) => stock.color === color.name)
+        item.inStock.some((stock) => stock.variant  === color.name)
       );
     const isInSelectedPrice =
       checkedPrices.length === 0 ||
@@ -96,7 +96,8 @@ const Pagination = ({ itemsPerPage, sortOrder }) => {
     setItemOffset(newOffset);
     setItemStart(newStart);
   };
-
+  console.log("Filtered Products:", filteredProducts);
+ console.log("Current Items:", currentItems);
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 mdl:gap-4 lg:gap-10">

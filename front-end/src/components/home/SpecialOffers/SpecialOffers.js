@@ -41,7 +41,7 @@ const SpecialOffers = () => {
             images={item.images}
             name={item.name}
             price={item.price}
-            color={item.color}
+            color={item.variant }
             isDeleted={item.isDeleted}
             description={item.description}
             pdf={item.pdf}
