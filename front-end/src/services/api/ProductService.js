@@ -28,61 +28,55 @@ class ProductService {
         return result.data;
     }
 
-    async addProduct(name, description, brand, category, price, cost, isAvailable, specs, instock, images) {
-        const formData = new FormData();
-        // Append other fields
-        formData.append('name', name);
-        formData.append('description', description);
-        formData.append('brand', brand);
-        formData.append('category', category);
-        formData.append('price', price);
-        formData.append('cost', cost);
-        formData.append('isAvailable', isAvailable);
-
-        // Append specs and instock arrays
-        formData.append('specs', JSON.stringify(specs));
-        formData.append('inStock', JSON.stringify(instock));
-        if (images) {
-            for (let i = 0; i < images.length; i++) {
-                formData.append('images', images[i]);
-            }
+    async addProduct(name, description, brand, category, price, cost, isAvailable, specs, instock, images, expiryDate, importDate) {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('brand', brand);
+    formData.append('category', category);
+    formData.append('price', price);
+    formData.append('cost', cost);
+    formData.append('isAvailable', isAvailable);
+    formData.append('specs', JSON.stringify(specs));
+    formData.append('inStock', JSON.stringify(instock));
+    if (expiryDate) formData.append('expiryDate', expiryDate);
+    if (importDate) formData.append('importDate', importDate);
+    if (images) {
+        for (let i = 0; i < images.length; i++) {
+            formData.append('images', images[i]);
         }
-
-        return await api.post('/product', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        });
-
     }
+    return await api.post('/product', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    });
+}
 
-    async updateProduct(productId, name, description, brand, category, price, cost, isAvailable, specs, instock, images) {
-        const formData = new FormData();
-        // Append other fields
-        formData.append('name', name);
-        formData.append('description', description);
-        formData.append('brand', brand);
-        formData.append('category', category);
-        formData.append('price', price);
-        formData.append('cost', cost);
-        formData.append('isAvailable', isAvailable);
-
-        // Append specs and instock arrays
-        formData.append('specs', JSON.stringify(specs));
-        formData.append('inStock', JSON.stringify(instock));
-        if (images) {
-            for (let i = 0; i < images.length; i++) {
-                formData.append('images', images[i]);
-            }
+async updateProduct(productId, name, description, brand, category, price, cost, isAvailable, specs, instock, images, expiryDate, importDate) {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('brand', brand);
+    formData.append('category', category);
+    formData.append('price', price);
+    formData.append('cost', cost);
+    formData.append('isAvailable', isAvailable);
+    formData.append('specs', JSON.stringify(specs));
+    formData.append('inStock', JSON.stringify(instock));
+    if (expiryDate) formData.append('expiryDate', expiryDate);
+    if (importDate) formData.append('importDate', importDate);
+    if (images) {
+        for (let i = 0; i < images.length; i++) {
+            formData.append('images', images[i]);
         }
-
-        return await api.put(`/product/update/${productId}`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        });
-
     }
+    return await api.put(`/product/update/${productId}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    });
+}
 
     async softDeleteProduct(productId) {
         const result = await api.delete(`/product/soft-delete/${productId}`);

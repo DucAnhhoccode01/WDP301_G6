@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { resetCart } from "../../redux/orebiSlice";
 import { emptyCart } from "../../assets/images/index";
 import ItemCard from "./ItemCard";
+import CouponService from "../../services/api/CouponService";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,8 @@ const Cart = () => {
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
   const [couponMsg, setCouponMsg] = useState("");
-
+  const [couponInfo, setCouponInfo] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     let price = 0;
     products.forEach((item) => {
@@ -31,17 +33,56 @@ const Cart = () => {
     else setShippingCharge(30);
   }, [totalAmt]);
 
-  const handleApplyCoupon = () => {
-    if (coupon.trim().toUpperCase() === "SAVE10" && totalAmt > 100) {
-      setDiscount(10);
-      setCouponMsg("Coupon applied! You saved 10k VND.");
-    } else {
+  const handleApplyCoupon = async () => {
+    if (!coupon.trim()) {
       setDiscount(0);
-      setCouponMsg("Invalid coupon code.");
+      setCouponMsg("Vui lòng nhập mã giảm giá.");
+      setCouponInfo(null);
+      return;
+    }
+    try {
+      const res = await CouponService.validateCoupon({ code: coupon.trim(), total: totalAmt });
+      if (res.success && res.coupon) {
+        let discountValue = 0;
+        if (res.coupon.type === "percent") {
+          discountValue = Math.floor((totalAmt * res.coupon.value) / 100);
+          if (res.coupon.maxDiscount && discountValue > res.coupon.maxDiscount) {
+            discountValue = res.coupon.maxDiscount;
+          }
+        } else {
+          discountValue = res.coupon.value;
+        }
+        setDiscount(discountValue);
+        setCouponMsg(`Áp dụng thành công! Giảm ${discountValue} VND.`);
+        setCouponInfo(res.coupon);
+      } else {
+        setDiscount(0);
+        setCouponMsg(res.message || "Mã giảm giá không hợp lệ hoặc không đủ điều kiện.");
+        setCouponInfo(null);
+      }
+    } catch (err) {
+      setDiscount(0);
+     const msg = err?.response?.data?.message || err.message || "Có lỗi khi kiểm tra mã giảm giá.";
+      setCouponMsg(msg);
+      setCouponInfo(null);
     }
   };
+  useEffect(() => {
+    setDiscount(0);
+    setCouponMsg("");
+    setCouponInfo(null);
+  }, [products]);
 
   const totalItems = products.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Hàm chuyển sang checkout kèm mã giảm giá trên url
+  const goToCheckout = () => {
+    if (discount > 0 && coupon) {
+      navigate(`/checkout?coupon=${encodeURIComponent(coupon)}`);
+    } else {
+      navigate('/checkout');
+    }
+  };
 
   return (
     <div className="max-w-container mx-auto px-4">
@@ -88,7 +129,7 @@ const Cart = () => {
                 Đồng ý
               </button>
               {couponMsg && (
-                <span className={`ml-2 text-sm {discount > 0 ? "text-green-600" : "text-red-500"} VND`}>
+                <span className={`ml-2 text-sm ${discount > 0 ? "text-green-600" : "text-red-500"}`}>
                   {couponMsg}
                 </span>
               )}
@@ -125,11 +166,12 @@ const Cart = () => {
                 </p>
               </div>
               <div className="flex justify-end">
-                <Link to="/checkout">
-                  <button className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300 rounded">
-                    Thanh toán
-                  </button>
-                </Link>
+                <button
+                  className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300 rounded"
+                  onClick={goToCheckout}
+                >
+                  Thanh toán
+                </button>
               </div>
             </div>
           </div>

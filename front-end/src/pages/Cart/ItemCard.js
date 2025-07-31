@@ -12,11 +12,12 @@ import { toast } from "react-toastify";
 import ImgDefault from '../../assets/images/default.jpg';
 const ItemCard = ({ item }) => {
   const dispatch = useDispatch();
+  console.log("item:", item);
   return (
     <div className="w-full grid grid-cols-5 mb-4 border py-2">
       <div className="flex col-span-5 mdl:col-span-2 items-center gap-4 ml-4">
         <ImCross
-          onClick={() => dispatch(deleteItem({ _id: item._id, color: item.variant  }))}
+          onClick={() => dispatch(deleteItem({ _id: item._id, variant: item.variant  }))}
           className="text-primeColor hover:text-red-500 duration-300 cursor-pointer"
         />
         <img className="w-32 h-32" src={item.images && item.images.length > 0 ? ProductService.getImage(item.images[0].filename) : 
@@ -35,7 +36,7 @@ const ItemCard = ({ item }) => {
         </div>
         <div className="w-1/3 flex items-center gap-6 text-lg">
           <span
-            onClick={() => dispatch(drecreaseQuantity({ _id: item._id, color: item.variant  }))}
+            onClick={() => dispatch(drecreaseQuantity({ _id: item._id, variant: item.variant  }))}
             className="w-6 h-6 bg-gray-100 text-2xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-300"
           >
             -
@@ -44,8 +45,9 @@ const ItemCard = ({ item }) => {
           <span
             onClick={() => {
               const productInStock = item.inStock.find(stock => stock.variant  === item.variant );
+              console.log("productInStock:", productInStock);
               if (item.quantity < productInStock.quantity) {
-                dispatch(increaseQuantity({ _id: item._id, color: item.variant  }));
+                dispatch(increaseQuantity({ _id: item._id, variant: item.variant  }));
               } else {
                 toast.warning("Food reached maximum quantity");
               }

@@ -37,6 +37,7 @@ class OrderService {
             .limit(pageSize)
             .populate('userId')
             .populate({ path: 'items.productId', strictPopulate: false })
+            .populate('couponId', 'code type value minOrderValue maxDiscount expiryDate')
             .lean();
         const totalOrders = await Order.countDocuments(filter);
         return {
@@ -48,7 +49,7 @@ class OrderService {
     }
     async createOrder(req) {
         try {
-            let { userId, items, paymentMethod, contactInfo, shippingFee } = req.body;
+            let { userId, items, paymentMethod, contactInfo, shippingFee,  couponId} = req.body;
             if (!userId || userId.trim() === '') {
                 userId = null;
             }
@@ -65,7 +66,8 @@ class OrderService {
                 paymentMethod,
                 contactInfo,
                 orderStatus: 'Pending',
-                paymentStatus: 'Pending'
+                paymentStatus: 'Pending',
+                couponId
             });
 
             const order = await newOrder.save();
@@ -294,7 +296,8 @@ class OrderService {
                 query.orderStatus = orderStatus;
             }
 
-            const orders = await Order.find(query).skip(skip).limit(limit).populate('items.productId').sort({ createdAt: -1 });;
+            const orders = await Order.find(query).skip(skip).limit(limit).populate('items.productId').sort({ createdAt: -1 })
+                .populate('couponId', 'code type value minOrderValue maxDiscount expiryDate');
             const totalOrders = await Order.countDocuments(query);
             return {
                 totalOrders,
@@ -373,7 +376,8 @@ class OrderService {
                 .skip(skip)
                 .limit(limit)
                 .sort(sortOptions)
-                .populate('items.productId', 'name');
+                .populate('items.productId', 'name')
+                .populate('couponId', 'code type value minOrderValue maxDiscount expiryDate');
 
             const totalOrders = await Order.countDocuments(query);
 

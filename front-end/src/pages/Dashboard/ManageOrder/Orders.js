@@ -13,6 +13,7 @@ import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Tooltip from '@mui/material/Tooltip';
 import ContactInfoDialog from './ContactInfoDialog';
+import CouponDialog from './CouponDialog';
 import ItemDialog from './ItemDialog';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -228,6 +229,7 @@ export default function Orders() {
             <TableCell> Vai trò người dùng </TableCell>
             <TableCell>Mặt hàng</TableCell>
             <TableCell>Thông tin liên lạc</TableCell>
+            <TableCell>Mã giảm giá</TableCell>
             <TableCell>Tổng giá</TableCell>
             <TableCell>Trạng thái đơn hàng</TableCell>
             <TableCell> Trạng thái thanh toán</TableCell>
@@ -242,6 +244,9 @@ export default function Orders() {
               <TableCell>{order?.userId ? "Customer" : "Guest"}</TableCell>
               <TableCell><ItemDialog items={order?.items} /></TableCell>
               <TableCell><ContactInfoDialog contactInfo={order?.contactInfo} /></TableCell>
+              <TableCell>
+                {order?.couponId ? <CouponDialog coupon={order.couponId} /> : 'Không áp dụng'}
+              </TableCell>
               <TableCell>{order?.totalPrice}</TableCell>
               <TableCell>{order?.orderStatus}</TableCell>
               <TableCell>{order?.paymentStatus}</TableCell>

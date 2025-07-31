@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { resetCart } from "../../redux/slices/orebi.slice";
@@ -9,6 +9,8 @@ import OrderService from '../../services/api/OrderService';
 import { FaShippingFast, FaCreditCard, FaMoneyBillWave } from "react-icons/fa";
 import "./Checkout.css";
 
+import CouponService from '../../services/api/CouponService';
+
 const Checkout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,6 +18,72 @@ const Checkout = () => {
   const userInfo = useSelector((state) => state.orebiReducer.userInfo);
   const [totalAmt, setTotalAmt] = useState(0);
   const [shippingCharge, setShippingCharge] = useState(0);
+  const location = useLocation();
+  const [coupon, setCoupon] = useState("");
+  const [discount, setDiscount] = useState(0);
+  const [couponMsg, setCouponMsg] = useState("");
+  const [couponInfo, setCouponInfo] = useState(null);
+  useEffect(() => {
+    setDiscount(0);
+    setCouponMsg("");
+    setCouponInfo(null);
+  }, [products]);
+
+  // Khi vào trang, nếu url có coupon thì tự động set và áp dụng
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const couponParam = params.get('coupon');
+    if (couponParam) {
+      setCoupon(couponParam);
+      // Tự động áp dụng mã giảm giá nếu có tổng tiền
+      // Đợi totalAmt cập nhật xong mới gọi
+      // Nếu totalAmt đã có giá trị, gọi luôn
+      if (totalAmt > 0) {
+        handleApplyCouponWithCode(couponParam);
+      }
+    }
+    // eslint-disable-next-line
+  }, [location.search, totalAmt]);
+
+  // Hàm áp dụng mã giảm giá với code truyền vào
+  const handleApplyCouponWithCode = async (code) => {
+    if (!code.trim()) return;
+    try {
+      const res = await CouponService.validateCoupon({ code: code.trim(), total: totalAmt });
+      if (res.success && res.coupon) {
+        let discountValue = 0;
+        if (res.coupon.type === "percent") {
+          discountValue = Math.floor((totalAmt * res.coupon.value) / 100);
+          if (res.coupon.maxDiscount && discountValue > res.coupon.maxDiscount) {
+            discountValue = res.coupon.maxDiscount;
+          }
+        } else {
+          discountValue = res.coupon.value;
+        }
+        setDiscount(discountValue);
+        setCouponMsg(`Áp dụng thành công! Giảm ${discountValue} VND.`);
+        setCouponInfo(res.coupon);
+      } else {
+        setDiscount(0);
+        setCouponMsg(res.message || "Mã giảm giá không hợp lệ hoặc không đủ điều kiện.");
+        setCouponInfo(null);
+      }
+    } catch (err) {
+      setDiscount(0);
+      const msg = err?.response?.data?.message || err.message || "Có lỗi khi kiểm tra mã giảm giá.";
+      setCouponMsg(msg);
+      setCouponInfo(null);
+    }
+  };
+  const handleApplyCoupon = async () => {
+    if (!coupon.trim()) {
+      setDiscount(0);
+      setCouponMsg("Vui lòng nhập mã giảm giá.");
+      setCouponInfo(null);
+      return;
+    }
+    handleApplyCouponWithCode(coupon);
+  };
   const [billingInfo, setBillingInfo] = useState({
     userId: userInfo._id || null,
     fullName: userInfo.fullName || "",
@@ -70,7 +138,10 @@ const Checkout = () => {
         phone: billingInfo.phoneNumber,
         email: billingInfo.email,
         address: billingInfo.address
-      }
+      },
+      coupon: couponInfo ? couponInfo.code : undefined,
+      couponId: couponInfo ? couponInfo._id : undefined, 
+      discount: discount
     };
 
     try {
@@ -188,15 +259,37 @@ const Checkout = () => {
                 <span>Phí vận chuyển:</span>
                 <span className="font-semibold text-green-700">{shippingCharge} VND</span>
               </div>
+              {discount > 0 && (
+                <div className="flex justify-between text-green-600">
+                  <span>Khuyến mãi:</span>
+                  <span>- {discount} VND</span>
+                </div>
+              )}
               <div className="flex justify-between text-lg font-bold">
                 <span>Tổng cộng:</span>
-                <span className="text-green-800">{totalAmt + shippingCharge} VND</span>
+                <span className="text-green-800">{totalAmt + shippingCharge - discount} VND</span>
               </div>
             </div>
             <div className="discount-code mt-4 flex gap-2">
-              <input type="text" placeholder="Discount code" className="border rounded px-3 py-2 flex-1" />
-              <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition">Áp dụng</button>
+              <input
+                type="text"
+                placeholder="Discount code"
+                className="border rounded px-3 py-2 flex-1"
+                value={coupon}
+                onChange={e => setCoupon(e.target.value)}
+              />
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+                onClick={e => { e.preventDefault(); handleApplyCoupon(); }}
+              >
+                Áp dụng
+              </button>
             </div>
+            {couponMsg && (
+              <div className={`mt-2 text-sm ${discount > 0 ? "text-green-600" : "text-red-500"}`}>
+                {couponMsg}
+              </div>
+            )}
             <button
               onClick={handlePlaceOrder}
               className="w-full mt-6 py-3 bg-gradient-to-r from-green-500 to-green-700 text-white font-bold rounded shadow hover:from-green-600 hover:to-green-800 transition"

@@ -26,7 +26,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import AuthenService from '../../services/api/AuthenService';
 import { resetUserInfo } from "../../redux/slices/orebi.slice";
 import { useDispatch } from "react-redux";
-
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import {
   Outlet,
   useNavigate
@@ -200,7 +200,7 @@ export default function ManagerDashboardLaydout() {
                </ListItemButton>
               <ListItemButton onClick={handleOnClickCoupons}>
                 <ListItemIcon>
-                  <ShoppingCartIcon />
+                  <LocalOfferIcon />
                 </ListItemIcon>
                 <ListItemText primary="Mã Giảm Giá" />
               </ListItemButton>

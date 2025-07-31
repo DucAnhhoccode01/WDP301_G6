@@ -64,6 +64,11 @@ const orderSchema = new Schema({
         email: { type: String, required: true },
         phone: { type: String, required: true },
         address: { type: String, required: true }
+    },
+    couponId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Coupon',
+        required: false
     }
 }, { timestamps: true });
 
