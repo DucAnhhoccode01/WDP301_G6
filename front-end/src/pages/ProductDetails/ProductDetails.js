@@ -6,6 +6,7 @@ import ProductService from "../../services/api/ProductService";
 import Gallery from "../../components/Pictures/Gallery";
 import { FaLeaf, FaListUl } from "react-icons/fa";
 import Review from "../../components/Review/Review";
+import { useDiscount } from "../../context/DiscountContext"; // Thêm dòng này
 import "./image.css";
 
 const tabs = [
@@ -29,6 +30,8 @@ const ProductDetails = () => {
   const [activeTab, setActiveTab] = useState(tabs[0].id);
   const [loading, setLoading] = useState(true);
 
+  const { discountSuggestions } = useDiscount(); // Lấy danh sách gợi ý giảm giá
+
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
@@ -49,6 +52,22 @@ const ProductDetails = () => {
     }
     setPrevLocation(location.pathname);
   }, [location, _id]);
+
+  // Tìm discount suggestion cho sản phẩm này (nếu có)
+  let discountData = null;
+  if (discountSuggestions && productInfo) {
+    discountData = discountSuggestions.find(p => p._id === productInfo._id);
+  }
+
+  // Nếu có discount, tính originalInStock và discountPercent
+  let originalInStock, discountPercent;
+  if (discountData && discountData.suggestedDiscountPercent) {
+    discountPercent = discountData.suggestedDiscountPercent;
+    originalInStock = productInfo.inStock?.map(stock => ({
+      ...stock,
+      price: Math.round(stock.price / (1 - discountPercent / 100))
+    }));
+  }
 
   if (loading || !productInfo) {
     return (
@@ -71,11 +90,13 @@ const ProductDetails = () => {
             </section>
           </div>
           <div className="h-full w-full md:col-span-2 xl:col-span-4 xl:px-6 flex flex-col gap-6 justify-center bg-white rounded-lg shadow p-6">
-            {/* Nếu có suggestedDiscountPercent thì truyền thêm originalInStock và discountPercent */}
             <ProductInfo
-              productInfo={productInfo}
-              originalInStock={productInfo.suggestedDiscountPercent ? productInfo.inStock?.map(stock => ({ ...stock, price: Math.round(stock.price / (1 - productInfo.suggestedDiscountPercent / 100)) })) : undefined}
-              discountPercent={productInfo.suggestedDiscountPercent}
+              productInfo={{
+                ...productInfo,
+                suggestedDiscountPercent: discountPercent,
+              }}
+              originalInStock={originalInStock}
+              discountPercent={discountPercent}
             />
           </div>
         </div>

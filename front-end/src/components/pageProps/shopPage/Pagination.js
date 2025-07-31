@@ -4,28 +4,46 @@ import ReactPaginate from "react-paginate";
 import Product from "../../home/Products/Product";
 import { useSelector } from "react-redux";
 import ProductService from '../../../services/api/ProductService';
-function Items({ currentItems }) {
+import { useDiscount } from '../../../context/DiscountContext';
+function Items({ currentItems, discountSuggestions }) {
   return (
     <>
-      {currentItems.map((item) => (
-        <div key={item._id} className="w-full">
-          <Product
-            _id={item._id}
-            images={item.images}
-            name={item.name}
-            price={item.price}
-            color={item.variant }
-            isDeleted={item.isDeleted}
-            description={item.description}
-            pdf={item.pdf}
-            specs={item.specs}
-            inStock={item.inStock}
-            category={item.category.name}
-            brand={item.brand.name}
-            cost={item.cost}
-          />
-        </div>
-      ))}
+      {currentItems.map((item) => {
+        // Lấy discount suggestion từ context nếu có
+        const discountData = discountSuggestions?.find(p => p._id === item._id);
+        const discountPercent = discountData?.suggestedDiscountPercent || 0;
+        const discountedInStock = item.inStock?.map(stock => ({
+          ...stock,
+          originalPrice: stock.price,
+          price: discountPercent > 0 ? Math.round(stock.price * (1 - discountPercent / 100)) : stock.price,
+        })) || [];
+        return (
+          <div key={item._id} className="w-full relative">
+            {discountPercent > 0 && (
+              <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded z-10">
+                -{discountPercent}%
+              </span>
+            )}
+            <Product
+              _id={item._id}
+              images={item.images}
+              name={item.name}
+              price={discountedInStock[0]?.price || item.price}
+              color={discountedInStock[0]?.variant}
+              isDeleted={item.isDeleted}
+              description={item.description}
+              pdf={item.pdf}
+              specs={item.specs}
+              inStock={discountedInStock}
+              category={item.category?.name}
+              brand={item.brand?.name}
+              cost={item.cost}
+              originalInStock={item.inStock}
+              discountPercent={discountPercent}
+            />
+          </div>
+        );
+      })}
     </>
   );
 }
@@ -47,6 +65,8 @@ const Pagination = ({ itemsPerPage, sortOrder }) => {
   const checkedPrices = useSelector(
     (state) => state.orebiReducer.checkedPrices
   );
+
+  const { discountSuggestions = [] } = useDiscount();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -96,12 +116,12 @@ const Pagination = ({ itemsPerPage, sortOrder }) => {
     setItemOffset(newOffset);
     setItemStart(newStart);
   };
-  console.log("Filtered Products:", filteredProducts);
- console.log("Current Items:", currentItems);
+  // console.log("Filtered Products:", filteredProducts);
+  // console.log("Current Items:", currentItems);
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 mdl:gap-4 lg:gap-10">
-        <Items currentItems={currentItems} />
+        <Items currentItems={currentItems} discountSuggestions={discountSuggestions} />
       </div>
       <div className="flex flex-col mdl:flex-row justify-center mdl:justify-between items-center">
         <ReactPaginate

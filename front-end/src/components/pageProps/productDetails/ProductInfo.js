@@ -101,57 +101,29 @@ const ProductInfo = ({ productInfo, originalInStock = [], discountPercent }) => 
       }
       {isOutOfStock && <p className="text-red-500">Biến thể được chọn đã hết hàng</p>}
 
-      {/* Bảng biến thể, tồn kho, giá gốc, chiết khấu, giá sau giảm */}
-      {productInfo.inStock && productInfo.inStock.length > 0 && originalInStock.length > 0 && (
-        <div className="overflow-x-auto mt-2 mb-4">
-          <table className="table-auto w-full border rounded-lg shadow text-sm">
-            <thead>
-              <tr className="bg-green-100">
-                <th className="px-2 py-1">Biến thể</th>
-                <th className="px-2 py-1">Tồn kho</th>
-                <th className="px-2 py-1">Giá gốc</th>
-                <th className="px-2 py-1">Chiết khấu</th>
-                <th className="px-2 py-1">Giá sau giảm</th>
-              </tr>
-            </thead>
-            <tbody>
-              {productInfo.inStock.map((item, idx) => {
-                const original = originalInStock[idx];
-                const discount = original && original.price > item.price ? (original.price - item.price) : 0;
-                return (
-                  <tr key={item._id} className="even:bg-green-50">
-                    <td className="border px-2 py-1 font-semibold">{item.variant}</td>
-                    <td className="border px-2 py-1">{item.quantity}</td>
-                    <td className="border px-2 py-1 text-gray-400 line-through">{original?.price ? original.price + ' VND' : '-'}</td>
-                    <td className="border px-2 py-1 text-green-700 font-bold">{discount > 0 ? `-${discount} VND` : '-'}</td>
-                    <td className="border px-2 py-1 text-[#d0121a] font-semibold">{item.price} VND</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      )}
-      {/* Nếu không có originalInStock thì hiển thị như cũ */}
-      {(!originalInStock || originalInStock.length === 0) && (
-        <p className="font-medium text-lg">
-          <span className="font-normal">Biến thể:</span>{" "}
-          {productInfo.inStock?.map((item, idx) => (
-            <span key={item._id} className="inline-block mr-2 mb-1">
-              <button
-                onClick={() => handleVariantSelect(item.variant, item.quantity, item.price)}
-                className={`text-sm rounded-full px-3 py-1 ${selectedVariant === item.variant
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 text-gray-800"
-                  }`}
-              >
-                {item.variant}
-              </button>
-              <span className="ml-1 text-[#d0121a] font-semibold">{item.price} VND</span>
+      <p className="font-medium text-lg">
+        <span className="font-normal">Biến thể:</span>{" "}
+        {productInfo.inStock?.map((item, idx) => (
+          <span key={item._id} className="inline-block mr-2 mb-1">
+            <button
+              onClick={() => handleVariantSelect(item.variant, item.quantity, item.price)}
+              className={`text-sm rounded-full px-3 py-1 ${selectedVariant === item.variant
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-800"
+                }`}
+            >
+              {item.variant}
+            </button>
+            {/* Hiển thị giá từng biến thể, giá gốc nếu có */}
+            <span className="ml-1">
+              <span className="text-[#d0121a] font-semibold">{item.price} VND</span>
+              {originalInStock.length > 0 && item.price !== originalInStock[idx]?.price && (
+                <span className="text-gray-400 line-through ml-1">{originalInStock[idx]?.price} VND</span>
+              )}
             </span>
-          ))}
-        </p>
-      )}
+          </span>
+        ))}
+      </p>
       <button
         onClick={() => {
           if (!userInfo || !userInfo._id) {
