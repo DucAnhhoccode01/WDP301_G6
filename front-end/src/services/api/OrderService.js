@@ -144,6 +144,14 @@ class OrderService {
       throw error;
     }
   }
+ async updateProductStock(orderItems) {
+  try {
+    const response = await api.post('/orderstock/update-stock', { items: orderItems });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
 }
 
 export default new OrderService();

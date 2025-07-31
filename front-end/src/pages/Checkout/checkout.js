@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+// Import DiscountContext để refetch khi checkout thành công
+import { DiscountContext } from '../../context/DiscountContext';
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -116,6 +118,8 @@ const Checkout = () => {
     });
   };
 
+  const discountContext = useContext(DiscountContext);
+
   const handlePlaceOrder = async () => {
     if (!billingInfo.fullName || !billingInfo.phoneNumber) {
       alert('Please fill out all required fields.');
@@ -147,6 +151,22 @@ const Checkout = () => {
     try {
       if (paymentMethod === 'Cash On Delivery') {
         await OrderService.createOrder(orderData);
+        // Gọi cập nhật tồn kho sau khi đặt hàng thành công
+        const stockItems = products.map(product => ({
+          productId: product._id,
+          variant: product.variant,
+          quantity: product.quantity
+        }));
+        try {
+          await OrderService.updateProductStock(stockItems);
+        } catch (err) {
+          // Có thể log lỗi cập nhật tồn kho, nhưng vẫn cho phép đặt hàng thành công
+          console.error('Lỗi cập nhật tồn kho:', err);
+        }
+        // Refetch lại discount context nếu có hàm fetch lại
+        if (discountContext && typeof discountContext.refetch === 'function') {
+          discountContext.refetch();
+        }
         alert("Your order has been placed successfully!");
         dispatch(resetCart());
         navigate("/order-history");
