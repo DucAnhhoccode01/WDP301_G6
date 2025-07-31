@@ -31,7 +31,7 @@ const Product = (props) => {
         images: props.images,
         isDeleted: props.isDeleted,
         price: defaultPrice,
-        color: defaultColor,
+        variant: defaultColor,
         cost: props.cost,
         inStock: props.inStock,
       })

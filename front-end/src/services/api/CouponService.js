@@ -17,6 +17,10 @@ class CouponService {
     const res = await api.delete(`/coupon/${id}`);
     return res.data;
   }
+  async validateCoupon({ code, total }) {
+    const res = await api.post('/coupon/validate', { code, total });
+    return res.data;
+  }
 }
 
 export default new CouponService();

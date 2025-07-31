@@ -75,6 +75,8 @@ export default function UpdateProduct({ targetProduct }) {
     const [showNotification, setShowNotification] = React.useState(false);
     const [contentNotification, setContentNotification] = React.useState("");
     const [severity, setSeriverity] = React.useState("info");
+    const [expiryDate, setExpiryDate] = React.useState(targetProduct?.expiryDate ? targetProduct.expiryDate.slice(0, 10) : '');
+const [importDate, setImportDate] = React.useState(targetProduct?.importDate ? targetProduct.importDate.slice(0, 10) : '');
     const handleShowNotification = (isShowNotification) => {
         setShowNotification(isShowNotification);
     }
@@ -108,7 +110,21 @@ export default function UpdateProduct({ targetProduct }) {
         e.preventDefault();
          if (!validateForm()) return;
          try {
-        const result = await ProductService.updateProduct(targetProduct._id, name, description, brand, category, price, cost, isAvailable, specs, instock, images);
+        const result = await ProductService.updateProduct(
+            targetProduct._id,
+            name,
+            description,
+            brand,
+            category,
+            price,
+            cost,
+            isAvailable,
+            specs,
+            instock,
+            images,
+            expiryDate,
+            importDate
+        );
         if (result.data?.success === true) {
             setShowNotification(true);
             setContentNotification("Đã cập nhật sản phẩm thành công!");
@@ -496,7 +512,7 @@ export default function UpdateProduct({ targetProduct }) {
                                         <TableFooter>
                                             <TableRow>
                                                 <TableCell component="th" scope="row">
-                                                    <TextField id="standard-basic" label="Size" variant="standard" value={colorInstock} onChange={event => setColorInstock(event.target.value)} />
+                                                    <TextField id="standard-basic" label="Biến thể" variant="standard" value={colorInstock} onChange={event => setColorInstock(event.target.value)} />
                                                 </TableCell>
                                                 <TableCell >
                                                     <TextField id="standard-basic" type="number" label="Số lượng" variant="standard" value={quantityInstock} onChange={event => setQuantityInstock(event.target.value)} />
@@ -513,7 +529,7 @@ export default function UpdateProduct({ targetProduct }) {
                                 </TableContainer>
                                   {errors.instock && <FormHelperText error>{errors.instock}</FormHelperText>}
                             </Grid>
-                            <Grid item xs={4}>
+                            {/* <Grid item xs={4}>
                                 <FormControl fullWidth sx={{ m: 1 }} variant="standard">
                                     <InputLabel htmlFor="standard-adornment-amount">Giá bán</InputLabel>
                                     <Input
@@ -534,7 +550,29 @@ export default function UpdateProduct({ targetProduct }) {
                                         onChange={e => setCost(e.target.value)}
                                     />
                                 </FormControl>
-                            </Grid>
+                            </Grid> */}
+                            <Grid item xs={3}>
+    <TextField
+        label="Hạn sử dụng"
+        type="date"
+        variant="standard"
+        fullWidth
+        InputLabelProps={{ shrink: true }}
+        value={expiryDate}
+        onChange={e => setExpiryDate(e.target.value)}
+    />
+</Grid>
+<Grid item xs={3}>
+    <TextField
+        label="Ngày nhập"
+        type="date"
+        variant="standard"
+        fullWidth
+        InputLabelProps={{ shrink: true }}
+        value={importDate}
+        onChange={e => setImportDate(e.target.value)}
+    />
+</Grid>
                             <Grid item xs={1}></Grid>
                             <Grid item xs={3}>
                                 <TextField

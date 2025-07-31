@@ -77,6 +77,10 @@ export default function AddProduct() {
     const [showNotification, setShowNotification] = React.useState(false);
     const [contentNotification, setContentNotification] = React.useState("");
     const [severity, setSeriverity] = React.useState("info");
+
+
+    const [expiryDate, setExpiryDate] = React.useState('');
+const [importDate, setImportDate] = React.useState('');
     const handleShowNotification = (isShowNotification) => {
         setShowNotification(isShowNotification);
     }
@@ -103,6 +107,8 @@ export default function AddProduct() {
         setCost(0);
         setIsAvaiable(true);
         setImages([]);
+           setExpiryDate('');
+    setImportDate('');
     }
     const validateForm = () => {
         let newErrors = {};
@@ -128,7 +134,9 @@ export default function AddProduct() {
         e.preventDefault();
         if (!validateForm()) return;
         try {
-            const result = await ProductService.addProduct(name, description, brand, category, price, cost, isAvailable, specs, instock, images);
+            const result = await ProductService.addProduct(
+            name, description, brand, category, price, cost, isAvailable, specs, instock, images, expiryDate, importDate
+        );
             if (result.data?.success === true) {
                 setShowNotification(true);
                 setContentNotification("Add product successfully!");
@@ -528,7 +536,7 @@ export default function AddProduct() {
                                                     <TableFooter>
                                                         <TableRow>
                                                             <TableCell component="th" scope="row">
-                                                                <TextField id="standard-basic" label="Size" variant="standard" value={colorInstock} onChange={event => setColorInstock(event.target.value)} />
+                                                                <TextField id="standard-basic" label="Biến thể" variant="standard" value={colorInstock} onChange={event => setColorInstock(event.target.value)} />
                                                             </TableCell>
                                                             <TableCell >
                                                                 <TextField id="standard-basic" type="number" label="Số lượng" variant="standard" value={quantityInstock} onChange={event => setQuantityInstock(event.target.value)} />
@@ -545,7 +553,28 @@ export default function AddProduct() {
                                             </TableContainer>
                                             {errors.instock && <FormHelperText error>{errors.instock}</FormHelperText>}
                                         </Grid>
-
+ <Grid item xs={3}>
+            <TextField
+                label="Hạn sử dụng"
+                type="date"
+                variant="standard"
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+                value={expiryDate}
+                onChange={e => setExpiryDate(e.target.value)}
+            />
+        </Grid>
+        <Grid item xs={3}>
+            <TextField
+                label="Ngày nhập"
+                type="date"
+                variant="standard"
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+                value={importDate}
+                onChange={e => setImportDate(e.target.value)}
+            />
+        </Grid>
                                         <Grid item xs={1}></Grid>
                                         <Grid item xs={3}>
                                             <TextField
