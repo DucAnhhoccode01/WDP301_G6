@@ -8,6 +8,8 @@ const wishlistRouter = require('./wishlist.router');
 const reviewRouter = require('./review.router');
 const couponRouter = require('./coupon.router');
 const couponValidateRouter = require('./coupon.validate.router');
+
+const dashboardRouter = require('./dashboard.router');
 const express = require('express');
 const router = express.Router();
 
@@ -21,4 +23,5 @@ router.use('/wishlist', wishlistRouter);
 router.use('/review', reviewRouter);
 router.use('/coupon', couponRouter);
 router.use('/coupon', couponValidateRouter);
+router.use('/dashboard', dashboardRouter);
 module.exports = router;

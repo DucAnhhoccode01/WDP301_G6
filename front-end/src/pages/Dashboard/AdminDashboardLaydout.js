@@ -23,7 +23,8 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import AuthenService from '../../services/api/AuthenService';
 import { resetUserInfo } from "../../redux/slices/orebi.slice";
 import { useDispatch } from "react-redux";
-
+//icons dashboard 
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import {
   Outlet,
   useNavigate
@@ -117,6 +118,9 @@ export default function AdminDashboardLaydout() {
     dispatch(resetUserInfo());
     navigate('/signin');
   }
+  const handleOnClickDashboards = () => {
+    navigate("/admin/dashboard");
+  }
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -167,6 +171,12 @@ export default function AdminDashboardLaydout() {
           <Divider />
           <List component="nav">
             <React.Fragment>
+              <ListItemButton onClick={handleOnClickDashboards}>
+                <ListItemIcon>
+                  <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary="Tài khoản" />
+              </ListItemButton>
               <ListItemButton onClick={handleOnClickAccounts}>
                 <ListItemIcon>
                   <AccountBoxIcon />

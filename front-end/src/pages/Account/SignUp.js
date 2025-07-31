@@ -12,6 +12,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [checked, setChecked] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
   // ============= Initial State End here ===============
   // ============= Error Msg Start here =================
   const [errClientName, setErrClientName] = useState("");
@@ -20,6 +21,7 @@ const SignUp = () => {
   const [errPassword, setErrPassword] = useState("");
   const [errAddress, setErrAddress] = useState("");
   // ============= Error Msg End here ===================
+  const [errConfirmPassword, setErrConfirmPassword] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   // ============= Event Handler Start here =============
@@ -38,6 +40,10 @@ const SignUp = () => {
   const handlePassword = (e) => {
     setPassword(e.target.value);
     setErrPassword("");
+  };
+  const handleConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
+    setErrConfirmPassword("");
   };
   const handleAddress = (e) => {
     setAddress(e.target.value);
@@ -79,6 +85,11 @@ const SignUp = () => {
       if (!address) {
         setErrAddress("Enter your address");
       }
+      if (!confirmPassword) {
+        setErrConfirmPassword("Please confirm your password");
+      } else if (password && confirmPassword && password !== confirmPassword) {
+        setErrConfirmPassword("Passwords do not match");
+      }
       // ============== Getting the value ==============
       if (
         clientName &&
@@ -86,7 +97,9 @@ const SignUp = () => {
         EmailValidation(email) &&
         password &&
         password.length >= 6 &&
-        address
+        address &&
+        confirmPassword &&
+        password === confirmPassword
       ) {
         try {
           const data = { fullName: clientName, email, phoneNumber: phone, password, address };
@@ -101,6 +114,7 @@ const SignUp = () => {
             setPhone("");
             setPassword("");
             setAddress("");
+            setConfirmPassword("");
           } else {
             setErrorMsg(response.message);
           }
@@ -213,6 +227,25 @@ const SignUp = () => {
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
                       <span className="font-bold italic mr-1">!</span>
                       {errPassword}
+                    </p>
+                  )}
+                </div>
+                {/* Confirm Password */}
+                <div className="flex flex-col gap-.5">
+                  <p className="font-titleFont text-base font-semibold text-gray-600">
+                    Xác nhận mật khẩu
+                  </p>
+                  <input
+                    onChange={handleConfirmPassword}
+                    value={confirmPassword}
+                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
+                    type="password"
+                    placeholder="Confirm password"
+                  />
+                  {errConfirmPassword && (
+                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
+                      <span className="font-bold italic mr-1">!</span>
+                      {errConfirmPassword}
                     </p>
                   )}
                 </div>

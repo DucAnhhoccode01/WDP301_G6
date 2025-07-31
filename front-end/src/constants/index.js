@@ -68,7 +68,7 @@ export const navBarList = [
   {
     _id: 1005,
     title: "Khuyến mãi",
-    link: "/offers",
+    link: "/discount-suggestions",
   },
 ];
 // =================== NavBarList End here ======================

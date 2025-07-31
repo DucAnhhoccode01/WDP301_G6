@@ -33,7 +33,7 @@ const Sale = () => {
 
       <div className="w-full lg:w-1/2 flex flex-col gap-6">
         <div className="w-full aspect-w-4 aspect-h-3">
-          <Link to="/shop">
+          <Link to="/menu">
             <Image
               className="h-full w-full object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
               imgSrc={saleImgTwo}
@@ -41,7 +41,7 @@ const Sale = () => {
           </Link>
         </div>
         <div className="w-full aspect-w-4 aspect-h-3">
-          <Link to="/shop">
+          <Link to="/menu">
             <Image
               className="h-full w-full object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
               imgSrc={saleImgThree}

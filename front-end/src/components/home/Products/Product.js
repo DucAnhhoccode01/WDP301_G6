@@ -3,14 +3,16 @@ import { FaRegHeart, FaHeart, FaCartPlus, FaInfoCircle } from "react-icons/fa";
 import Image from "../../designLayouts/Image";
 import Badge from "./Badge";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart, addToWishlist } from "../../../redux/orebiSlice";
+import { toast } from "react-toastify";
 import ProductService from '../../../services/api/ProductService';
 import ImgDefault from '../../../assets/images/default.jpg';
 
 const Product = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userInfo = useSelector(state => state.orebiReducer.userInfo);
   const [isWished, setIsWished] = useState(false);
 
   const _id = props._id;
@@ -20,9 +22,16 @@ const Product = (props) => {
   const defaultColor = props.inStock?.[0]?.variant  || "";
   const defaultPrice = props.inStock?.[0]?.price || props.price;
   const isOutOfStock = props.inStock?.reduce((sum, item) => sum + (item.quantity || 0), 0) === 0;
+  // Lấy giá gốc nếu có truyền vào (dùng cho trang gợi ý giảm giá)
+  const originalInStock = props.originalInStock || [];
 
   const handleAddToCart = () => {
     if (isOutOfStock) return;
+    if (!userInfo || !userInfo._id) {
+      toast.info("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!");
+      // navigate('/signin');
+      return;
+    }
     dispatch(
       addToCart({
         _id: props._id,
@@ -39,6 +48,11 @@ const Product = (props) => {
   };
 
   const handleWishList = () => {
+    if (!userInfo || !userInfo._id) {
+      toast.info("Vui lòng đăng nhập để thêm sản phẩm vào wishlist!");
+      // navigate('/signin');
+      return;
+    }
     setIsWished((prev) => !prev); // Toggle UI icon
     dispatch(
       addToWishlist({
@@ -101,14 +115,31 @@ const Product = (props) => {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-gray-600 text-sm">{props.category?.name || props.category}</span>
-          <span className="text-[#d0121a] font-semibold text-lg">{defaultPrice} VND</span>
+          <span className="text-[#d0121a] font-semibold text-lg">
+            {defaultPrice} VND
+            {/* Nếu có giá gốc và giá đã giảm, hiển thị giá gốc gạch ngang */}
+            {originalInStock.length > 0 && props.inStock?.[0]?.price !== originalInStock[0]?.price && (
+              <span className="text-gray-400 text-base line-through ml-2">{originalInStock[0]?.price} VND</span>
+            )}
+          </span>
         </div>
         <div className="flex flex-wrap gap-2 mt-1">
-          {props.inStock?.map((item) => (
-            <span key={item._id} className="bg-gray-100 px-2 py-1 rounded text-xs">
-              {item.variant }: {item.quantity}
-            </span>
-          ))}
+          {props.inStock?.map((item, idx) => {
+            const original = originalInStock[idx];
+            return (
+              <span key={item._id} className="bg-gray-100 px-2 py-1 rounded text-xs flex flex-col items-start">
+                <span>
+                  {item.variant}: {item.quantity}
+                </span>
+                <span>
+                  <span className="text-[#d0121a] font-semibold">{item.price} VND</span>
+                  {original && item.price !== original.price && (
+                    <span className="text-gray-400 line-through ml-1">{original.price} VND</span>
+                  )}
+                </span>
+              </span>
+            );
+          })}
         </div>
         <div className="flex gap-2 mt-3">
           <button

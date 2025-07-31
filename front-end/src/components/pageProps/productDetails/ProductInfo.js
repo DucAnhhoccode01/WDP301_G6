@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../redux/orebiSlice";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const ProductInfo = ({ productInfo }) => {
+const ProductInfo = ({ productInfo, originalInStock = [], discountPercent }) => {
   const highlightStyle = {
     color: "#d0121a",
     fontWeight: "bold",
@@ -25,6 +27,8 @@ const ProductInfo = ({ productInfo }) => {
   };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userInfo = useSelector(state => state.orebiReducer.userInfo);
 
   // Lấy giá và biến thể mặc định từ inStock đầu tiên
   const [selectedVariant, setSelectedVariant] = useState(
@@ -61,12 +65,19 @@ const ProductInfo = ({ productInfo }) => {
   return (
     <div className="flex flex-col gap-5">
       <h2 className="text-4xl font-semibold">{productInfo.name}</h2>
-      <p className="text-2xl font-semibold">
+      <p className="text-2xl font-semibold flex items-center gap-2">
         {selectedPrice} VND
-        <span className="text-xl font-semibold line-through ml-2">540</span>
-        <span className="text-xs ml-2 inline-flex items-center px-3 py-1 rounded-full bg-green-600 text-white">
-          Giảm 100k
-        </span>
+        {/* Nếu có giá gốc và giá đã giảm, hiển thị giá gốc gạch ngang */}
+        {originalInStock.length > 0 && productInfo.inStock && productInfo.inStock.length > 0 && selectedPrice !== originalInStock[productInfo.inStock.findIndex(i => i.variant === selectedVariant)]?.price && (
+          <span className="text-xl font-semibold line-through ml-2 text-gray-400">
+            {originalInStock[productInfo.inStock.findIndex(i => i.variant === selectedVariant)]?.price} VND
+          </span>
+        )}
+        {discountPercent && (
+          <span className="text-xs ml-2 inline-flex items-center px-3 py-1 rounded-full bg-red-500 text-white">
+            -{discountPercent}%
+          </span>
+        )}
       </p>
       <hr />
       <p className="text-base text-gray-600">{renderDescription()}</p>
@@ -90,23 +101,64 @@ const ProductInfo = ({ productInfo }) => {
       }
       {isOutOfStock && <p className="text-red-500">Biến thể được chọn đã hết hàng</p>}
 
-      <p className="font-medium text-lg">
-        <span className="font-normal">Biến thể:</span>{" "}
-        {productInfo.inStock?.map((item) => (
-          <button
-            key={item._id}
-            onClick={() => handleVariantSelect(item.variant, item.quantity, item.price)}
-            className={`text-sm rounded-full px-3 py-1 mr-2 ${selectedVariant === item.variant
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200 text-gray-800"
-              }`}
-          >
-            {item.variant}
-          </button>
-        ))}
-      </p>
+      {/* Bảng biến thể, tồn kho, giá gốc, chiết khấu, giá sau giảm */}
+      {productInfo.inStock && productInfo.inStock.length > 0 && originalInStock.length > 0 && (
+        <div className="overflow-x-auto mt-2 mb-4">
+          <table className="table-auto w-full border rounded-lg shadow text-sm">
+            <thead>
+              <tr className="bg-green-100">
+                <th className="px-2 py-1">Biến thể</th>
+                <th className="px-2 py-1">Tồn kho</th>
+                <th className="px-2 py-1">Giá gốc</th>
+                <th className="px-2 py-1">Chiết khấu</th>
+                <th className="px-2 py-1">Giá sau giảm</th>
+              </tr>
+            </thead>
+            <tbody>
+              {productInfo.inStock.map((item, idx) => {
+                const original = originalInStock[idx];
+                const discount = original && original.price > item.price ? (original.price - item.price) : 0;
+                return (
+                  <tr key={item._id} className="even:bg-green-50">
+                    <td className="border px-2 py-1 font-semibold">{item.variant}</td>
+                    <td className="border px-2 py-1">{item.quantity}</td>
+                    <td className="border px-2 py-1 text-gray-400 line-through">{original?.price ? original.price + ' VND' : '-'}</td>
+                    <td className="border px-2 py-1 text-green-700 font-bold">{discount > 0 ? `-${discount} VND` : '-'}</td>
+                    <td className="border px-2 py-1 text-[#d0121a] font-semibold">{item.price} VND</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+      {/* Nếu không có originalInStock thì hiển thị như cũ */}
+      {(!originalInStock || originalInStock.length === 0) && (
+        <p className="font-medium text-lg">
+          <span className="font-normal">Biến thể:</span>{" "}
+          {productInfo.inStock?.map((item, idx) => (
+            <span key={item._id} className="inline-block mr-2 mb-1">
+              <button
+                onClick={() => handleVariantSelect(item.variant, item.quantity, item.price)}
+                className={`text-sm rounded-full px-3 py-1 ${selectedVariant === item.variant
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 text-gray-800"
+                  }`}
+              >
+                {item.variant}
+              </button>
+              <span className="ml-1 text-[#d0121a] font-semibold">{item.price} VND</span>
+            </span>
+          ))}
+        </p>
+      )}
       <button
-        onClick={() =>
+        onClick={() => {
+          if (!userInfo || !userInfo._id) {
+              toast.info("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng");
+            // navigate('/signin');
+            return;
+          }
           dispatch(
             addToCart({
               _id: productInfo._id,
@@ -119,10 +171,9 @@ const ProductInfo = ({ productInfo }) => {
               variant: selectedVariant,
               cost: productInfo.cost,
             })
-          )
-        }
-        className={`w-full py-4 bg-blue-500 hover:bg-blue-600 duration-300 text-white text-lg font-titleFont ${productInfo.isDeleted || isOutOfStock ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
+          );
+        }}
+        className={`w-full py-4 bg-blue-500 hover:bg-blue-600 duration-300 text-white text-lg font-titleFont ${productInfo.isDeleted || isOutOfStock ? 'opacity-50 cursor-not-allowed' : ''}`}
         disabled={productInfo.isDeleted || isOutOfStock}
       >
         Thêm vào giỏ hàng

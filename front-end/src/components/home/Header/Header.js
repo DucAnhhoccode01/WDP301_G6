@@ -10,6 +10,7 @@ import Flex from "../../designLayouts/Flex";
 import { FaSearch, FaUser, FaCaretDown, FaShoppingCart } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { BsSuitHeartFill } from "react-icons/bs";
+import { toast } from "react-toastify";
 import CategoryService from "../../../services/api/CategoryService";
 import ProductService from "../../../services/api/ProductService";
 import AuthenService from "../../../services/api/AuthenService";
@@ -234,22 +235,38 @@ return (
               )}
             </motion.ul>
           )}
-          <Link to="/cart">
-            <div className="relative text-white">
-              <FaShoppingCart />
-              <span className="absolute font-titleFont top-3 -right-2 text-xs w-4 h-4 flex items-center justify-center rounded-full bg-green-900 text-white">
-                {cartTotalCount ? cartTotalCount : 0}
-              </span>
-            </div>
-          </Link>
-          <Link to="/wishlist">
-            <div className="relative text-white">
-              <BsSuitHeartFill />
-              <span className="absolute font-titleFont top-3 -right-2 text-xs w-4 h-4 flex items-center justify-center rounded-full bg-green-900 text-white">
-                {wistlistTotalCount ? wistlistTotalCount : 0}
-              </span>
-            </div>
-          </Link>
+          <div
+            onClick={() => {
+              if (!isLoggedIn) {
+                toast.info("Đăng nhập để sử dụng tính năng này");
+                // navigate('/signin');
+                return;
+              }
+              navigate('/cart');
+            }}
+            className="relative text-white cursor-pointer"
+          >
+            <FaShoppingCart />
+            <span className="absolute font-titleFont top-3 -right-2 text-xs w-4 h-4 flex items-center justify-center rounded-full bg-green-900 text-white">
+              {cartTotalCount ? cartTotalCount : 0}
+            </span>
+          </div>
+          <div
+            onClick={() => {
+              if (!isLoggedIn) {
+                toast.info("Đăng nhập để sử dụng tính năng này");
+                // navigate('/signin');
+                return;
+              }
+              navigate('/wishlist');
+            }}
+            className="relative text-white cursor-pointer"
+          >
+            <BsSuitHeartFill />
+            <span className="absolute font-titleFont top-3 -right-2 text-xs w-4 h-4 flex items-center justify-center rounded-full bg-green-900 text-white">
+              {wistlistTotalCount ? wistlistTotalCount : 0}
+            </span>
+          </div>
         </div>
         <HiMenuAlt2
           onClick={() => setSidenav(!sidenav)}

@@ -308,7 +308,7 @@ const Checkout = () => {
           <div className="empty-cart-content text-center">
             <h1 className="text-2xl font-bold mb-2 text-green-700">Giỏ hàng của bạn đang trống.</h1>
             <p className="mb-4 text-gray-600">Có vẻ như bạn chưa thêm bất kỳ sản phẩm nào vào giỏ hàng. Hãy tiếp tục mua sắm để tìm những món ăn ngon!</p>
-            <Link to="/shop">
+            <Link to="/menu">
               <button className="bg-green-500 rounded-md px-8 py-2 text-white font-semibold hover:bg-green-700 transition">
                 Tiếp tục mua sắm
               </button>

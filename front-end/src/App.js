@@ -51,6 +51,8 @@ import PayOSReturnHandler from "./pages/Thank/PayOSReturnHandler";
 import CancelReturnHandler from "./pages/Thank/CancelReturnHandler";
 import { DiscountProvider } from './context/DiscountContext';
 import CouponManager from "./pages/Dashboard/ManageCoupon/CouponManager";
+import AdminDashboard from "./pages/Dashboard/AdminDashboard";
+import DiscountSuggestionsPage from "./pages/Discount/DiscountSuggestionsPage";
 const Layout = () => {
   return (
     <div>
@@ -99,6 +101,7 @@ const router = createBrowserRouter(
         <Route path="/order-history" element={<MyOrders />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/verify-email" element={<VerifyEmail />}></Route>
+        <Route path="/discount-suggestions" element={<DiscountSuggestionsPage />} />
       </Route>
       <Route path="/" element={<ManagerDashboardLaydout />}>
        <Route path="/manager-dashboard" element={<ManageProfit />}></Route>
@@ -108,11 +111,12 @@ const router = createBrowserRouter(
         <Route path="/my-profile" element={<MyProfile />}></Route>
         <Route path="/update-order/:orderId" element={<EditOrder />}></Route>
         <Route path="/dashboard/coupons" element={<CouponManager />} />
-       
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Route>
       <Route path="/" element={<AdminDashboardLaydout />}>
         <Route path="/manage-account" element={<ManageAccount />}></Route>
         <Route path="/manage-profit" element={<ManageProfit />}></Route>
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/signin" element={<SignIn />}></Route>

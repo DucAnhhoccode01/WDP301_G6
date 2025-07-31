@@ -71,7 +71,12 @@ const ProductDetails = () => {
             </section>
           </div>
           <div className="h-full w-full md:col-span-2 xl:col-span-4 xl:px-6 flex flex-col gap-6 justify-center bg-white rounded-lg shadow p-6">
-            <ProductInfo productInfo={productInfo} />
+            {/* Nếu có suggestedDiscountPercent thì truyền thêm originalInStock và discountPercent */}
+            <ProductInfo
+              productInfo={productInfo}
+              originalInStock={productInfo.suggestedDiscountPercent ? productInfo.inStock?.map(stock => ({ ...stock, price: Math.round(stock.price / (1 - productInfo.suggestedDiscountPercent / 100)) })) : undefined}
+              discountPercent={productInfo.suggestedDiscountPercent}
+            />
           </div>
         </div>
         <div className="mt-8">

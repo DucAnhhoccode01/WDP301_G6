@@ -238,22 +238,29 @@ class ProductService {
     }
     async getAllDiscountSuggestions() {
     try {
+        // Tự động ẩn sản phẩm hết hạn
+        await Product.updateMany(
+            { expiryDate: { $lte: new Date() }, isAvailable: true },
+            { $set: { isAvailable: false } }
+        );
+
         const now = new Date();
         const soonExpireDate = new Date();
         soonExpireDate.setDate(now.getDate() + 7);
 
+        // Lấy sản phẩm sắp hết hạn, chưa bị xóa và còn khả dụng
         const products = await Product.find({
+            isDeleted: false,
+            isAvailable: true,
             expiryDate: { $gt: now, $lte: soonExpireDate }
-        }).populate('brand').populate('category');
-
+        })
+        .populate('brand')
+        .populate('category')
+        .lean();
         const discountSuggestions = products.map(p => ({
-            _id: p._id,
-            name: p.name,
-            expiryDate: p.expiryDate,
-            brand: p.brand,
-            category: p.category,
+            ...p,
             reason: 'Sản phẩm sắp hết hạn',
-            suggestedDiscountPercent: 20 // Gợi ý giảm 20%
+            suggestedDiscountPercent: 20
         }));
 
         return discountSuggestions;
