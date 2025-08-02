@@ -66,11 +66,11 @@ const ProductInfo = ({ productInfo, originalInStock = [], discountPercent }) => 
     <div className="flex flex-col gap-5">
       <h2 className="text-4xl font-semibold">{productInfo.name}</h2>
       <p className="text-2xl font-semibold flex items-center gap-2">
-        {selectedPrice} VND
+        {selectedPrice.toLocaleString()} VND
         {/* Nếu có giá gốc và giá đã giảm, hiển thị giá gốc gạch ngang */}
         {originalInStock.length > 0 && productInfo.inStock && productInfo.inStock.length > 0 && selectedPrice !== originalInStock[productInfo.inStock.findIndex(i => i.variant === selectedVariant)]?.price && (
           <span className="text-xl font-semibold line-through ml-2 text-gray-400">
-            {originalInStock[productInfo.inStock.findIndex(i => i.variant === selectedVariant)]?.price} VND
+            {originalInStock[productInfo.inStock.findIndex(i => i.variant === selectedVariant)]?.price.toLocaleString()} VND
           </span>
         )}
         {discountPercent && (
@@ -116,9 +116,9 @@ const ProductInfo = ({ productInfo, originalInStock = [], discountPercent }) => 
             </button>
             {/* Hiển thị giá từng biến thể, giá gốc nếu có */}
             <span className="ml-1">
-              <span className="text-[#d0121a] font-semibold">{item.price} VND</span>
+              <span className="text-[#d0121a] font-semibold">{item.price.toLocaleString()} VND</span>
               {originalInStock.length > 0 && item.price !== originalInStock[idx]?.price && (
-                <span className="text-gray-400 line-through ml-1">{originalInStock[idx]?.price} VND</span>
+                <span className="text-gray-400 line-through ml-1">{originalInStock[idx]?.price.toLocaleString()} VND</span>
               )}
             </span>
           </span>

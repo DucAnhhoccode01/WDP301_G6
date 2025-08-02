@@ -32,7 +32,7 @@ const ItemCard = ({ item }) => {
       </div>
       <div className="col-span-5 mdl:col-span-3 flex items-center justify-between py-4 mdl:py-0 px-4 mdl:px-0 gap-6 mdl:gap-0">
         <div className="flex w-1/3 items-center text-lg font-semibold">
-          {item.price} VND
+          {item.price.toLocaleString()} VND
         </div>
         <div className="w-1/3 flex items-center gap-6 text-lg">
           <span
@@ -58,7 +58,7 @@ const ItemCard = ({ item }) => {
           </span>
         </div>
         <div className="w-1/3 flex items-center font-titleFont font-bold text-lg">
-          <p>{item.quantity * item.price} VND</p>
+          <p>{(item.quantity * item.price).toLocaleString()} VND</p>
         </div>
       </div>
     </div>

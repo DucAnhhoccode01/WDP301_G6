@@ -62,7 +62,7 @@ const Cart = () => {
       }
     } catch (err) {
       setDiscount(0);
-     const msg = err?.response?.data?.message || err.message || "Có lỗi khi kiểm tra mã giảm giá.";
+      const msg = err?.response?.data?.message || err.message || "Có lỗi khi kiểm tra mã giảm giá.";
       setCouponMsg(msg);
       setCouponInfo(null);
     }
@@ -91,7 +91,7 @@ const Cart = () => {
         <div className="pb-20">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold">
-              Bạn có {totalItems} mặt hàng{totalItems !== 1} trong giỏ hàng 
+              Bạn có {totalItems} mặt hàng{totalItems !== 1} trong giỏ hàng
             </h2>
             <button
               onClick={() => dispatch(resetCart())}
@@ -143,7 +143,7 @@ const Cart = () => {
                 <p className="flex items-center justify-between border-b py-1.5 text-lg px-4 font-medium">
                   Giá tiền
                   <span className="font-semibold tracking-wide font-titleFont">
-                    {totalAmt} VND
+                    {totalAmt.toLocaleString()} VND
                   </span>
                 </p>
                 <p className="flex items-center justify-between border-b py-1.5 text-lg px-4 font-medium">
@@ -161,7 +161,7 @@ const Cart = () => {
                 <p className="flex items-center justify-between py-1.5 text-lg px-4 font-bold">
                   Tổng tiền
                   <span className="tracking-wide text-lg font-titleFont">
-                    {totalAmt + shippingCharge - discount} VND
+                    {(totalAmt + shippingCharge - discount).toLocaleString()} VND
                   </span>
                 </p>
               </div>

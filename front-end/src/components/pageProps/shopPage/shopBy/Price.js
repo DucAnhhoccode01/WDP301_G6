@@ -47,7 +47,7 @@ const Price = () => {
                 className="accent-green-600 w-5 h-5"
               />
               <label htmlFor={item._id} className="text-lg select-none w-full cursor-pointer">
-                {item.priceOne} VND - {item.priceTwo} VND
+                {item.priceOne.toLocaleString()} VND - {item.priceTwo.toLocaleString()} VND
               </label>
             </li>
           ))}
