@@ -116,7 +116,7 @@ const Product = (props) => {
         <div className="flex items-center justify-between">
           <span className="text-gray-600 text-sm">{props.category?.name || props.category}</span>
           <span className="text-[#d0121a] font-semibold text-lg">
-            {defaultPrice} VND
+            {defaultPrice.toLocaleString()} VND
             {/* Nếu có giá gốc và giá đã giảm, hiển thị giá gốc gạch ngang */}
             {originalInStock.length > 0 && props.inStock?.[0]?.price !== originalInStock[0]?.price && (
               <span className="text-gray-400 text-base line-through ml-2">{originalInStock[0]?.price} VND</span>
@@ -132,9 +132,9 @@ const Product = (props) => {
                   {item.variant}: {item.quantity}
                 </span>
                 <span>
-                  <span className="text-[#d0121a] font-semibold">{item.price} VND</span>
+                  <span className="text-[#d0121a] font-semibold">{item.price.toLocaleString()} VND</span>
                   {original && item.price !== original.price && (
-                    <span className="text-gray-400 line-through ml-1">{original.price} VND</span>
+                    <span className="text-gray-400 line-through ml-1">{original.price.toLocaleString()} VND</span>
                   )}
                 </span>
               </span>

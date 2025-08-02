@@ -273,7 +273,7 @@ const Checkout = () => {
             <div className="order-total border-t pt-4 space-y-2">
               <div className="flex justify-between">
                 <span>Tổng phụ:</span>
-                <span className="font-semibold text-green-700">{totalAmt} VND</span>
+                <span className="font-semibold text-green-700">{totalAmt.toLocaleString()} VND</span>
               </div>
               <div className="flex justify-between">
                 <span>Phí vận chuyển:</span>
@@ -287,7 +287,7 @@ const Checkout = () => {
               )}
               <div className="flex justify-between text-lg font-bold">
                 <span>Tổng cộng:</span>
-                <span className="text-green-800">{totalAmt + shippingCharge - discount} VND</span>
+                <span className="text-green-800">{(totalAmt + shippingCharge - discount).toLocaleString()} VND</span>
               </div>
             </div>
             <div className="discount-code mt-4 flex gap-2">

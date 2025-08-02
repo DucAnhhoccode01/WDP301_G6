@@ -192,7 +192,7 @@ const [importDate, setImportDate] = React.useState(targetProduct?.importDate ? t
                 return [
                     ...prev,
                     {
-                        color: colorInstock,
+                        variant: colorInstock,
                         quantity: quantityInstock,
                         price: price
                     }

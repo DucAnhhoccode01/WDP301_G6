@@ -37,12 +37,12 @@ class UserService {
         const { email, password } = data;
         const user = await UserModel.findOne({ email });
         if (!user) {
-            return { success: false, message: 'Email or password is incorrect' };
+            return { success: false, message: 'Email hoặc mật khẩu không đúng' };
         }
 
         const validPassword = await bcrypt.compare(password, user.passwordToken);
         if (!validPassword) {
-            return { success: false, message: 'Email or password is incorrect' };
+            return { success: false, message: 'Email hoặc mật khẩu không đúng' };
         }
 
         const accessToken = jwt.sign(
@@ -62,13 +62,15 @@ class UserService {
 
         const isVerified = user.isVerified;
 
-        return {
-            success: true,
-            accessToken,
-            refreshToken,
-            isVerified,
-            message: isVerified ? 'Login successful' : 'Please verify your email'
-        };
+      return {
+    success: true,
+    accessToken,
+    refreshToken,
+    isVerified,
+    role: user.role, // thêm dòng này
+    deleted: user.isDeleted, // hoặc isDeleted: user.isDeleted
+    message: isVerified ? 'Login successful' : 'Please verify your email'
+};
     }
     async forgotPassword(email) {
         const user = await UserModel.findOne({ email });

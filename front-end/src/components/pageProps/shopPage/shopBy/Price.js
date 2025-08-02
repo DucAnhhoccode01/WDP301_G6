@@ -4,8 +4,13 @@ import NavTitle from "./NavTitle";
 import { togglePrice } from "../../../../redux/orebiSlice";
 
 const priceList = [
-  { _id: 950, priceOne: 0, priceTwo: 20000 },
-  { _id: 951, priceOne: 20000, priceTwo: 50000 },
+  { _id: 950, priceOne: 0, priceTwo: 9500 },
+  { _id: 10000, priceOne: 9500, priceTwo: 10000 },
+  { _id: 20000, priceOne: 10000, priceTwo: 20000 },
+  { _id: 30000, priceOne: 20000, priceTwo: 30000 },
+  { _id: 50000, priceOne: 30000, priceTwo: 50000 },
+  { _id: 100000, priceOne: 50000, priceTwo: 100000 },
+  { _id: 200000, priceOne: 100000, priceTwo: 200000 },
 ];
 
 const Price = () => {
@@ -13,9 +18,10 @@ const Price = () => {
   const [selectedId, setSelectedId] = useState(null);
 
   const handleSelectPrice = (item) => {
-    setSelectedId(item._id);
-    dispatch(togglePrice(item));
-  };
+  setSelectedId(item._id);
+  dispatch({ type: 'orebi/resetCheckedPrices' }); // Thêm action reset
+  dispatch(togglePrice(item));
+};
 
   return (
     <div className="cursor-pointer">
@@ -26,11 +32,9 @@ const Price = () => {
             <li
               key={item._id}
               className={`border rounded-lg px-4 py-3 flex items-center gap-3 transition-all duration-200 cursor-pointer
-                ${
-                  selectedId === item._id
-                    ? "bg-green-100 border-green-500 text-green-700 font-bold shadow"
-                    : "border-gray-200 hover:bg-green-50 hover:border-green-400"
-                }
+                ${selectedId === item._id
+                  ? "bg-green-100 border-green-500 text-green-700 font-bold shadow"
+                  : "border-gray-200 hover:bg-green-50 hover:border-green-400"}
               `}
               onClick={() => handleSelectPrice(item)}
             >
@@ -42,11 +46,8 @@ const Price = () => {
                 onChange={() => handleSelectPrice(item)}
                 className="accent-green-600 w-5 h-5"
               />
-              <label
-                htmlFor={item._id}
-                className="text-lg select-none w-full cursor-pointer"
-              >
-                {item.priceOne.toFixed(2)} VND - {item.priceTwo.toFixed(2)} VND
+              <label htmlFor={item._id} className="text-lg select-none w-full cursor-pointer">
+                {item.priceOne.toLocaleString()} VND - {item.priceTwo.toLocaleString()} VND
               </label>
             </li>
           ))}

@@ -20,31 +20,34 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-    response => response,
-    async error => {
-        const originalRequest = error.config;
-
-        if (error.response.status === 401 && !originalRequest._retry) {
-            originalRequest._retry = true;
-
-            try {
-                const { data } = await axios.post(`${BACKEND_API_URI}/user/refresh-token`);
-                localStorage.setItem('accessToken', data.accessToken);
-                originalRequest.headers['Authorization'] = `Bearer ${data.accessToken}`;
-                return api(originalRequest);
-            } catch (err) {
-                // console.error('Failed to refresh token:', err);
-                const errorMessage = 'Failed to refresh token. Please sign in again.';
-                 window.location.href = `/error?status=401&message=${encodeURIComponent(errorMessage)}`;
-            }
-        } else if (error.response.status === 403) {
-            // Redirect to a custom error page with an error message
-            const errorMessage = error.response.data.message || "You do not have permission to access this resource.";
-             window.location.href = `/error?status=403&message=${encodeURIComponent(errorMessage)}`;
+  response => response,
+  async error => {
+    const originalRequest = error.config;
+    // Nếu là request login hoặc refresh-token thì không xử lý refresh/redirect
+    // Chỉ xử lý refresh token nếu request KHÔNG phải là login, signin, hoặc refresh-token
+    if (
+      error.response.status === 401 &&
+      !originalRequest._retry &&
+      !/\/api\/(v1\/)?user\/(login|signin|refresh-token)/.test(originalRequest.url)
+    ) {
+      originalRequest._retry = true;
+      try {
+        const { data } = await axios.post(`${BACKEND_API_URI}/user/refresh-token`);
+        localStorage.setItem('accessToken', data.accessToken);
+        originalRequest.headers['Authorization'] = `Bearer ${data.accessToken}`;
+        return api(originalRequest);
+      } catch (err) {
+        const errorMessage = 'Failed to refresh token. Please sign in again.';
+        if (window.location.pathname !== '/signin') {
+          window.location.href = `/error?status=401&message=${encodeURIComponent(errorMessage)}`;
         }
-
-        return Promise.reject(error);
+      }
+    } else if (error.response.status === 403) {
+      const errorMessage = error.response.data.message || "You do not have permission to access this resource.";
+      window.location.href = `/error?status=403&message=${encodeURIComponent(errorMessage)}`;
     }
+    return Promise.reject(error);
+  }
 );
 
 export { api };

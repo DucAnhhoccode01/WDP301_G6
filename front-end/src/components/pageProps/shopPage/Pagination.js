@@ -82,8 +82,17 @@ const Pagination = ({ itemsPerPage, sortOrder }) => {
     fetchProducts();
   }, [sortOrder]);
 
+  // Reset về trang đầu khi filter/sort thay đổi
+  useEffect(() => {
+    setItemOffset(0);
+    setItemStart(1);
+  }, [sortOrder, selectedBrands, selectedCategories, checkedColors, checkedPrices]);
+
   // Filter products based on selected brands and categories
   const filteredProducts = products.filter((item) => {
+    //    console.log('item.inStock:', item.inStock);
+    // console.log('checkedPrices:', checkedPrices);
+
     const isBrandSelected =
       selectedBrands.length === 0 ||
       selectedBrands.some((brand) => brand.name === item.brand.name);
@@ -95,13 +104,17 @@ const Pagination = ({ itemsPerPage, sortOrder }) => {
     const isInSelectedColor =
       checkedColors.length === 0 ||
       checkedColors.some((color) =>
-        item.inStock.some((stock) => stock.variant  === color.name)
+        item.inStock.some((stock) => stock.variant === color.name)
       );
     const isInSelectedPrice =
       checkedPrices.length === 0 ||
       checkedPrices.some((price) =>
-        item.price >= price.priceOne && item.price <= price.priceTwo
+        item.inStock.some(
+          (stock) =>
+            stock.price >= price.priceOne && stock.price <= price.priceTwo
+        )
       );
+    // console.log('isInSelectedPrice:', isInSelectedPrice);
     return isBrandSelected && isCategorySelected && isInSelectedColor && isInSelectedPrice;
   });
 

@@ -54,9 +54,14 @@ const SignIn = () => {
           setPassword("");
           navigate("/resend-verification-email");
         } else if (response.message === "Login successful") {
-          const decodedToken = jwtDecode(response.accessToken);
-          const role = decodedToken.role;
-          const deleted = decodedToken.isDeleted;
+          // Ưu tiên lấy role từ response trả về từ backend
+          const role = response.role;
+          // Nếu backend không trả về deleted, fallback sang accessToken
+          let deleted = response.deleted;
+          if (typeof deleted === 'undefined') {
+            const decodedToken = jwtDecode(response.accessToken);
+            deleted = decodedToken.isDeleted;
+          }
 
           if (deleted) {
             setErrorMsg(

@@ -27,7 +27,12 @@ class UserController {
             // res.cookie('accessToken', result.accessToken, { httpOnly: true, maxAge: 60000 }); // 1 minute
             res.cookie('refreshToken', result.refreshToken, { httpOnly: true, maxAge: 604800000 }); // 7 days
 
-            return res.json({ accessToken: result.accessToken, message: result.message });
+            return res.json({
+    accessToken: result.accessToken,
+    message: result.message,
+    role: result.role, // thêm dòng này
+    deleted: result.deleted // hoặc isDeleted: result.isDeleted
+});
         } catch (err) {
             next(err)
         }
