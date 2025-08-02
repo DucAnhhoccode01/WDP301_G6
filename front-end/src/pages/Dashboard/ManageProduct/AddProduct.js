@@ -204,7 +204,7 @@ const [importDate, setImportDate] = React.useState('');
                 return [
                     ...prev,
                     {
-                        color: colorInstock,
+                        variant: colorInstock, // gửi đúng tên biến thể cho backend
                         quantity: quantityInstock,
                         price: price
                     }

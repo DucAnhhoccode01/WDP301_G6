@@ -82,6 +82,12 @@ const Pagination = ({ itemsPerPage, sortOrder }) => {
     fetchProducts();
   }, [sortOrder]);
 
+  // Reset về trang đầu khi filter/sort thay đổi
+  useEffect(() => {
+    setItemOffset(0);
+    setItemStart(1);
+  }, [sortOrder, selectedBrands, selectedCategories, checkedColors, checkedPrices]);
+
   // Filter products based on selected brands and categories
   const filteredProducts = products.filter((item) => {
     const isBrandSelected =
