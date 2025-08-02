@@ -156,7 +156,10 @@ export const orebiSlice = createSlice({
     },
     resetProducts: (state) => {
       state.allproducts = [];
-    }
+    },
+    resetCheckedPrices: (state) => {
+  state.checkedPrices = [];
+},
   },
 });
 
@@ -178,7 +181,8 @@ export const {
   addToWishlist,
   calculateCartTotalCount,
   calculateWishlistTotalCount,
-  resetWishlist
+  resetWishlist,
+  resetCheckedPrices,
 } = orebiSlice.actions;
 
 export default orebiSlice.reducer;
