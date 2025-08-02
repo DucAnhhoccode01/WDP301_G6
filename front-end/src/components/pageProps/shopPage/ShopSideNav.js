@@ -10,7 +10,7 @@ const ShopSideNav = () => {
       <Category icons={false} />
       <Brand />
       {/* <Color /> */}
-      {/* <Price /> */}
+      <Price />
     </div>
   );
 };
