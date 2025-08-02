@@ -27,7 +27,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ManagerDashboardLaydout from "./pages/Dashboard/ManagerDashboardLaydout";
 import AdminDashboardLaydout from "./pages/Dashboard/AdminDashboardLaydout";
 import ManageProduct from "./pages/Dashboard/ManageProduct/ManageProduct";
-import ManageAccount from "./pages/Dashboard/ManageAccount/ManageAccount"
+import ManageAccount from "./pages/Dashboard/ManageAccount/ManageAccount";
 import Wishlist from "./pages/Wishlist/Wishlist";
 import ForgotPassword from "./pages/Account/ForgotPassword";
 import ResendVerificationEmail from "./pages/Account/ResendVerificationEmail";
@@ -39,7 +39,7 @@ import { fetchWistlist } from "./redux/slices/wishlist.slice";
 import Checkout from "./pages/Checkout/checkout";
 import MyOrders from "./pages/MyOrder/MyOrders";
 import Profile from "./pages/Profile/Profile";
-import ManageOrder from './pages/Dashboard/ManageOrder/ManageOrder';
+import ManageOrder from "./pages/Dashboard/ManageOrder/ManageOrder";
 import CreateOrder from "./pages/Dashboard/ManageOrder/CreateOrder";
 import EditOrder from "./pages/Dashboard/ManageOrder/EditOrder";
 import VnpayReturnHandler from "./pages/Thank/VnpayReturnHandler";
@@ -49,7 +49,7 @@ import MyProfile from "./pages/Dashboard/MyProfile/MyProfile";
 import ManageProfit from "./pages/Dashboard/ManageProfit/ManageProfit";
 import PayOSReturnHandler from "./pages/Thank/PayOSReturnHandler";
 import CancelReturnHandler from "./pages/Thank/CancelReturnHandler";
-import { DiscountProvider } from './context/DiscountContext';
+import { DiscountProvider } from "./context/DiscountContext";
 import CouponManager from "./pages/Dashboard/ManageCoupon/CouponManager";
 import AdminDashboard from "./pages/Dashboard/AdminDashboard";
 import DiscountSuggestionsPage from "./pages/Discount/DiscountSuggestionsPage";
@@ -95,34 +95,43 @@ const router = createBrowserRouter(
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="/wishlist" element={<Wishlist />}></Route>
         <Route path="/paymentgateway" element={<Payment />}></Route>
-        <Route path="/vnpay_return_url" element={<VnpayReturnHandler />}></Route>
+        <Route
+          path="/vnpay_return_url"
+          element={<VnpayReturnHandler />}
+        ></Route>
         <Route path="/success" element={<PayOSReturnHandler />}></Route>
         <Route path="/cancel" element={<CancelReturnHandler />}></Route>
         <Route path="/order-history" element={<MyOrders />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/verify-email" element={<VerifyEmail />}></Route>
-        <Route path="/discount-suggestions" element={<DiscountSuggestionsPage />} />
+        <Route
+          path="/discount-suggestions"
+          element={<DiscountSuggestionsPage />}
+        />
       </Route>
       <Route path="/" element={<ManagerDashboardLaydout />}>
-       <Route path="/manager-dashboard" element={<ManageProfit />}></Route>
+        <Route path="/manager-dashboard" element={<ManageProfit />}></Route>
         <Route path="/manage-product" element={<ManageProduct />}></Route>
         <Route path="/manage-order" element={<ManageOrder />}></Route>
         <Route path="/create-order" element={<CreateOrder />}></Route>
         <Route path="/my-profile" element={<MyProfile />}></Route>
         <Route path="/update-order/:orderId" element={<EditOrder />}></Route>
         <Route path="/dashboard/coupons" element={<CouponManager />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        {/* <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
       </Route>
       <Route path="/" element={<AdminDashboardLaydout />}>
         <Route path="/manage-account" element={<ManageAccount />}></Route>
-        <Route path="/manage-profit" element={<ManageProfit />}></Route>
+        {/* <Route path="/manage-profit" element={<ManageProfit />}></Route> */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/signin" element={<SignIn />}></Route>
       <Route path="/forgot-password" element={<ForgotPassword />}></Route>
       <Route path="/reset-password/:token" element={<ResetPassword />}></Route>
-      <Route path="/resend-verification-email" element={<ResendVerificationEmail />}></Route>
+      <Route
+        path="/resend-verification-email"
+        element={<ResendVerificationEmail />}
+      ></Route>
       <Route path="/error" element={<ErrorPage />} />
     </Route>
   )
@@ -133,17 +142,15 @@ function App() {
   useEffect(() => {
     dispatch(fetchCart());
     dispatch(fetchWistlist());
-
   }, [dispatch]);
 
   return (
     <DiscountProvider>
-    <div className="font-bodyFont">
-      <RouterProvider router={router} />
-    </div>
+      <div className="font-bodyFont">
+        <RouterProvider router={router} />
+      </div>
     </DiscountProvider>
   );
 }
 
 export default App;
-

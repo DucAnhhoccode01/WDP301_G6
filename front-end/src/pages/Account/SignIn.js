@@ -58,26 +58,34 @@ const SignIn = () => {
           const role = decodedToken.role;
           const deleted = decodedToken.isDeleted;
 
-          if (deleted) { 
-              setErrorMsg("Your Account has been disabled by the admin. Please contact customer support for more info! Redirect to Home in 10 seconds !");
-              await AuthenService.logout();
-              dispatch(resetUserInfo());
-              await new Promise(r => setTimeout(r, 10000));
-              return navigate("/");
+          if (deleted) {
+            setErrorMsg(
+              "Your Account has been disabled by the admin. Please contact customer support for more info! Redirect to Home in 10 seconds !"
+            );
+            await AuthenService.logout();
+            dispatch(resetUserInfo());
+            await new Promise((r) => setTimeout(r, 10000));
+            return navigate("/");
           }
 
           if (role === "admin") {
-            setSuccessMsg("Hello Admin, Welcome back! You have successfully signed in.");
+            setSuccessMsg(
+              "Hello Admin, Welcome back! You have successfully signed in."
+            );
             setEmail("");
             setPassword("");
-            return navigate("/manage-profit");
+            return navigate("/admin/dashboard");
           } else if (role === "sales manager") {
-            setSuccessMsg("Hello Sales Manager, Welcome back! You have successfully signed in.");
+            setSuccessMsg(
+              "Hello Sales Manager, Welcome back! You have successfully signed in."
+            );
             setEmail("");
             setPassword("");
             return navigate("/manage-product");
           } else if (role === "customer") {
-            setSuccessMsg("Hello dear, Welcome back! You have successfully signed in.");
+            setSuccessMsg(
+              "Hello dear, Welcome back! You have successfully signed in."
+            );
             setEmail("");
             setPassword("");
             return navigate("/");
@@ -94,9 +102,7 @@ const SignIn = () => {
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-1/2 hidden lgl:inline-flex h-full text-white">
-        <div className="w-[450px] h-full bg-green-700 px-10 flex flex-col gap-6 justify-center">
-          
-        </div>
+        <div className="w-[450px] h-full bg-green-700 px-10 flex flex-col gap-6 justify-center"></div>
       </div>
       <div className="w-full lgl:w-1/2 h-full">
         {successMsg ? (
@@ -185,7 +191,7 @@ const SignIn = () => {
                   Không nhớ mật khẩu?{" "}
                   <Link to="/forgot-password">
                     <span className="hover:text-blue-600 duration-300">
-                    Quên mật khẩu
+                      Quên mật khẩu
                     </span>
                   </Link>
                 </p>
