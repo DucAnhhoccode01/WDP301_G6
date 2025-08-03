@@ -120,16 +120,14 @@ export const orebiSlice = createSlice({
       }
     },
     togglePrice: (state, action) => {
-      const price = action.payload;
-      const isPriceChecked = state.checkedPrices.some(
-        (p) => p._id === price._id
-      );
-      if (isPriceChecked) {
-        state.checkedPrices = state.checkedPrices.filter(
-          (p) => p._id !== price._id
-        );
+      const priceItem = action.payload;
+      // If the clicked item is already selected, clear the selection.
+      // The `find` is needed because state is an array `[item]`.
+      if (priceItem && state.checkedPrices.find(p => p._id === priceItem._id)) {
+        state.checkedPrices = [];
       } else {
-        state.checkedPrices.push(price);
+        // Otherwise, set the selection to be ONLY the new item.
+        state.checkedPrices = priceItem ? [priceItem] : [];
       }
     },
     toggleColor: (state, action) => {
