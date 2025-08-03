@@ -16,7 +16,7 @@
         "key": "Khối lượng",
         "value": "200g / 10 chiếc",
         "_id": {
-          "$oid": "689a1b1e8d4c2f3b9f9c2a01"
+          "$oid": "688f99eba28a5320aa0db15c"
         }
       }
     ],
@@ -28,7 +28,7 @@
         "quantity": 300,
         "price": 50000,
         "_id": {
-          "$oid": "689a1b1e8d4c2f3b9f9c2a02"
+          "$oid": "688f99f4a28a5320aa0db15d"
         }
       }
     ],
@@ -896,14 +896,14 @@
         "key": "Trọng lượng",
         "value": "400g",
         "_id": {
-          "$oid": "689a8a9b8e4d3c1f2b8f8b9001"
+          "$oid": "688f99fea28a5320aa0db15e"
         }
       },
       {
         "key": "Hạn sử dụng",
         "value": "30 ngày",
         "_id": {
-          "$oid": "689a8a9b8e4d3c1f2b8f8b9002"
+          "$oid": "688f9a08a28a5320aa0db15f"
         }
       }
     ],
@@ -911,19 +911,19 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "  Hộp 4 cái",
+        "variant": "Hộp 4 cái",
         "quantity": 150,
         "price": 65000,
         "_id": {
-          "$oid": "689a8a9b8e4d3c1f2b8f8b9003"
+          "$oid": "688f9a13a28a5320aa0db160"
         }
       },
       {
-        "variant": "  Hộp 2 cái",
+        "variant": "Hộp 2 cái",
         "quantity": 80,
         "price": 35000,
         "_id": {
-          "$oid": "689a8a9b8e4d3c1f2b8f8b9004"
+          "$oid": "688f9a19a28a5320aa0db161"
         }
       }
     ],
