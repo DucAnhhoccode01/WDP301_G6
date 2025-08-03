@@ -18,10 +18,15 @@ const Price = () => {
   const [selectedId, setSelectedId] = useState(null);
 
   const handleSelectPrice = (item) => {
-  setSelectedId(item._id);
-  dispatch({ type: 'orebi/resetCheckedPrices' }); // Thêm action reset
-  dispatch(togglePrice(item));
-};
+    if (selectedId === item._id) {
+      setSelectedId(null);
+      dispatch({ type: 'orebi/resetCheckedPrices' });
+    } else {
+      setSelectedId(item._id);
+      dispatch({ type: 'orebi/resetCheckedPrices' });
+      dispatch(togglePrice(item));
+    }
+  };
 
   return (
     <div className="cursor-pointer">

@@ -19,7 +19,7 @@ const orderSchema = new Schema({
         },
         salePrice: Number,
         saleCost: Number, // chi phí tạo món đồ tại thời điểm bán
-        color: {
+        variant: {
             type: String,
             required: true
         }

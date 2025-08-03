@@ -207,8 +207,9 @@ class OrderService {
                 'paymentDetails.transactionId': responseData.vnp_TransactionNo,
                 'paymentDetails.paymentTime': new Date()
             }, { new: true });
-
+            // console.log('updatedOrder',updatedOrder)
             if (responseData.vnp_ResponseCode === '00') {
+                // console.log('updatedOrder.items',updatedOrder.items)
                 await this.updateProductStock(updatedOrder.items);
             }
 
