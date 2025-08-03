@@ -27,11 +27,11 @@ export const orebiSlice = createSlice({
         if (item.quantity < productInStock.quantity) {
           item.quantity += action.payload.quantity;
         } else {
-          toast.warning("Food reached maximum quantity");
+          toast.warning("Đã đạt tối đa số lượng sản phẩm !");
         }
       } else {
         state.products.push(action.payload);
-        toast.success("Food added to cart");
+        toast.success("Sản phẩm đã được thêm vào giỏ hàng");
       }
     },
     increaseQuantity: (state, action) => {
@@ -56,13 +56,13 @@ export const orebiSlice = createSlice({
       state.products = state.products.filter(
         (item) => item._id !== action.payload._id || item.variant  !== action.payload.variant 
       );
-      toast.success("Food removed from cart");
+      toast.success("Sản phẩm đã bỏ khỏi giỏ hàng");
     },
     deleteItemWL: (state, action) => {
       state.wishlish = state.wishlish.filter(
         (item) => item._id !== action.payload._id || item.variant  !== action.payload.variant 
       );
-      toast.success("Food removed from Wishlist");
+      toast.success("Sản phẩm đã bỏ khỏi Wishlist");
     },
     resetCart: (state) => {
       state.products = [];
@@ -72,10 +72,10 @@ export const orebiSlice = createSlice({
         (item) => item._id === action.payload._id && item.variant  === action.payload.variant 
       );
       if (item) {
-        toast.warning("Food already in wishlist");
+        toast.warning("Sản phẩm đã tồn tại trong Wishlist");
       } else {
         state.wishlish.push(action.payload);
-        toast.success("Food added to wishlist");
+        toast.success("Sản phẩm đã được thêm vào Wishlist");
       }
     },
     resetWishlist: (state) => {

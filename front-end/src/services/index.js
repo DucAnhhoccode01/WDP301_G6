@@ -37,7 +37,7 @@ api.interceptors.response.use(
         originalRequest.headers['Authorization'] = `Bearer ${data.accessToken}`;
         return api(originalRequest);
       } catch (err) {
-        const errorMessage = 'Failed to refresh token. Please sign in again.';
+        const errorMessage = 'Có vấn đề với phiên đăng nhập, xin hãy đăng nhập lại !';
         if (window.location.pathname !== '/signin') {
           window.location.href = `/error?status=401&message=${encodeURIComponent(errorMessage)}`;
         }
