@@ -124,7 +124,7 @@
     "specs": [
       {
         "key": "Khối lượng",
-        "value": "1 quả",
+        "value": "1 gói/350g",
         "_id": {
           "$oid": "689a1b1e8d4c2f3b9f9c2c01"
         }
@@ -134,7 +134,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": " 1 quả",
+        "variant": "1 gói",
         "quantity": 100,
         "price": 35000,
         "_id": {
