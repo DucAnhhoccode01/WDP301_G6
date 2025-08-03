@@ -256,10 +256,10 @@ export default function Orders() {
                 <Tooltip title="Update">
                   <Button onClick={() => openUpdateModal(order._id)}><BuildCircleIcon color="primary" style={{ cursor: 'pointer' }} /></Button>
                 </Tooltip>
-                |&nbsp;
+                {/* |&nbsp;
                 <Tooltip title="Delete">
                   <Button >  <DeleteIcon color="error" style={{ cursor: 'pointer' }} /> </Button>
-                </Tooltip>
+                </Tooltip> */}
               </TableCell>
             </TableRow>
           ))}
