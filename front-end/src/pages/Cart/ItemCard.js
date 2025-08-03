@@ -49,7 +49,7 @@ const ItemCard = ({ item }) => {
               if (item.quantity < productInStock.quantity) {
                 dispatch(increaseQuantity({ _id: item._id, variant: item.variant  }));
               } else {
-                toast.warning("Food reached maximum quantity");
+                toast.warning("Sản phẩm đã đạt tối đa số lượng !");
               }
             }}
             className="w-6 h-6 bg-gray-100 text-2xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-300"

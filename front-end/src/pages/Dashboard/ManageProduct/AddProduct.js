@@ -261,7 +261,7 @@ const [importDate, setImportDate] = React.useState('');
 
     return (
         <>
-            <Tooltip title="Add new product">
+            <Tooltip title="Thêm sản phẩm mới">
                 <Zoom
                     key='primary'
                     in={true}
