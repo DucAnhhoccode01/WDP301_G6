@@ -39,8 +39,8 @@ class ProductService {
                 { expiryDate: { $lte: new Date() }, isAvailable: true },
                 { $set: { isAvailable: false } }
             );
-            // Lấy sản phẩm chưa hết hạn hoặc không có hạn sử dụng
             const products = await Product.find({
+                isDeleted: false,
                 $or: [
                     { expiryDate: { $gt: new Date() } },
                     { expiryDate: { $exists: false } },
