@@ -27,11 +27,11 @@ export const orebiSlice = createSlice({
         if (item.quantity < productInStock.quantity) {
           item.quantity += action.payload.quantity;
         } else {
-          toast.warning("Food reached maximum quantity");
+          toast.warning("Đã đạt tối đa số lượng sản phẩm !");
         }
       } else {
         state.products.push(action.payload);
-        toast.success("Food added to cart");
+        toast.success("Sản phẩm đã được thêm vào giỏ hàng");
       }
     },
     increaseQuantity: (state, action) => {
@@ -56,13 +56,13 @@ export const orebiSlice = createSlice({
       state.products = state.products.filter(
         (item) => item._id !== action.payload._id || item.variant  !== action.payload.variant 
       );
-      toast.success("Food removed from cart");
+      toast.success("Sản phẩm đã bỏ khỏi giỏ hàng");
     },
     deleteItemWL: (state, action) => {
       state.wishlish = state.wishlish.filter(
         (item) => item._id !== action.payload._id || item.variant  !== action.payload.variant 
       );
-      toast.success("Food removed from Wishlist");
+      toast.success("Sản phẩm đã bỏ khỏi Wishlist");
     },
     resetCart: (state) => {
       state.products = [];
@@ -72,10 +72,10 @@ export const orebiSlice = createSlice({
         (item) => item._id === action.payload._id && item.variant  === action.payload.variant 
       );
       if (item) {
-        toast.warning("Food already in wishlist");
+        toast.warning("Sản phẩm đã tồn tại trong Wishlist");
       } else {
         state.wishlish.push(action.payload);
-        toast.success("Food added to wishlist");
+        toast.success("Sản phẩm đã được thêm vào Wishlist");
       }
     },
     resetWishlist: (state) => {
@@ -120,16 +120,14 @@ export const orebiSlice = createSlice({
       }
     },
     togglePrice: (state, action) => {
-      const price = action.payload;
-      const isPriceChecked = state.checkedPrices.some(
-        (p) => p._id === price._id
-      );
-      if (isPriceChecked) {
-        state.checkedPrices = state.checkedPrices.filter(
-          (p) => p._id !== price._id
-        );
+      const priceItem = action.payload;
+      // If the clicked item is already selected, clear the selection.
+      // The `find` is needed because state is an array `[item]`.
+      if (priceItem && state.checkedPrices.find(p => p._id === priceItem._id)) {
+        state.checkedPrices = [];
       } else {
-        state.checkedPrices.push(price);
+        // Otherwise, set the selection to be ONLY the new item.
+        state.checkedPrices = priceItem ? [priceItem] : [];
       }
     },
     toggleColor: (state, action) => {
@@ -144,6 +142,11 @@ export const orebiSlice = createSlice({
       } else {
         state.checkedColors.push(color);
       }
+    },
+    resetFilters: (state) => {
+      state.checkedBrands = [];
+      state.checkedCategorys = [];
+      state.checkedPrices = [];
     },
     setUserInfo: (state, action) => {
       state.userInfo = action.payload;
@@ -174,6 +177,7 @@ export const {
   toggleCategory,
   togglePrice,
   toggleColor,
+  resetFilters,
   setUserInfo,
   resetUserInfo,
   setProducts,

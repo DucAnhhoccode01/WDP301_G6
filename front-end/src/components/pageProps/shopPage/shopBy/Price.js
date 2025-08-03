@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import NavTitle from "./NavTitle";
 import { togglePrice } from "../../../../redux/orebiSlice";
 
@@ -16,6 +16,21 @@ const priceList = [
 const Price = () => {
   const dispatch = useDispatch();
   const [selectedId, setSelectedId] = useState(null);
+
+  // Select the price filter state from Redux (it's now an array)
+  const checkedPrices = useSelector((state) => state.orebiReducer.checkedPrices);
+
+  // This effect syncs the local UI state with the Redux store
+  useEffect(() => {
+    // **THE FIX**: Check array length instead of truthiness
+    if (checkedPrices.length > 0) {
+      // If a price is selected, get its ID from the first item in the array
+      setSelectedId(checkedPrices[0]._id);
+    } else {
+      // If the array is empty (filter is reset), clear the local selection
+      setSelectedId(null);
+    }
+  }, [checkedPrices]);
 
   const handleSelectPrice = (item) => {
     if (selectedId === item._id) {

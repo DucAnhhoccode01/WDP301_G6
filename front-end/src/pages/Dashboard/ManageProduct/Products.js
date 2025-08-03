@@ -156,9 +156,6 @@ export default function Products() {
                   <Tooltip title="Update">
                     <UpdateProduct targetProduct={product}></UpdateProduct>
                   </Tooltip>
-                  <Tooltip title="Delete">
-                    <DeleteIcon color="error" style={{ cursor: 'pointer' }} onClick={() => handleOpenAskToDelete(product._id)} />
-                  </Tooltip>
                 </TableCell>
               </TableRow>
             ))}

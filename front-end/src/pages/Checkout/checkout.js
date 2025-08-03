@@ -250,7 +250,7 @@ const Checkout = () => {
                   />
                   <FaCreditCard className="text-blue-500" /> VNPay
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer">
+                {/* <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
                     name="payment"
@@ -259,7 +259,7 @@ const Checkout = () => {
                     onChange={() => setPaymentMethod('PayPal')}
                   />
                   <FaCreditCard className="text-yellow-500" /> PayPal
-                </label>
+                </label> */}
               </div>
             </div>
           </div>

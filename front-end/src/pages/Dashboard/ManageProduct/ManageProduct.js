@@ -26,7 +26,7 @@ export default function ManageProduct() {
         gap: 1,
       }}>
         <AddProduct ></AddProduct>
-        <DeletedProductsLaydout ></DeletedProductsLaydout>
+        {/* <DeletedProductsLaydout ></DeletedProductsLaydout> */}
       </Grid >
 
     </>
