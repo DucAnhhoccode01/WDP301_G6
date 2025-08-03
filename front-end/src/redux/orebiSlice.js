@@ -145,6 +145,11 @@ export const orebiSlice = createSlice({
         state.checkedColors.push(color);
       }
     },
+    resetFilters: (state) => {
+      state.checkedBrands = [];
+      state.checkedCategorys = [];
+      state.checkedPrices = [];
+    },
     setUserInfo: (state, action) => {
       state.userInfo = action.payload;
     },
@@ -174,6 +179,7 @@ export const {
   toggleCategory,
   togglePrice,
   toggleColor,
+  resetFilters,
   setUserInfo,
   resetUserInfo,
   setProducts,
