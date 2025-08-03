@@ -24,7 +24,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Hồng - 10 chiếc",
+        "variant": " 10 chiếc",
         "quantity": 300,
         "price": 50000,
         "_id": {
@@ -79,7 +79,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Vàng rơm - 1 cây",
+        "variant": " 1 cây",
         "quantity": 100,
         "price": 35000,
         "_id": {
@@ -134,7 +134,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Vàng - 1 quả",
+        "variant": " 1 quả",
         "quantity": 100,
         "price": 35000,
         "_id": {
@@ -189,7 +189,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Vàng - Hộp nhỏ",
+        "variant": "  Hộp nhỏ",
         "quantity": 100,
         "price": 30000,
         "_id": {
@@ -244,7 +244,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Nâu cánh gián - Gói",
+        "variant": "  Gói",
         "quantity": 100,
         "price": 20000,
         "_id": {
@@ -299,7 +299,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Đỏ cam - 500g/gói",
+        "variant": "  500g/gói",
         "quantity": 100,
         "price": 40000,
         "_id": {
@@ -354,7 +354,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Vàng nâu - 200g/gói",
+        "variant": "  200g/gói",
         "quantity": 50,
         "price": 25000,
         "_id": {
@@ -409,7 +409,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Vàng - Hộp 300g",
+        "variant": "  Hộp 300g",
         "quantity": 50,
         "price": 70000,
         "_id": {
@@ -464,7 +464,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Vàng - Hộp 300g",
+        "variant": " Hộp 300g",
         "quantity": 50,
         "price": 65000,
         "_id": {
@@ -519,7 +519,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Trắng ngà - Hộp 600g",
+        "variant": "  Hộp 600g",
         "quantity": 50,
         "price": 60000,
         "_id": {
@@ -574,7 +574,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Nâu đen - Hộp 900g",
+        "variant": "  Hộp 900g",
         "quantity": 50,
         "price": 105000,
         "_id": {
@@ -629,7 +629,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Nhiều màu - Hộp",
+        "variant": "  Hộp",
         "quantity": 50,
         "price": 25000,
         "_id": {
@@ -684,7 +684,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Nhiều màu - Hộp",
+        "variant": "  Hộp",
         "quantity": 50,
         "price": 30000,
         "_id": {
@@ -739,7 +739,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Trắng sữa - Hộp 150g",
+        "variant": "  Hộp 150g",
         "quantity": 100,
         "price": 25000,
         "_id": {
@@ -794,7 +794,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Nâu socola - Hộp 150g",
+        "variant": "  Hộp 150g",
         "quantity": 100,
         "price": 30000,
         "_id": {
@@ -849,7 +849,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Trắng - Xấp 1kg",
+        "variant": "  Xấp 1kg",
         "quantity": 20,
         "price": 38000,
         "_id": {
@@ -911,7 +911,7 @@
     "isDeleted": false,
     "inStock": [
       {
-        "variant": "Vàng - Hộp 4 cái",
+        "variant": "  Hộp 4 cái",
         "quantity": 150,
         "price": 65000,
         "_id": {
@@ -919,7 +919,7 @@
         }
       },
       {
-        "variant": "Xanh - Hộp 2 cái",
+        "variant": "  Hộp 2 cái",
         "quantity": 80,
         "price": 35000,
         "_id": {
