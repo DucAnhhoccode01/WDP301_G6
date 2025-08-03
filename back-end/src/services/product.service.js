@@ -109,10 +109,10 @@ class ProductService {
             }
         }
         // Tự động ẩn sản phẩm hết hạn
-        await Product.updateMany(
-            { expiryDate: { $lte: new Date() }, isAvailable: true },
-            { $set: { isAvailable: false } }
-        );
+        // await Product.updateMany(
+        //     { expiryDate: { $lte: new Date() }, isAvailable: true },
+        //     { $set: { isAvailable: false } }
+        // );
         const products = await Product.find(filter)
             .sort(sort)
             .skip(skip)
