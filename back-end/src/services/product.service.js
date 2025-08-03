@@ -57,11 +57,11 @@ class ProductService {
         const skip = (page - 1) * pageSize;
         let filter = {
             isDeleted: false,
-            $or: [
-                { expiryDate: { $gt: new Date() } },
-                { expiryDate: { $exists: false } },
-                { expiryDate: null }
-            ]
+            // $or: [
+            //     { expiryDate: { $gt: new Date() } },
+            //     { expiryDate: { $exists: false } },
+            //     { expiryDate: null }
+            // ]
         };
         if (keywords) {
             const regex = new RegExp(keywords, 'i');
@@ -109,10 +109,10 @@ class ProductService {
             }
         }
         // Tự động ẩn sản phẩm hết hạn
-        // await Product.updateMany(
-        //     { expiryDate: { $lte: new Date() }, isAvailable: true },
-        //     { $set: { isAvailable: false } }
-        // );
+        await Product.updateMany(
+            { expiryDate: { $lte: new Date() }, isAvailable: true },
+            { $set: { isAvailable: false } }
+        );
         const products = await Product.find(filter)
             .sort(sort)
             .skip(skip)
