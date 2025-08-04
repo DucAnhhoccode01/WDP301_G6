@@ -65,7 +65,7 @@ export default function DeletedProductsLaydout() {
   };
 
   return (
-    <Tooltip title="Deleted foods">
+    <Tooltip title="Sản phẩm đã xóa">
       <Zoom
         key='primary'
         in={true}
